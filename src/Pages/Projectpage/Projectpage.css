@@ -1,0 +1,14 @@
+.headerContainer {
+  border-bottom: 1px solid lightgray;
+}
+
+.projectmenuContainer {
+  float: left;
+  width: 25%;
+}
+
+.timelineContainer {
+  float: left;
+  width: 70%;
+  margin-left: 2.5%;
+}
