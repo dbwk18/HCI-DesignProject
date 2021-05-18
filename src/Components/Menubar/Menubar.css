@@ -1,0 +1,25 @@
+.mainbox-sidemenu {
+  border-right: 1px solid lightgray;
+  padding-right: 20px;
+}
+
+.mainbox-sidemenu-left-text {
+  margin-left: 40px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.sidemenu-category {
+  height: 20px;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+
+
+.sidemenu-left-border {
+  margin-left: 30px;
+  border-bottom: 2px solid lightgray;
+}

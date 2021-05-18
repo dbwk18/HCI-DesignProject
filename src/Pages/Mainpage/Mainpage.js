@@ -8,15 +8,17 @@ import Menubar from '../../Components/Menubar/Menubar'
 function Mainpage() {
     return(
         <div className='Container'>
-            <Header />
-            <div className='menubarContainer'>
-                <Menubar />
+            <div className = 'headerContainer'>
+                <Header />
             </div>
-            <div className='calendarContainer'>
-                <Calendar />
+            <div className = 'mainContainer'>
+                <div className='menubarContainer'>
+                    <Menubar />
+                </div>
+                <div className='calendarContainer'>
+                    <Calendar/>
+                </div>
             </div>
-          
-
 
         </div>
     )
