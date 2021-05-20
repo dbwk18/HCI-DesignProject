@@ -21,15 +21,17 @@ header {
   border: 2px solid gray;
   float: left;
   border-radius: 10px;
+  cursor: pointer;
 }
 
-#calendar-changemonth  button{
+#calendar-changemonth button{
   margin-top: 10px;
   font-size: 30px;
   border: 2px solid;
   float: right;
   margin-right: 10px;
   border: none;
+  cursor: pointer;
 }
 
 #calendar-add-plus {
@@ -103,7 +105,8 @@ header {
 #calendar .event-desc {
   color: #666;
   margin: 3px 0 7px 0;
-  text-decoration: none;  
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #calendar .other-month {
