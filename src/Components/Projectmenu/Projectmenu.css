@@ -38,16 +38,16 @@
 }
 .doneBtnWrapper {
   display: flex;
-  padding-top: 140px;
+  padding-top: 240px;
   /* align-items: flex-end; */
   justify-content: center;
 }
 
 .doneprojectBtn {
+  width: 160px;
   text-align: center;
   font-size: 18px;
   border: 2px solid gray;
   border-radius: 10px;
-  padding: 13px;
   justify-content: center;
 }

@@ -14,7 +14,7 @@ function Projectmenu(){
             <div className = 'projectmenu-category' id = 'project3'>Designing app B UI</div>
             <div className = 'projectmenu-category' id = 'project4'>Redesigning J</div>
             <div className = 'doneBtnWrapper'>
-            <button className = 'doneprojectBtn'>Done Projects</button>
+                <button className = 'doneprojectBtn'>Done Projects</button>
             </div>
 
 

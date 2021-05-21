@@ -10,6 +10,7 @@ function Projectpage() {
         <div className='Container'>
             <div className = 'headerContainer'>
                 <Header />
+                <button id="closeBtn">Close</button>
             </div>
             <div className = 'mainContainer'>
                 <div className='projectmenuContainer'>

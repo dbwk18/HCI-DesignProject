@@ -1,0 +1,46 @@
+.headerContainer {
+  display: block;
+  border-bottom: 1px solid lightgray;
+}
+
+.projectmenuContainer {
+  float: left;
+  width: 23%;
+}
+
+.subtaskContainer {
+  float: left;
+  width: 77%;
+}
+
+button {
+  float: right;
+  margin-right: 20px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.subtaskHeader {
+  margin-left: 40px;
+  font-size: 28px;
+  font-weight: normal;
+}
+
+#addBtn {
+  width: 35px;
+}
+
+#doneBtn {
+  width: 140px;
+}
+
+#closeBtn {
+  font-size: 25px;
+  position: relative;
+  top: -80px;
+  float: right;
+  width: 100px;
+  border-width: 0px;
+  background-color: white;
+}
