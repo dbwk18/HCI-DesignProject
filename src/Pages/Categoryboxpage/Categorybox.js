@@ -1,4 +1,4 @@
-import './Mainpage.css';
+import './Categorybox.css';
 
 import React from 'react';
 import Header from '../../Components/Header/Header'
@@ -14,9 +14,6 @@ function Categoryboxpage() {
             <div className = 'mainContainer'>
                 <div className='menubarContainer'>
                     <Menubar />
-                </div>
-                <div className='calendarContainer'>
-                    <Calendar/>
                 </div>
                 <div className='CategoryboxContainer'>
                     <Categorybox />

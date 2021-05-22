@@ -1,10 +1,9 @@
 import './Mainpage.css';
 
 import React from 'react';
-import Header from '../../Components/Header/Header'
-import Calendar from '../../Components/Calendar/Calendar'
-import Menubar from '../../Components/Menubar/Menubar'
-import Categorybox from '../../Components/Categorybox/Categorybox'
+import Header from '../../Components/Header/Header';
+import Calendar from '../../Components/Calendar/Calendar';
+import Menubar from '../../Components/Menubar/Menubar';
 
 function Mainpage() {
     return(
@@ -19,9 +18,6 @@ function Mainpage() {
                 <div className='calendarContainer'>
                     <Calendar/>
                 </div>
-                {/* <div className='CategoryboxContainer'>
-                    <Categorybox />
-                </div> */}
             </div>
 
         </div>
