@@ -1,0 +1,23 @@
+.category-box {
+    font-family: 'Roboto';
+}
+
+.box {
+    block-size: 40%;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background-color: white;
+    box-shadow: 5px 3px 3px rgb(163, 163, 163);
+    border-radius: 10px;
+}
+
+#work-wrap{
+    left: 20%;
+    width: 30%;
+}
+
+
+
