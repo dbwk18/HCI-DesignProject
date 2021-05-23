@@ -4,14 +4,44 @@ import './Calendar.css'
 function Calendar(){
 
     const [month, setMonth] = useState(5);
+    const [category, setCategory] = useState(0);
+    const [popup, setPopup] = useState(false);
+
 
     useEffect(() => {
         console.log('current month: ', month)
     }, [month]);
 
+    useEffect(() => {
+        console.log('Selected_category: ', category)
+        document.getElementById('popup-button-work').setAttribute('style', 'background-color: none');
+        document.getElementById('popup-button-family').setAttribute('style', 'background-color: none');
+        document.getElementById('popup-button-private').setAttribute('style', 'background-color: none');
+        document.getElementById('popup-button-other').setAttribute('style', 'background-color: none');
+        if (category === 1) {
+            document.getElementById('popup-button-work').setAttribute('style', 'background-color: #fffdc6');
+        } else if (category === 2) {
+            document.getElementById('popup-button-family').setAttribute('style', 'background-color: #c8f7f4');
+        } else if (category === 3) {
+            document.getElementById('popup-button-private').setAttribute('style', 'background-color: #ffdcfb');
+        } else if (category === 4) {
+            document.getElementById('popup-button-other').setAttribute('style', 'background-color: lightgray')
+        }
+    }, [category]);
+
+    useEffect(() => {
+        console.log('Current popup state: ', popup)
+        var popup_div = document.getElementById('calendar-add-popup')
+        if (popup) {
+            popup_div.setAttribute('style', 'display: block')
+        } else {
+            popup_div.setAttribute('style', 'display : none')
+        }
+    })
+
     const add_schedule = (x, y) => {
         console.log(x, y)
-        window.open('add_schedule', 'popup01', 'left = '+ x +' , top = '+ y +' , width=400, height = 500, scrollbars= 0, toolbar=0, menubar=no');
+        setPopup(popup => !popup)
     }
 
     const see_prev_month = (month) => {
@@ -29,6 +59,40 @@ function Calendar(){
         }
         setMonth(month => month + 1)
     }
+
+    const select_category = (evt) => {
+        console.log(evt.target.id)
+        var targetId = evt.target.id
+        if (targetId.endsWith('work')) {
+            if (category === 1) {
+                setCategory(0)
+            } else {
+                setCategory(1)
+            }
+        }
+        else if (targetId.endsWith('family')) {
+            if (category === 2) {
+                setCategory(0)
+            } else {
+                setCategory(2)
+            }
+        }
+        else if (targetId.endsWith('private')) {
+            if (category === 3) {
+                setCategory(0)
+            } else {
+                setCategory(3)
+            }
+        }
+        else if (targetId.endsWith('other')) {
+            if (category === 4) {
+                setCategory(0)
+            } else {
+                setCategory(4)
+            }
+        }
+    }
+
 
     const day_info = {
         "1" : [27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 81, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6],
@@ -249,11 +313,26 @@ function Calendar(){
                     <>
                     </>
                 }
-
-
             </div>
         {/* <!-- /. calendar --> */}
+            <div id = "calendar-add-popup">
+                <div id = 'popup-component'>
+                    <button class  = 'popup-button' id  = 'popup-button-close' onClick = {evt => add_schedule()}>x</button>
+                    <input type = 'text' id = 'popup-title' placeholder = 'Title (Up to 40 characters)' wrap = 'hard'></input>
+                    <div id = 'popup-button-wrap'>
+                        <button className = 'popup-button' id = 'popup-button-work' onClick = {evt => select_category(evt)}>Work</button>
+                        <button className = 'popup-button' id = 'popup-button-family' onClick = {evt => select_category(evt)}>Family</button> 
+                        <button className = 'popup-button' id = 'popup-button-private' onClick = {evt => select_category(evt)}>Private</button>
+                        <button className = 'popup-button' id = 'popup-button-other' onClick = {evt => select_category(evt)}>Other</button>
+                    </div>
+                    <div id = 'popup-time-wrap'>
+                        <input type="time" className = 'popup-time' id="popup-time-start" min="00:00" max="24:00" required></input> ~ <input type="time" className = 'popup-time' id="popup-time-end" min="00:00" max="24:00" required></input>
+                    </div>
+                    <textarea id = 'popup-description' placeholder = 'Description'></textarea>
 
+                    <button className = 'popup-button' id = 'popup-submit'>Submit</button>
+                </div>
+            </div>
         </div>
     )
 }

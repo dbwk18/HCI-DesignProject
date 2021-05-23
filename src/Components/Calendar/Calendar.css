@@ -114,26 +114,113 @@ header {
   color: #666;
 }
 
-/* ============================
-        Mobile Responsiveness
-   ============================*/
-/* 
 
-@media(max-width: 768px) {
+#calendar-add-popup {
+  position: absolute;
+  top: 210px;
+  left: 340px;
+  width: 320px;
+  height: 500px;
+  background-color: white;
+  border: 1px solid black;
+}
 
-  #calendar .weekdays, #calendar .other-month {
-    display: none;
-  }
+#popup-component {
+  padding-top: 50px;
+  margin: auto;
+  width: 300px;
+  height: 500px;
 
-  #calendar li {
-    height: auto !important;
-    border: 1px solid #ededed;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: -1px;
-  }
+} 
 
-  #calendar .date {
-    float: none;
-  }
-} */
+#popup-title {
+  display: block;
+  margin: auto;
+  top: 20px;
+  width: 270px;
+  height: 40px;
+  cursor: text;
+  border: 1px solid black;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+
+.popup-button {
+  width: 60px;
+  height: 30px;
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#popup-button-close{
+  position: absolute;
+  left: 270px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+  margin-bottom: none;
+  align-self: right;
+}
+
+#popup-button-work {
+  margin-left: 10px;
+  margin-right: 14px;
+}
+
+#popup-button-work:hover {
+  background-color: #fffdc6;
+}
+
+#popup-button-family {
+  margin-right: 14px;
+}
+
+#popup-button-family:hover {
+  background-color: #c8f7f4;
+}
+
+#popup-button-private {
+  margin-right: 14px;
+}
+
+#popup-button-private:hover {
+  background-color: #ffdcfb;
+}
+
+#popup-button-other:hover{
+  background-color: lightgray;
+}
+
+
+#popup-time-wrap {
+  margin-left: 10px
+}
+
+.popup-time {
+  width: 122px;
+
+}
+
+#popup-description {
+  margin-left: 10px;
+  margin-top: 30px;
+  width: 270px;
+  height: 200px;
+  font-size: 15px;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+
+
+#popup-submit {
+  position: absolute;
+  left: 240px;
+  top: 450px;
+  background-color: gray;
+}
