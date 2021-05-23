@@ -1,6 +1,6 @@
 import React from 'react';
 import './Menubar.css'
-import Categorybox from '../../Pages/Categoryboxpage/Categorybox'
+//import Categorybox from '../../Pages/Categoryboxpage/Categorybox'
 
 function Menubar(){
     return(
@@ -13,7 +13,7 @@ function Menubar(){
         <p className = 'sidemenu-left-border'></p>
         <p className = 'mainbox-sidemenu-left-text'>View as:</p>
         <div className = 'sidemenu-category' id = 'category-calendar'>Calendar</div>
-        <div className = 'sidemenu-category' id = 'category-categorybox'><Categorybox />Category Box</div>
+        <div className = 'sidemenu-category' id = 'category-categorybox'><a href = '../../Pages/Categoryboxpage/Categorybox'>Category Box</a></div>
         <p className = 'sidemenu-left-border'></p>
         <button className = 'sidemenu-category' id = 'category-project'>
             View Project Manager
