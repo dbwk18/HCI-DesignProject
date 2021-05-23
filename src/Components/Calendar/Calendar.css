@@ -120,18 +120,28 @@ header {
   top: 210px;
   left: 340px;
   width: 320px;
-  height: 500px;
+  height: 570px;
   background-color: white;
   border: 1px solid black;
 }
 
 #popup-component {
-  padding-top: 50px;
+  padding-top: 20px;
   margin: auto;
   width: 300px;
-  height: 500px;
-
+  height: 570px;
 } 
+
+#popup-header-wrap {
+  width: 270px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#popup-header-text {
+  font-size: 30px;
+}
+
 
 #popup-title {
   display: block;
@@ -158,13 +168,14 @@ header {
 }
 
 #popup-button-close{
-  position: absolute;
+  float: right;
   left: 270px;
   top: 10px;
   width: 25px;
   height: 25px;
   border-radius: 10px;
-  margin-bottom: none;
+  margin-top: 10px;
+  margin-bottom: 0px;
   align-self: right;
 }
 
@@ -197,6 +208,11 @@ header {
   background-color: lightgray;
 }
 
+#popup-date-wrap {
+  width: 270px;
+  margin: auto;
+  margin-bottom: 10px;
+}
 
 #popup-time-wrap {
   margin-left: 10px
@@ -218,10 +234,10 @@ header {
 }
 
 
-#popup-submit {
+#popup-button-submit {
   position: absolute;
   left: 240px;
-  top: 450px;
+  top: 520px;
   background-color: gray;
 }
 

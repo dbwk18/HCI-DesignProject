@@ -35,4 +35,11 @@ const color_map = {
   'other' : 'lightgray'
 }
 
-export {day_info, month_info, color_map} 
+const category_map = {
+  "1": 'work',
+  '2': 'family',
+  '3': 'private',
+  '4': 'other'
+}
+
+export {day_info, month_info, color_map, category_map} 

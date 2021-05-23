@@ -5,18 +5,18 @@ import Schedule from './Schedule/Schedule.js'
 function Calendar(){
 
     const day_info = calendar_info.day_info
-
     const month_info = calendar_info.month_info
+    const category_map = calendar_info.category_map
 
     const [month, setMonth] = useState(5);
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
     const [schedules, setSchedules] = useState([
         {
-            month: 5,
-            date: 17,
+            start_month: 5,
+            start_date: 17,
             title: 'Pick my son from academy',
-            category: 'family'
+            category: 2
         }
     ]);
 
@@ -108,12 +108,42 @@ function Calendar(){
     }
 
     const create_new_schedule = () => {
-        var title_elem = document.getElementById('popup-title')
-        var desc_elem = document.getElementById('popup-description')
-        var time_start_elem = document.getElementById('popup-time-start')
-        var time_end_elem = document.getElementById('popup-time-end')
-        console.log(title_elem.id, desc_elem.id, time_start_elem.id, time_end_elem.id)
-        console.log(title_elem.innerText, desc_elem.id, time_start_elem.id, time_end_elem.id)
+        var title = document.getElementById('popup-title').value
+        var desc = document.getElementById('popup-description').value
+        var start_time = document.getElementById('popup-time-start').value
+        var start_date = document.getElementById('popup-date-start').value
+        var end_time = document.getElementById('popup-time-end').value
+        var end_date = document.getElementById('popup-date-end').value
+
+        setCategory(0)
+
+        document.getElementById('popup-title').value = ''
+        document.getElementById('popup-description').value = ''
+        document.getElementById('popup-time-start').value = ''
+        document.getElementById('popup-date-start').value = ''
+        document.getElementById('popup-time-end').value = ''
+        document.getElementById('popup-date-end').value = ''
+
+        setPopup(popup => !popup)
+
+        var new_schedule = {
+            title: title,
+            description: desc,
+            start_time: start_time,
+            end_time: end_time,
+            start_month: start_date.split('-')[1],
+            start_date: start_date.split('-')[2],
+            end_month: end_date.split('-')[1],
+            end_date: end_date.split('-')[2],
+            category: category,
+        }
+
+        let new_schedules = [...schedules]
+        new_schedules.push(new_schedule)
+        setSchedules(new_schedules)
+        // var new_schedule = {
+        //     mo
+        // }
     }
 
     
@@ -310,12 +340,13 @@ function Calendar(){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
-                            var calendar_location = day_info[s.month].indexOf(s.date)
+                            console.log(s)
+                            var calendar_location = day_info[parseInt(s.start_month)].indexOf(s.start_date)
                             var calendar_row = parseInt(calendar_location / 7)
                             var calendar_col = calendar_location % 7
                             console.log(calendar_location, calendar_col, calendar_row, s)
                             return (
-                                <Schedule key = {s} month = {s.month} date = {s.date} title = {s.title} category = {s.category} />
+                                <Schedule key = {s} month = {s.start_month} date = {s.start_date} title = {s.title} category = {category_map[s.category]} />
                             )
                         })
                     }
@@ -324,7 +355,9 @@ function Calendar(){
         {/* <!-- /. calendar --> */}
             <div id = "calendar-add-popup">
                 <div id = 'popup-component'>
-                    <button className  = 'popup-button' id  = 'popup-button-close' onClick = {evt => add_schedule()}>x</button>
+                    <div id = 'popup-header-wrap'>
+                        <span id = 'popup-header-text'>New schedule</span><button className = 'popup-button' id = 'popup-button-close' onClick = {evt => add_schedule()}>x</button>
+                    </div>
                     <input type = 'text' id = 'popup-title' placeholder = 'Title (Up to 40 characters)' wrap = 'hard'></input>
                     <div id = 'popup-button-wrap'>
                         <button className = 'popup-button' id = 'popup-button-work' onClick = {evt => select_category(evt)}>Work</button>
@@ -332,12 +365,17 @@ function Calendar(){
                         <button className = 'popup-button' id = 'popup-button-private' onClick = {evt => select_category(evt)}>Private</button>
                         <button className = 'popup-button' id = 'popup-button-other' onClick = {evt => select_category(evt)}>Other</button>
                     </div>
+                    <div id = 'popup-date-wrap'>
+                    <label htmlFor="popup-date-start">Start date :&nbsp;</label><input type="date" id="popup-date-start" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
+                    <br/>
+                    <label htmlFor="popup-date-end">End date:&nbsp;&nbsp;&nbsp;</label><input type="date" id="popup-date-end" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
+                    </div>
                     <div id = 'popup-time-wrap'>
                         <input type="time" className = 'popup-time' id="popup-time-start" min="00:00" max="24:00" required></input> ~ <input type="time" className = 'popup-time' id="popup-time-end" min="00:00" max="24:00" required></input>
                     </div>
                     <textarea id = 'popup-description' placeholder = 'Description'></textarea>
 
-                    <button className = 'popup-button' id = 'popup-submit' onClick = {evt => create_new_schedule()}>Submit</button>
+                    <button className = 'popup-button' id = 'popup-button-submit' onClick = {evt => create_new_schedule()}>Submit</button>
                 </div>
             </div>
         </div>
