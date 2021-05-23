@@ -224,3 +224,81 @@ header {
   top: 450px;
   background-color: gray;
 }
+
+#schedules-wrap {
+  position: relative;
+}
+
+.schedule {
+  position: absolute;
+  /* left: 345px;
+  top: 975px; */
+  background-color: red;
+  width: 157px;
+  height : 30px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.schedule-text {
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+.family {
+  background-color: #c8f7f4;
+}
+
+.work {
+  background-color: #fffdc6;
+}
+
+.private {
+  background-color: #ffdcfb;
+}
+
+.other {
+  background-color: lightgray;
+}
+
+
+.col0 {
+  left: 0%;
+}
+.col1 {
+  left: 14.3%;
+}
+.col2 {
+  left: 28.6%;
+}
+.col3 {
+  left: 42.9%;
+}
+.col4 {
+  left: 57.2%;
+}
+.col5 {
+  left: 71.5%;
+}
+.col6 {
+  left: 85.8%;
+}
+
+.row0 {
+  top: 50px;
+}
+.row1 {
+  top: 210px
+}
+.row2 {
+  top: 390px;
+}
+.row3 {
+  top: 570px;
+}
+.row4 {
+  top: 750px;
+}
+.row5 {
+  top: 930px;
+}

@@ -1,12 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import './Calendar.css'
-
+import * as calendar_info from './calendar_infomation'
+import Schedule from './Schedule/Schedule.js'
 function Calendar(){
+
+    const day_info = calendar_info.day_info
+
+    const month_info = calendar_info.month_info
 
     const [month, setMonth] = useState(5);
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
+    const [schedules, setSchedules] = useState([
+        {
+            month: 5,
+            date: 17,
+            title: 'Pick my son from academy',
+            category: 'family'
+        }
+    ]);
 
+    const color_map = calendar_info.color_map
 
     useEffect(() => {
         console.log('current month: ', month)
@@ -37,7 +51,7 @@ function Calendar(){
         } else {
             popup_div.setAttribute('style', 'display : none')
         }
-    })
+    }, [popup])
 
     const add_schedule = (x, y) => {
         console.log(x, y)
@@ -93,36 +107,16 @@ function Calendar(){
         }
     }
 
-
-    const day_info = {
-        "1" : [27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 81, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6],
-        "2" : [31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 1, 2, 3, 4, 5, 6],
-        "3" : [28, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3],
-        "4" : [28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1],
-        "5" : [25, 26, 27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5],
-        "6" : [30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2, 3],
-        "7" : [27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-        "8" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4],
-        "9" : [29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2],
-        "10" : [26, 27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6],
-        "11" : [31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2, 3, 4],
-        "12" : [28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1]
+    const create_new_schedule = () => {
+        var title_elem = document.getElementById('popup-title')
+        var desc_elem = document.getElementById('popup-description')
+        var time_start_elem = document.getElementById('popup-time-start')
+        var time_end_elem = document.getElementById('popup-time-end')
+        console.log(title_elem.id, desc_elem.id, time_start_elem.id, time_end_elem.id)
+        console.log(title_elem.innerText, desc_elem.id, time_start_elem.id, time_end_elem.id)
     }
 
-    const month_info = {
-        "1" : "January",
-        "2" : "February",
-        "3" : "March",
-        "4" : "April",
-        "5" : "May",
-        "6" : "June",
-        "7" : "July",
-        "8" : "August",
-        "9" : "September",
-        "10" : "October",
-        "11" : "November",
-        "12" : "December"
-    }
+    
 
     console.log('current month: ', month)
 
@@ -313,11 +307,24 @@ function Calendar(){
                     <>
                     </>
                 }
+                <div id = 'schedules-wrap'>
+                    {
+                        schedules.map(s => {
+                            var calendar_location = day_info[s.month].indexOf(s.date)
+                            var calendar_row = parseInt(calendar_location / 7)
+                            var calendar_col = calendar_location % 7
+                            console.log(calendar_location, calendar_col, calendar_row, s)
+                            return (
+                                <Schedule key = {s} month = {s.month} date = {s.date} title = {s.title} category = {s.category} />
+                            )
+                        })
+                    }
+                </div>
             </div>
         {/* <!-- /. calendar --> */}
             <div id = "calendar-add-popup">
                 <div id = 'popup-component'>
-                    <button class  = 'popup-button' id  = 'popup-button-close' onClick = {evt => add_schedule()}>x</button>
+                    <button className  = 'popup-button' id  = 'popup-button-close' onClick = {evt => add_schedule()}>x</button>
                     <input type = 'text' id = 'popup-title' placeholder = 'Title (Up to 40 characters)' wrap = 'hard'></input>
                     <div id = 'popup-button-wrap'>
                         <button className = 'popup-button' id = 'popup-button-work' onClick = {evt => select_category(evt)}>Work</button>
@@ -330,7 +337,7 @@ function Calendar(){
                     </div>
                     <textarea id = 'popup-description' placeholder = 'Description'></textarea>
 
-                    <button className = 'popup-button' id = 'popup-submit'>Submit</button>
+                    <button className = 'popup-button' id = 'popup-submit' onClick = {evt => create_new_schedule()}>Submit</button>
                 </div>
             </div>
         </div>
