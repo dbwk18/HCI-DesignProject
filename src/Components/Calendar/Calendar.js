@@ -13,7 +13,7 @@ function Calendar(){
     const [popup, setPopup] = useState(false);
     const [schedules, setSchedules] = useState([
         {
-            start_month: 5,
+            start_month: '05',
             start_date: 17,
             title: 'Pick my son from academy',
             category: 2
@@ -340,13 +340,16 @@ function Calendar(){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
-                            console.log(s)
+                            console.log(s, parseInt(s.start_month), month )
+                            if (parseInt(s.start_month) !== month) {
+                              return 
+                            }
                             var calendar_location = day_info[parseInt(s.start_month)].indexOf(s.start_date)
                             var calendar_row = parseInt(calendar_location / 7)
                             var calendar_col = calendar_location % 7
                             console.log(calendar_location, calendar_col, calendar_row, s)
                             return (
-                                <Schedule key = {s} month = {s.start_month} date = {s.start_date} title = {s.title} category = {category_map[s.category]} />
+                                <Schedule key = {10000 * s.start_month + 100 * s.start_date + s.title.length} month = {s.start_month} date = {s.start_date} title = {s.title} category = {category_map[s.category]} />
                             )
                         })
                     }
