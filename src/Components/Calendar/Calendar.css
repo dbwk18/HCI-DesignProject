@@ -250,15 +250,14 @@ header {
   /* left: 345px;
   top: 975px; */
   background-color: lightgray;
-  width: 157px;
   height : 30px;
-  font-size: 20px;
+  font-size: 17px;
   border-radius: 10px;
 }
 
 .schedule-text {
-  margin-top: 3px;
-  margin-left: 10px;
+  margin-top: 4px;
+  margin-left: 5px;
 }
 
 .family {
@@ -275,6 +274,10 @@ header {
 
 .other {
   background-color: lightgray;
+}
+.none {
+  background-color: green;
+  color: white;
 }
 
 
@@ -317,4 +320,26 @@ header {
 }
 .row5 {
   top: 930px;
+}
+
+.length-1 {
+  width: 14.2%;
+}
+.length-2 {
+  width: 28.3%;
+}
+.length-3 {
+  width: 42.4%;
+}
+.length-4 {
+  width: 56.8%;
+}
+.length-5 {
+  width: 71.0%;
+}
+.length-6 {
+  width: 85.2%;
+}
+.length-7 {
+  width: 99.5%;
 }

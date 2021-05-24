@@ -6,39 +6,27 @@
   border-color: lightgray;
 }
 
-#header-title {
+.header-title {
   font-size: 50px;
   margin-left: 100px;
   font-weight: 500;
 }
 
+#title-all {
+  color: black;
+}
+#title-work {
+  color: #fffdc6;
+}
+#title-family{
+  color: #c8f7f4;
+}
+#title-private {
+  color: #ffdcfb;
+}
+
 #header-title-span {
   font-size: 20px;
   margin-left: 10px;
+  color: black;
 }
-
-
-/* .header {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-items: baseline;
-  height: min-content;
-}
-
-.header1 {
-  padding-left: 40px;
-  font-size: 40px;
-}
-.header2 {
-  padding-left: 20px;
-  font-size: 20px;
-}
-
-.border {
-  border: 0px;
-  height: 2px;
-  background-color: black;
-} */
-
-

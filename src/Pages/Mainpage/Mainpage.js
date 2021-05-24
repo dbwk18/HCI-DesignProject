@@ -5,23 +5,34 @@ import Header from '../../Components/Header/Header'
 import Calendar from '../../Components/Calendar/Calendar'
 import Menubar from '../../Components/Menubar/Menubar'
 
-function Mainpage() {
+function Mainpage(props) {
+
+    console.log('Get props in Mainpage', props.location.props)
+    if (props.location.props === undefined) {
+        var p = {mode: 'all'}   
+    }
+    else {
+        var p = props.location.props
+    }
+
+    console.log('Mainpage', p)
     return(
         <div className='Container'>
             <div className = 'headerContainer'>
-                <Header />
+                <Header mode = {p.mode}/>
             </div>
             <div className = 'mainContainer'>
                 <div className='menubarContainer'>
-                    <Menubar />
+                    <Menubar mode = {p.mode}/>
                 </div>
                 <div className='calendarContainer'>
-                    <Calendar/>
+                    <Calendar mode = {p.mode}/>
                 </div>
             </div>
 
         </div>
     )
+
 }
 
 export default Mainpage;

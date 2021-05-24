@@ -12,9 +12,10 @@
 .sidemenu-category {
   height: 20px;
   font-size: 20px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  margin-left: 40px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  cursor: pointer;
 }
 
 
@@ -23,3 +24,53 @@
   margin-left: 30px;
   border-bottom: 2px solid lightgray;
 }
+
+#category-all-all {
+  background-color: #D2FFD1;
+}
+#category-all-work {
+  background-color: none;
+}
+#category-all-family{
+  background-color: none;
+}
+#category-all-private {
+  background-color: none;
+}
+#category-work-all {
+  background-color: none;
+}
+#category-work-work {
+  background-color: #fffdc6;
+}
+#category-work-family {
+  background-color: none;
+}
+#category-work-private {
+  background-color: none;
+}
+#category-family-all {
+  background-color: none;
+}
+#category-family-work {
+  background-color: none;
+}
+#category-family-family {
+  background-color: #c8f7f4;
+}
+#category-family-private {
+  background-color: none;
+}
+#category-private-all {
+  background-color: none;
+}
+#category-private-work {
+  background-color: none;
+}
+#category-private-family {
+  background-color: none;
+}
+#category-private-private {
+  background-color: #ffdcfb;
+}
+

@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react';
 import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
 import Schedule from './Schedule/Schedule.js'
-function Calendar(){
+function Calendar(props){
+
+    console.log('Calendar', props.mode)
 
     const day_info = calendar_info.day_info
     const month_info = calendar_info.month_info
@@ -11,23 +13,16 @@ function Calendar(){
     const [month, setMonth] = useState(5);
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
-    const [schedules, setSchedules] = useState([
-        {
-            start_month: '05',
-            start_date: 17,
-            title: 'Pick my son from academy',
-            category: 2
-        }
-    ]);
+    const [schedules, setSchedules] = useState(calendar_info.initial_schedule);
 
     const color_map = calendar_info.color_map
 
     useEffect(() => {
-        console.log('current month: ', month)
+        // console.log('current month: ', month)
     }, [month]);
 
     useEffect(() => {
-        console.log('Selected_category: ', category)
+        // console.log('Selected_category: ', category)
         document.getElementById('popup-button-work').setAttribute('style', 'background-color: none');
         document.getElementById('popup-button-family').setAttribute('style', 'background-color: none');
         document.getElementById('popup-button-private').setAttribute('style', 'background-color: none');
@@ -39,12 +34,14 @@ function Calendar(){
         } else if (category === 3) {
             document.getElementById('popup-button-private').setAttribute('style', 'background-color: #ffdcfb');
         } else if (category === 4) {
-            document.getElementById('popup-button-other').setAttribute('style', 'background-color: lightgray')
+            document.getElementById('popup-button-other').setAttribute('style', 'background-color: lightgray');
+        } else if (category === 5) {
+            document.getElementById('popup-button-other').setAttribute('style', 'background-color: green');
         }
     }, [category]);
 
     useEffect(() => {
-        console.log('Current popup state: ', popup)
+        // console.log('Current popup state: ', popup)
         var popup_div = document.getElementById('calendar-add-popup')
         if (popup) {
             popup_div.setAttribute('style', 'display: block')
@@ -53,8 +50,8 @@ function Calendar(){
         }
     }, [popup])
 
-    const add_schedule = (x, y) => {
-        console.log(x, y)
+    const add_schedule = (evt) => {
+        console.log(evt)
         setPopup(popup => !popup)
     }
 
@@ -75,7 +72,7 @@ function Calendar(){
     }
 
     const select_category = (evt) => {
-        console.log(evt.target.id)
+        // console.log(evt.target.id)
         var targetId = evt.target.id
         if (targetId.endsWith('work')) {
             if (category === 1) {
@@ -148,13 +145,13 @@ function Calendar(){
 
     
 
-    console.log('current month: ', month)
+    // console.log('current month: ', month)
 
 
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
-                <button id = 'calendar-add' onClick = {evt => {add_schedule(evt.clientX, evt.clientY)}}>Add +</button>
+                <button id = 'calendar-add' onClick = {evt => {add_schedule(evt)}}>Add +</button>
                 <div id = 'calendar-changemonth'>
                     <button id = 'calendar-prevmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
                     <button id = 'calendar-nextmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
@@ -340,16 +337,19 @@ function Calendar(){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
-                            console.log(s, parseInt(s.start_month), month )
-                            if (parseInt(s.start_month) !== month) {
+
+                            if (parseInt(s.start_month) !== month || (props.mode !== 'all' && props.mode !== category_map[s.category] && s.category !== 5)) {
                               return 
                             }
-                            var calendar_location = day_info[parseInt(s.start_month)].indexOf(s.start_date)
-                            var calendar_row = parseInt(calendar_location / 7)
-                            var calendar_col = calendar_location % 7
-                            console.log(calendar_location, calendar_col, calendar_row, s)
+
                             return (
-                                <Schedule key = {10000 * s.start_month + 100 * s.start_date + s.title.length} month = {s.start_month} date = {s.start_date} title = {s.title} category = {category_map[s.category]} />
+                                <Schedule 
+                                    key = {10000 * s.start_month + 100 * s.start_date + s.title.length} 
+                                    id = {s.id} month = {s.start_month} 
+                                    class = {s.class === undefined ? 'length-1' : s.class}
+                                    date = {s.start_date} 
+                                    title = {s.title} 
+                                    category = {category_map[s.category]} />
                             )
                         })
                     }

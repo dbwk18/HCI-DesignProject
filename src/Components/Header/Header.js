@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-function Header() {
+function Header(props) {
     // return (
     //     <div>
     //         <div className="header">
@@ -14,7 +14,7 @@ function Header() {
 
     return (
         <div className = 'header-box'>
-            <h1 id = 'header-title'>Colics <span id = 'header-title-span'>Schedule manager for working moms and dads</span></h1>
+            <h1 className = 'header-title' id = {'title-' + props.mode}>Colics <span id = 'header-title-span'>Schedule manager for working moms and dads</span></h1>
         </div>
       )
 }
