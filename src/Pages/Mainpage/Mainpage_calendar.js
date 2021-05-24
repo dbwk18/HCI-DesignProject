@@ -5,7 +5,7 @@ import Header from '../../Components/Header/Header'
 import Calendar from '../../Components/Calendar/Calendar'
 import Menubar from '../../Components/Menubar/Menubar'
 
-function Mainpage(props) {
+function Mainpage_calendar(props) {
 
     var p = undefined
 
@@ -37,4 +37,4 @@ function Mainpage(props) {
 
 }
 
-export default Mainpage;
+export default Mainpage_calendar;
