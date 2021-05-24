@@ -51,7 +51,6 @@ function Calendar(props){
     }, [popup])
 
     const add_schedule = (evt) => {
-        console.log(evt)
         setPopup(popup => !popup)
     }
 

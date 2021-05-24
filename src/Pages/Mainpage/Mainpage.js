@@ -7,12 +7,14 @@ import Menubar from '../../Components/Menubar/Menubar'
 
 function Mainpage(props) {
 
+    var p = undefined
+
     console.log('Get props in Mainpage', props.location.props)
     if (props.location.props === undefined) {
-        var p = {mode: 'all'}   
+        p = {mode: 'all'}   
     }
     else {
-        var p = props.location.props
+        p = props.location.props
     }
 
     console.log('Mainpage', p)

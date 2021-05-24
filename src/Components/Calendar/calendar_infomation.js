@@ -115,7 +115,7 @@ const initial_schedule = [
     {
         start_month: '5',
         start_date: '3',
-        id: 'schedule0513',
+        id: 'schedule0503',
         title: 'Meeting A',
         category: 1
     },
