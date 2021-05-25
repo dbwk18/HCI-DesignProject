@@ -1,5 +1,7 @@
 import React from 'react';
 import './Menubar.css'
+import { Link } from 'react-router-dom';
+
 
 function Menubar(){
     return(
@@ -15,7 +17,8 @@ function Menubar(){
         <div className = 'sidemenu-category' id = 'category-categorybox'>Category Box</div>
         <p className = 'sidemenu-left-border'></p>
         <button className = 'sidemenu-category' id = 'category-project'>
-            View Project Manager
+            <Link to='/projects'>View Project Manager</Link>
+            {/* 프로젝트 화면으로 넘어갑니다 */}
         </button>
     </div>
     )
