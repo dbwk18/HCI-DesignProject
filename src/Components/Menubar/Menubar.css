@@ -25,52 +25,30 @@
   border-bottom: 2px solid lightgray;
 }
 
-#category-all-all {
+#category-all-true {
   background-color: #D2FFD1;
 }
-#category-all-work {
+#category-all-false {
   background-color: none;
-}
-#category-all-family{
-  background-color: none;
-}
-#category-all-private {
-  background-color: none;
-}
-#category-work-all {
-  background-color: none;
-}
-#category-work-work {
-  background-color: #fffdc6;
-}
-#category-work-family {
-  background-color: none;
-}
-#category-work-private {
-  background-color: none;
-}
-#category-family-all {
-  background-color: none;
-}
-#category-family-work {
-  background-color: none;
-}
-#category-family-family {
-  background-color: #c8f7f4;
-}
-#category-family-private {
-  background-color: none;
-}
-#category-private-all {
-  background-color: none;
-}
-#category-private-work {
-  background-color: none;
-}
-#category-private-family {
-  background-color: none;
-}
-#category-private-private {
-  background-color: #ffdcfb;
 }
 
+#category-work-true {
+  background-color: #fffdc6;
+}
+#category-work-false {
+  background-color: none;
+}
+
+#category-family-true {
+  background-color: #c8f7f4;
+}
+#category-family-false {
+  background-color: none;
+}
+
+#category-private-true {
+  background-color: #ffdcfb;
+}
+#category-private-false {
+  background-color: none;
+}

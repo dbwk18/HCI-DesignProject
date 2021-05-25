@@ -11,7 +11,7 @@ function Mainpage_categorybox(props) {
 
     console.log('Get props in Mainpage', props.location.props)
     if (props.location.props === undefined) {
-        p = {mode: 'all'}   
+        p = {mode: [true, false, false, false]}   
     }
     else {
         p = props.location.props

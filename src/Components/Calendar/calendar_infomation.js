@@ -46,34 +46,6 @@ const category_map = {
 
 const initial_schedule_task1 = [
     {
-      start_month: '5',
-      start_date: '8',
-      id: 'schedule0508',
-      title: `Parents'Day`,
-      category: 5
-    },
-    {
-        start_month: '5',
-        start_date: '15',
-        id: 'schedule0515',
-        title: `Teacher's Day`,
-        category: 5
-    },
-    {
-        start_month: '5',
-        start_date: '19',
-        id: 'schedule0519',
-        title: `Buddha's Birthday`,
-        category: 5
-    },
-    {
-        start_month: '5',
-        start_date: '5',
-        id: 'schedule0505',
-        title: `Children's Day`,
-        category: 5
-    },
-    {
         start_month: '4',
         start_date: '21',
         id: 'schedule0426',
@@ -129,7 +101,7 @@ const initial_schedule_task1 = [
     {
         start_month: '5',
         start_date: '8',
-        id: 'schedule0508-1',
+        id: 'schedule0508',
         title: 'Go to museum',
         category: 2
     },

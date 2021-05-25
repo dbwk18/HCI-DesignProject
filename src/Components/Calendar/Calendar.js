@@ -33,8 +33,6 @@ function Calendar(props){
             document.getElementById('popup-button-private').setAttribute('style', 'background-color: #ffdcfb');
         } else if (category === 4) {
             document.getElementById('popup-button-other').setAttribute('style', 'background-color: lightgray');
-        } else if (category === 5) {
-            document.getElementById('popup-button-other').setAttribute('style', 'background-color: green');
         }
     }, [category]);
 
@@ -336,7 +334,7 @@ function Calendar(props){
                     {
                         schedules.map(s => {
 
-                            if (parseInt(s.start_month) !== month || (props.mode !== 'all' && props.mode !== category_map[s.category] && s.category !== 5)) {
+                            if (parseInt(s.start_month) !== month || (!props.mode[0] && s.category !== 4 && !props.mode[s.category])) {
                               return 
                             }
 
