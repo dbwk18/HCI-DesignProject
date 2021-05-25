@@ -7,14 +7,14 @@ import img_feedback from '../../../Icons/feedback.png';
 
 function Feedback (props) {
     // 0 : None, 1 : good, 2 : hmm, 3 : bad
-    console.log(props)
+    // console.log(props)
     const [icon, setIcon] = useState(0);
     const [memo, setMemo] = useState('');
 
 
     const select_icon = (evt) => {
         var target = evt.target
-        console.log('in select_icon', target.id)
+        // console.log('in select_icon', target.id)
         target.parentElement.setAttribute('style', 'border: 1px solid black')
         if (target.id.endsWith('good')) {
             setIcon(1)
@@ -28,7 +28,7 @@ function Feedback (props) {
     const submit_memo = (evt) => {
         var new_memo = document.getElementById(props.id + '-feedback-memo').value
         setMemo(new_memo)
-        console.log('submit with [icon, memo] : ', icon, memo)
+        // console.log('submit with [icon, memo] : ', icon, memo)
 
         var new_icon = document.createElement('img')
         new_icon.setAttribute('id', props.id + '-icon-oncalendar')
@@ -46,7 +46,8 @@ function Feedback (props) {
 
         document.getElementById(props.id + '-feedback').setAttribute('style', 'display: none')
     }
-    console.log('changed')
+    // console.log('changed')
+    // console.log('(Feedback) Current active element: ', document.activeElement.id)
     return (
         <div className = {'feedback feedback-row' + props.row + ' feedback-col' + props.col} id = {props.id + '-feedback'}>
             <div className = 'feedback-header-wrap'>

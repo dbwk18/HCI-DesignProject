@@ -16,6 +16,7 @@ function Schedule(props) {
     var calendar_col = calendar_location % 7
     var title_len_limit = 15 + 20 * ( parseInt(props.class.substr(props.class.length -1, 1)) - 1)
     // console.log(props.id, title_len_limit)
+    //console.log('(Schedule) Current active element: ', document.activeElement.id)
     return(
         <>
         <div id = {props.id}

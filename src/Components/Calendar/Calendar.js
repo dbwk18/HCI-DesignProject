@@ -11,15 +11,13 @@ function Calendar(props){
     const category_map = calendar_info.category_map
 
     const [month, setMonth] = useState(5);
+
+    // 0 : none, 1 : work, 2 : family, 3 : private, 4 : otehr, 5 : 공휴일, 달력에 기본적으로 있는 날
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
-    const [schedules, setSchedules] = useState(calendar_info.initial_schedule);
+    const [schedules, setSchedules] = useState(calendar_info.initial_schedule_task1);
 
     const color_map = calendar_info.color_map
-
-    useEffect(() => {
-        // console.log('current month: ', month)
-    }, [month]);
 
     useEffect(() => {
         // console.log('Selected_category: ', category)
@@ -113,6 +111,7 @@ function Calendar(props){
 
         setCategory(0)
 
+        // 추가했으니 Add popup의 내용물을 비움
         document.getElementById('popup-title').value = ''
         document.getElementById('popup-description').value = ''
         document.getElementById('popup-time-start').value = ''
@@ -120,7 +119,9 @@ function Calendar(props){
         document.getElementById('popup-time-end').value = ''
         document.getElementById('popup-date-end').value = ''
 
+        // 팝업 없앰
         setPopup(popup => !popup)
+
 
         var new_schedule = {
             title: title,
@@ -137,23 +138,21 @@ function Calendar(props){
         let new_schedules = [...schedules]
         new_schedules.push(new_schedule)
         setSchedules(new_schedules)
-        // var new_schedule = {
-        //     mo
-        // }
+
     }
 
     
 
     // console.log('current month: ', month)
 
-
+    // console.log('(Calendar) Current active element: ', document.activeElement.id)
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
                 <button id = 'calendar-add' onClick = {evt => {add_schedule(evt)}}>Add +</button>
                 <div id = 'calendar-changemonth'>
-                    <button id = 'calendar-prevmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
-                    <button id = 'calendar-nextmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
+                    <button id = 'calendar-nextmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
+                    <button id = 'calendar-prevmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
                 </div>
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
             </div>
@@ -370,7 +369,7 @@ function Calendar(props){
                     <div id = 'popup-date-wrap'>
                     <label htmlFor="popup-date-start">Start date :&nbsp;</label><input type="date" id="popup-date-start" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
                     <br/>
-                    <label htmlFor="popup-date-end">End date:&nbsp;&nbsp;&nbsp;</label><input type="date" id="popup-date-end" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
+                    <label htmlFor="popup-date-end">End date&nbsp;&nbsp;:&nbsp;</label><input type="date" id="popup-date-end" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
                     </div>
                     <div id = 'popup-time-wrap'>
                         <input type="time" className = 'popup-time' id="popup-time-start" min="00:00" max="24:00" required></input> ~ <input type="time" className = 'popup-time' id="popup-time-end" min="00:00" max="24:00" required></input>

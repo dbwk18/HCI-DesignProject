@@ -44,7 +44,7 @@ const category_map = {
     '5': 'none'
 }
 
-const initial_schedule = [
+const initial_schedule_task1 = [
     {
       start_month: '5',
       start_date: '8',
@@ -158,4 +158,4 @@ const initial_schedule = [
 ]
 
 
-export {day_info, month_info, color_map, category_map, initial_schedule} 
+export {day_info, month_info, color_map, category_map, initial_schedule_task1} 
