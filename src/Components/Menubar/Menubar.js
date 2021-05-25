@@ -2,6 +2,10 @@ import React from 'react';
 import {useHistory} from "react-router";
 import './Menubar.css'
 
+import img_work from '../../Icons/work.png';
+import img_family from '../../Icons/family.png';
+import img_private from '../../Icons/private.png';
+
 function Menubar(props){
 
     console.log('Menubar', props.mode)
@@ -44,10 +48,10 @@ function Menubar(props){
     return(
         <div className = 'mainbox-sidemenu'>
             <p className = 'mainbox-sidemenu-left-text'>View by Category:</p>
-            <div className = 'sidemenu-category' id = {'category-all-' + props.mode} onClick = {evt => click_category(evt)}>View all</div>
-            <div className = 'sidemenu-category' id = {'category-work-' + props.mode} onClick = {evt => click_category(evt)}>Work</div>
-            <div className = 'sidemenu-category' id = {'category-family-' + props.mode} onClick = {evt => click_category(evt)}>Family</div>
-            <div className = 'sidemenu-category' id = {'category-private-' + props.mode} onClick = {evt => click_category(evt)}>Private</div>
+            <div className = 'sidemenu-category' id = {'category-all-' + props.mode} onClick = {evt => click_category(evt)}>View all  </div>
+            <div className = 'sidemenu-category' id = {'category-work-' + props.mode} onClick = {evt => click_category(evt)}>Work <img src={img_work} width = "30" /></div>
+            <div className = 'sidemenu-category' id = {'category-family-' + props.mode} onClick = {evt => click_category(evt)}>Family <img src={img_family} width = "35" /></div>
+            <div className = 'sidemenu-category' id = {'category-private-' + props.mode} onClick = {evt => click_category(evt)}>Private <img src={img_private} width = "28"/></div>
             <p className = 'sidemenu-left-border'></p>
             <p className = 'mainbox-sidemenu-left-text'>View as:</p>
             <div className = 'sidemenu-category' id = 'category-calendar'  onClick = {evt => history.push('./')}>Calendar</div>
