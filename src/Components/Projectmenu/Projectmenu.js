@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Projectmenu.css';
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
@@ -24,6 +24,10 @@ function Projectmenu(){
         setpjname(prev => [...prev, document.getElementById('Projectname').value])
         closeModal();
     }
+
+    // useEffect(() => {
+    //     console.log(pjname)
+    //   }, [pjname]);
     // ############################################
 
 
