@@ -28,27 +28,15 @@
 #category-all-true {
   background-color: #D2FFD1;
 }
-#category-all-false {
-  background-color: none;
-}
 
 #category-work-true {
   background-color: #fffdc6;
-}
-#category-work-false {
-  background-color: none;
 }
 
 #category-family-true {
   background-color: #c8f7f4;
 }
-#category-family-false {
-  background-color: none;
-}
 
 #category-private-true {
   background-color: #ffdcfb;
-}
-#category-private-false {
-  background-color: none;
 }

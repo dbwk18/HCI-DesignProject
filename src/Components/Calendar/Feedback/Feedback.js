@@ -15,7 +15,18 @@ function Feedback (props) {
     const select_icon = (evt) => {
         var target = evt.target
         // console.log('in select_icon', target.id)
-        target.parentElement.setAttribute('style', 'border: 1px solid black')
+        document.getElementById(props.id + '-feedback-icon-wrap-good').style.border = 'none'
+        document.getElementById(props.id + '-feedback-icon-wrap-hmm').style.border = 'none'
+        document.getElementById(props.id + '-feedback-icon-wrap-bad').style.border = 'none'
+
+        if (target.id.endsWith('good')) {
+            document.getElementById(props.id + '-feedback-icon-wrap-good').style.border = '1px solid black'
+        } else if (target.id.endsWith('hmm')) {
+            document.getElementById(props.id + '-feedback-icon-wrap-hmm').style.border = '1px solid black'
+        } else if (target.id.endsWith('bad')) {
+            document.getElementById(props.id + '-feedback-icon-wrap-bad').style.border = '1px solid black'
+        }
+
         if (target.id.endsWith('good')) {
             setIcon(1)
         } else if (target.id.endsWith('hmm')) {
@@ -26,6 +37,12 @@ function Feedback (props) {
     }
 
     const submit_memo = (evt) => {
+
+        var previous_icon = document.getElementById(props.id + 'feedback-memo')
+        if (previous_icon) {
+            previous_icon.remove()
+        }
+
         var new_memo = document.getElementById(props.id + '-feedback-memo').value
         setMemo(new_memo)
         // console.log('submit with [icon, memo] : ', icon, memo)
@@ -41,7 +58,11 @@ function Feedback (props) {
             new_icon.src = 'https://user-images.githubusercontent.com/74011145/119401630-adef3f80-bd16-11eb-8917-121462d9e020.png'
         }
         
-        document.getElementById('schedules-wrap').appendChild(new_icon)
+        new_icon.setAttribute('title', document.getElementById(props.id + '-feedback-memo').value)
+        document.getElementById(props.id + '-feedback-memo').value = ''
+
+
+        document.getElementById('feedback-wrap').appendChild(new_icon)
             
 
         document.getElementById(props.id + '-feedback').setAttribute('style', 'display: none')
@@ -55,7 +76,7 @@ function Feedback (props) {
                 <p className = 'feedback-text'>How did it go?</p>
             </div>
             <div className = 'feedback-icons'>
-                <div className = 'feedback-icon-wrap'>
+                <div className = 'feedback-icon-wrap' id = {props.id + '-feedback-icon-wrap-good'}>
                     <img
                     className = 'feedback-icon'
                     src={ img_good }
@@ -69,7 +90,7 @@ function Feedback (props) {
                     id = {props.id + '-feedback-text-good'}
                     onClick = {evt => select_icon(evt)}>Great!</span>
                 </div>
-                <div className = 'feedback-icon-wrap'>
+                <div className = 'feedback-icon-wrap' id = {props.id + '-feedback-icon-wrap-hmm'}>
                     <img
                     className = 'feedback-icon'
                     src={ img_hmm }
@@ -83,7 +104,7 @@ function Feedback (props) {
                     id = {props.id + '-feedback-text-hmm'}
                     onClick = {evt => select_icon(evt)}>Hmm...</span>
                 </div>
-                <div className = 'feedback-icon-wrap'>
+                <div className = 'feedback-icon-wrap' id = {props.id + '-feedback-icon-wrap-bad'}>
                     <img
                     className = 'feedback-icon'
                     src={ img_bad }

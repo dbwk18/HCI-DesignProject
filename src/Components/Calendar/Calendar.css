@@ -272,6 +272,12 @@ header {
 #schedules-wrap {
   position: relative;
 }
+#feedback-wrap {
+  position: relative;
+}
+#messengers-wrap {
+  position: relative;
+}
 
 .schedule {
   position: absolute;
@@ -372,4 +378,44 @@ header {
 }
 .length-7 {
   width: 99.5%;
+}
+
+/* code for task 3 */
+.task3 {
+  position: absolute;
+  width: 500px;
+  height: 250px;
+}
+
+#popupbox1-wrap {
+  left: 42%;
+  top: 420px;
+  display: none;
+}
+
+#popupbox2-wrap {
+  left: 56%;
+  top: 600px;
+  display: none;
+}
+
+#popupbox3-wrap {
+  left: 0%;
+  top: 500px;
+}
+#popupbox4-wrap {
+  left: 50%;
+  top: 500px;
+}
+
+#task3-you {
+  position: absolute;
+  left: 83.5%;
+  top: 395px;
+  cursor: pointer;
+}
+#task3-sent {
+  position: absolute;
+  left: 98%;
+  top: 576px;
 }

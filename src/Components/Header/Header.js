@@ -1,20 +1,28 @@
 import React from 'react';
+import {useHistory} from "react-router";
 import './Header.css';
 
-function Header(props) {
-    // return (
-    //     <div>
-    //         <div className="header">
-    //             <h1 className="header1">Colics</h1>
-    //             <h3 className="header2">Schedule manager for working moms and dads</h3>
-    //         </div>
-    //         <hr className="border"/>
-    //     </div>
-    // )
+function Header() {
+
+    const history = useHistory();
+
+    const move_to_homepage = () => {
+        console.log('move_to_homepage')
+        history.push({
+          pathname: './mainpage3',
+          props: {
+            mode: [true, false, false, false],
+            task3: true
+          }
+        })
+    }
 
     return (
         <div className = 'header-box'>
-            <h1 className = 'header-title' id = {'title-' + props.mode}>Colics <span id = 'header-title-span'>Schedule manager for working moms and dads</span></h1>
+            <h1 className = 'header-title'>
+                <span id = 'header-title-colic' onClick = {evt => {move_to_homepage()}}>Colics</span> 
+                <span id = 'header-title-span'>Schedule manager for working moms and dads</span>
+            </h1>
         </div>
       )
 }

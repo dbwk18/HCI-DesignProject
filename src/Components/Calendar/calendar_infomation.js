@@ -129,5 +129,104 @@ const initial_schedule_task1 = [
     
 ]
 
+const initial_schedule_task3 = [
+  {
+      start_month: '4',
+      start_date: '21',
+      id: 'schedule0426',
+      class: 'length-4',
+      title: 'Child Spring Camp',
+      category: 2
+  },
+  {
+      start_month: '4',
+      start_date: '12',
+      id: 'schedule0412',
+      class: 'length-2',
+      title: 'Meeting A',
+      category: 1
+  },
+  {
+      start_month: '4',
+      start_date: '5',
+      id: 'schedule0412',
+      class: 'length-3',
+      title: 'Going to Yang Yang',
+      category: 2
+  },
+  {
+      start_month: '4',
+      start_date: '1',
+      id: 'schedule0401',
+      class: 'length-2',
+      title: 'Visiting parents-in-law',
+      category: 2
+  },
+  {
+      start_month: '4',
+      start_date: '8',
+      id: 'schedule0413',
+      title: 'Presentation',
+      category: 1
+  },
+  {
+      start_month: '5',
+      start_date: '3',
+      id: 'schedule0503',
+      title: 'Meeting A',
+      category: 1
+  },
+  {
+      start_month: '5',
+      start_date: '7',
+      id: 'schedule0507',
+      title: 'Going out to eat!',
+      category: 2
+  },
+  {
+      start_month: '5',
+      start_date: '8',
+      id: 'schedule0508',
+      title: 'Go to museum',
+      category: 2
+  },
+  {
+      start_month: '5',
+      start_date: '20',
+      id: 'schedule0520',
+      title: 'School Sports Day',
+      category: 2
+  },
+  {
+      start_month: '5',
+      start_date: '22',
+      id: 'schedule0522',
+      title: 'Spring-clean',
+      category: 2
+  },
+  {
+      start_month: '5',
+      start_date: '26',
+      id: 'schedule0526',
+      title: 'Parent Participation Day',
+      category: 2
+  },
+  {
+      start_month: '5',
+      start_date: '12',
+      id: 'schedule0512',
+      title: 'Meeting B',
+      category: 1
+  },
+  {
+      start_month: '5',
+      start_date: '14',
+      id: 'schedule0514',
+      title: 'Bring son from academy',
+      category: 2
+  }
+  
+]
 
-export {day_info, month_info, color_map, category_map, initial_schedule_task1} 
+
+export {day_info, month_info, color_map, category_map, initial_schedule_task1, initial_schedule_task3} 

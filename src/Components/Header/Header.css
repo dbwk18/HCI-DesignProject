@@ -12,17 +12,8 @@
   font-weight: 500;
 }
 
-#title-all {
-  color: black;
-}
-#title-work {
-  color: #fffdc6;
-}
-#title-family{
-  color: #c8f7f4;
-}
-#title-private {
-  color: #ffdcfb;
+#header-title-colic {
+  cursor: pointer;
 }
 
 #header-title-span {

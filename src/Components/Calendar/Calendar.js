@@ -2,9 +2,17 @@ import React, {useState, useEffect} from 'react';
 import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
 import Schedule from './Schedule/Schedule.js'
+
+//code for task3
+import PopupBox from './PopupBox/PopupBox'
+import PopupBox2 from './PopupBox/PopupBox2'
+import SendPopup from './PopupBox/SendPopup'
+import img_you from '../../Icons/img_you.png'
+import img_sent from '../../Icons/img_sent.png'
+
 function Calendar(props){
 
-    console.log('Calendar', props.mode)
+    console.log('-----------Calendar------------', props)
 
     const day_info = calendar_info.day_info
     const month_info = calendar_info.month_info
@@ -15,9 +23,16 @@ function Calendar(props){
     // 0 : none, 1 : work, 2 : family, 3 : private, 4 : otehr, 5 : 공휴일, 달력에 기본적으로 있는 날
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
-    const [schedules, setSchedules] = useState(calendar_info.initial_schedule_task1);
+    
+    //code for task3
+    const [schedules, setSchedules] = useState(props.task3 ? calendar_info.initial_schedule_task3 : calendar_info.initial_schedule_task1);
 
-    const color_map = calendar_info.color_map
+    const show_popup_1 = () => {
+        document.getElementById('popupbox1-wrap').style.display = 'block';
+    }
+    const show_popup_2 = () => {
+        document.getElementById('popupbox2-wrap').style.display = 'block';
+    }
 
     useEffect(() => {
         // console.log('Selected_category: ', category)
@@ -344,11 +359,29 @@ function Calendar(props){
                                     id = {s.id} month = {s.start_month} 
                                     class = {s.class === undefined ? 'length-1' : s.class}
                                     date = {s.start_date} 
-                                    title = {s.title} 
+                                    title = {s.title}
                                     category = {category_map[s.category]} />
                             )
                         })
                     }
+                </div>
+                <div id = 'feedback-wrap'></div>
+                <div id = 'messengers-wrap'>
+                    {
+                        props.task3
+                        ?
+                        <>
+                        <div className = 'task3' id = 'popupbox1-wrap'><PopupBox idx = {1}/></div>
+                        <div className = 'task3' id = 'popupbox2-wrap'><PopupBox idx = {2}/></div>
+
+                        <img id = 'task3-you' src={img_you} width = "20" height = '20' onClick = {() => show_popup_1() }/>
+                        <img id = 'task3-sent' src={img_sent} width = "20" height = '20' onClick = {() => show_popup_2() }/>
+                        </>
+                        :
+                        <>
+                        </>
+                    }
+                    
                 </div>
             </div>
         {/* <!-- /. calendar --> */}
