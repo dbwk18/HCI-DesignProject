@@ -387,25 +387,16 @@ header {
   height: 250px;
 }
 
-#popupbox1-wrap {
+#popupbox0-wrap {
   left: 42%;
   top: 420px;
   display: none;
 }
 
-#popupbox2-wrap {
+#popupbox1-wrap {
   left: 56%;
   top: 600px;
   display: none;
-}
-
-#popupbox3-wrap {
-  left: 0%;
-  top: 500px;
-}
-#popupbox4-wrap {
-  left: 50%;
-  top: 500px;
 }
 
 #task3-you {
@@ -418,4 +409,5 @@ header {
   position: absolute;
   left: 98%;
   top: 576px;
+  cursor: pointer;
 }

@@ -2,17 +2,21 @@ import React from 'react'
 import './SendPopup.css'
 
 function SendPopup(props){
-    console.log('------sendpopup---------', props)
 
     function isClose(){
         console.log('hellowadjflksjdfljsdfkjsd;ljs')
-        document.getElementById("popupBox" + props.idx).style.display = 'none'
-        document.getElementById("sendBoxContainer" + props.idx).style.display = 'none'
+        // document.getElementById("popupBox" + props.idx).style.display = 'none'
+        // document.getElementById("sendBoxContainer" + props.idx).style.display = 'none'
 
-        if (props.idx === 1) {
+        if (props.idx === 0) {
+            document.getElementById("popupBox0-" + props.idx).style.display = 'none'
+            document.getElementById("sendBoxContainer" + props.idx).style.display = 'none'
             document.getElementById('task3-you').src = 'https://user-images.githubusercontent.com/74011145/119564133-64205b00-bde3-11eb-9376-ada575885788.png'
-        } else if  (props.idx === 2) {
+            
+        } else if  (props.idx === 1) {
             document.getElementById('task3-sent').src = 'https://user-images.githubusercontent.com/74011145/119564133-64205b00-bde3-11eb-9376-ada575885788.png'
+            document.getElementById('popupBox1-' + props.idx).style.display = 'none'
+            document.getElementById("sendBoxContainer" + props.idx).style.display = 'none'
         }
     }
 

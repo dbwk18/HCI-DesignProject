@@ -4,7 +4,8 @@ import * as calendar_info from './calendar_infomation'
 import Schedule from './Schedule/Schedule.js'
 
 //code for task3
-import PopupBox from './PopupBox/PopupBox'
+import PopupBox1 from './PopupBox/PopupBox1'
+import PopupBox0 from './PopupBox/PopupBox0'
 import PopupBox2 from './PopupBox/PopupBox2'
 import SendPopup from './PopupBox/SendPopup'
 import img_you from '../../Icons/img_you.png'
@@ -28,10 +29,10 @@ function Calendar(props){
     const [schedules, setSchedules] = useState(props.task3 ? calendar_info.initial_schedule_task3 : calendar_info.initial_schedule_task1);
 
     const show_popup_1 = () => {
-        document.getElementById('popupbox1-wrap').style.display = 'block';
+        document.getElementById('popupbox0-wrap').style.display = 'block';
     }
     const show_popup_2 = () => {
-        document.getElementById('popupbox2-wrap').style.display = 'block';
+        document.getElementById('popupbox1-wrap').style.display = 'block';
     }
 
     useEffect(() => {
@@ -371,8 +372,8 @@ function Calendar(props){
                         props.task3
                         ?
                         <>
-                        <div className = 'task3' id = 'popupbox1-wrap'><PopupBox idx = {1}/></div>
-                        <div className = 'task3' id = 'popupbox2-wrap'><PopupBox idx = {2}/></div>
+                        <div className = 'task3' id = 'popupbox0-wrap'><PopupBox0 idx = {0}/></div>
+                        <div className = 'task3' id = 'popupbox1-wrap'><PopupBox1 idx = {1}/></div>
 
                         <img id = 'task3-you' src={img_you} width = "20" height = '20' onClick = {() => show_popup_1() }/>
                         <img id = 'task3-sent' src={img_sent} width = "20" height = '20' onClick = {() => show_popup_2() }/>

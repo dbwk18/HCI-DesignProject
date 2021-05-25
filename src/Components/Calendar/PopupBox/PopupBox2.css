@@ -1,5 +1,9 @@
-.passContainer {
+.passContainer0 {
   display: none;
+  position: relative;
+}
+
+.passContainer1 {
   position: relative;
 }
 
@@ -24,6 +28,30 @@
   vertical-align: top;
   line-height: 100px;
 }
+.inputBox1 {
+  width: 400px;
+  height: 150px;
+  margin: 20px;
+  margin-left: 35px;
+  background-color: #e2e2e2;
+  border-color: #e2e2e2;
+  border-radius: 20px;
+  font-size: 18px;
+  vertical-align: top;
+  line-height: 30px;
+}
+.inputBox2{
+  width: 400px;
+  height: 50px;
+  margin: 20px;
+  margin-left: 35px;
+  background-color: #e2e2e2;
+  border-color: #e2e2e2;
+  border-radius: 20px;
+  font-size: 18px;
+  vertical-align: top;
+  line-height: 30px;
+}
 
 .passBtn2 {
   position: relative;
@@ -33,4 +61,35 @@
   left: 80%;
   bottom: 70px;
   display: none;
+  cursor: pointer;
 }
+
+.passBtn2-accept {
+  position: relative;
+  color: white;
+  background-color: #c82a2a;
+  border-color: #c82a2a;
+  left: 60%;
+  bottom: 70px;
+  width: 60px;
+  z-index: 10;
+  cursor: pointer;
+}
+.passBtn2-deny {
+  position: relative;
+  color: white;
+  background-color: #2A4CC8;
+  border-color: #2A4CC8;
+  left: 65%;
+  bottom: 70px;
+  width: 60px; 
+  z-index: 10;
+  cursor: pointer;
+}
+
+#passContainer-1 {
+  position: relative;
+  bottom: 110px;
+  z-index: 1;
+}
+

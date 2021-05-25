@@ -2,18 +2,18 @@ import React, {useState} from 'react';
 import './PopupBox2.css'
 import SendPopup from './SendPopup'
 
-function PopupBox2(props){
+function PopupBox2_2(props){
 
     function openSentPopup(){
         document.getElementById("sendBoxContainer" + props.idx).style.display = 'block' 
     }
     return(
         <>
-            <div className="passContainer0" id = {'passContainer' + props.idx}>
+            <div className="passContainer0" id = {'passContainer-' + props.idx}>
                 <div className="passWindow">
                     <div className="passContents">
                         <div className="popupText"><b>Message</b> </div>
-                        <input className="inputBox" type="text" placeholder="Write Message"/>
+                        <input className="inputBox2" type="text" placeholder="Write Message"/>
                     </div>
                 </div>
             </div>
@@ -23,4 +23,4 @@ function PopupBox2(props){
     )
 }
 
-export default PopupBox2;
+export default PopupBox2_2;
