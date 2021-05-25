@@ -4,6 +4,7 @@
   height: 300px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
+  margin: 0px;
 }
 
 .inputBox {
@@ -15,19 +16,17 @@
   border-color: #e2e2e2;
   border-radius: 20px;
   font-size: 18px;
-  padding-left: 15px;
+  padding-left: 20px;
   vertical-align: top;
   line-height: 100px;
 }
 
 .passBtn2 {
+  display: none;
   position: relative;
   color: white;
   background-color: #c82a2a;
   border-color: #c82a2a;
-  top: 0px;
-}
-
-.passBtn :onclick {
-  display: none;
+  right: 10px;
+  bottom: 70px;
 }
