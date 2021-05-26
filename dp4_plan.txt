@@ -1,0 +1,15 @@
+1. 달력의 각 일을 component로 바꿈 :  Day Component를 새롭게 생성
+2. schedule_information를 만듦 :
+- array
+- 각 원소는 다음과 같은 형식을 따름
+{
+  month:
+  day:
+  title:
+  isLong:
+  schedule_time:
+  description:
+  category:
+}
+3. 달력에 추가될 때는 schedule_information을 props에 넘겨줌
+4. 이제 Day component를 알맞게 하면 됨

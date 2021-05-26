@@ -1,0 +1,249 @@
+import React, {useState, useEffect} from 'react';
+import './Calendar.css'
+import Day from '../../Components/Day/Day'
+
+function Calendar(props){
+
+    const [month, setMonth] = useState(5);
+    const [category, setCategory] = useState(0);
+    const [popup, setPopup] = useState(false);
+    const [schedules, setSchedules] = useState([]);
+
+
+    useEffect(() => {
+        console.log('current month: ', month)
+    }, [month]);
+
+    useEffect(() => {
+        console.log('Selected_category: ', category)
+        document.getElementById('popup-button-work').setAttribute('style', 'background-color: none');
+        document.getElementById('popup-button-family').setAttribute('style', 'background-color: none');
+        document.getElementById('popup-button-private').setAttribute('style', 'background-color: none');
+        document.getElementById('popup-button-other').setAttribute('style', 'background-color: none');
+        if (category === 1) {
+            document.getElementById('popup-button-work').setAttribute('style', 'background-color: #fffdc6');
+        } else if (category === 2) {
+            document.getElementById('popup-button-family').setAttribute('style', 'background-color: #c8f7f4');
+        } else if (category === 3) {
+            document.getElementById('popup-button-private').setAttribute('style', 'background-color: #ffdcfb');
+        } else if (category === 4) {
+            document.getElementById('popup-button-other').setAttribute('style', 'background-color: lightgray')
+        }
+    }, [category]);
+
+    useEffect(() => {
+        console.log('Current popup state: ', popup)
+        var popup_div = document.getElementById('calendar-add-popup')
+        if (popup) {
+            popup_div.setAttribute('style', 'display: block')
+        } else {
+            popup_div.setAttribute('style', 'display : none')
+        }
+    })
+
+    const add_schedule = (x, y) => {
+        console.log(x, y)
+        setPopup(popup => !popup)
+    }
+
+    const see_prev_month = (month) => {
+        if (month === 1) {
+            alert('Sorry, only 2021 year is implemented.')
+            return
+        }
+        setMonth(month => month - 1)
+    }
+
+    const see_next_month = (month) => {
+        if (month === 12) {
+            alert('Sorry, only 2021 year is implemented.')
+            return
+        }
+        setMonth(month => month + 1)
+    }
+
+    const select_category = (evt) => {
+        console.log(evt.target.id)
+        var targetId = evt.target.id
+        if (targetId.endsWith('work')) {
+            if (category === 1) {
+                setCategory(0)
+            } else {
+                setCategory(1)
+            }
+        }
+        else if (targetId.endsWith('family')) {
+            if (category === 2) {
+                setCategory(0)
+            } else {
+                setCategory(2)
+            }
+        }
+        else if (targetId.endsWith('private')) {
+            if (category === 3) {
+                setCategory(0)
+            } else {
+                setCategory(3)
+            }
+        }
+        else if (targetId.endsWith('other')) {
+            if (category === 4) {
+                setCategory(0)
+            } else {
+                setCategory(4)
+            }
+        }
+    }
+
+
+    const day_info = {
+        "1" : [27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 81, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6],
+        "2" : [31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 1, 2, 3, 4, 5, 6],
+        "3" : [28, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3],
+        "4" : [28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1],
+        "5" : [25, 26, 27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5],
+        "6" : [30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2, 3],
+        "7" : [27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+        "8" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4],
+        "9" : [29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2],
+        "10" : [26, 27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6],
+        "11" : [31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2, 3, 4],
+        "12" : [28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1]
+    }
+
+    const month_info = {
+        "1" : "January",
+        "2" : "February",
+        "3" : "March",
+        "4" : "April",
+        "5" : "May",
+        "6" : "June",
+        "7" : "July",
+        "8" : "August",
+        "9" : "September",
+        "10" : "October",
+        "11" : "November",
+        "12" : "December"
+    }
+
+    console.log('current month: ', month)
+    console.log('current name', props.name)
+
+    return(
+        <div className = 'calendar-box'>
+            <div id = 'header-wrap'>
+                <button id = 'calendar-add' onClick = {evt => {add_schedule(evt.clientX, evt.clientY)}}>Add +</button>
+                <div id = 'calendar-changemonth'>
+                    <button id = 'calendar-prevmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
+                    <button id = 'calendar-nextmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
+                </div>
+                <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
+            </div>
+        
+            <div id="calendar">
+
+            {/* <!-- Days from previous month --> */}
+
+                <ul className="days">
+                    <Day othermonth = {day_info[month][0] > 20 ? 'true' : 'false'} day = 'Sun' date = {String(day_info[month][0])} row = 'row1' col = 'col1'/>
+                    <Day othermonth = {day_info[month][1] > 20 ? 'true' : 'false'} day = 'Mon' date = {String(day_info[month][1])} row = 'row1' col = 'col2'/>
+                    <Day othermonth = {day_info[month][2] > 20 ? 'true' : 'false'} day = 'Tue' date = {String(day_info[month][2])} row = 'row1' col = 'col3'/>
+                    <Day othermonth = {day_info[month][3] > 20 ? 'true' : 'false'} day = 'Wed' date = {String(day_info[month][3])} row = 'row1' col = 'col4'/>
+                    <Day othermonth = {day_info[month][4] > 20 ? 'true' : 'false'} day = 'Thu' date = {String(day_info[month][4])} row = 'row1' col = 'col5'/>
+                    <Day othermonth = {day_info[month][5] > 20 ? 'true' : 'false'} day = 'Fri' date = {String(day_info[month][5])} row = 'row1' col = 'col6'/>
+                    <Day othermonth = {day_info[month][6] > 20 ? 'true' : 'false'} day = 'Sat' date = {String(day_info[month][6])} row = 'row1' col = 'col7'/>
+
+                </ul>
+
+                {/* <!-- Row #2 --> */}
+
+                <ul className="days">
+                    <Day othermonth = 'false' date = {String(day_info[month][7])} row = 'row2' col = 'col1'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][8])} row = 'row2' col = 'col2'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][9])} row = 'row2' col = 'col3'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][10])} row = 'row2' col = 'col4'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][11])} row = 'row2' col = 'col5'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][12])} row = 'row2' col = 'col6'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][13])} row = 'row2' col = 'col7'/>
+                </ul>
+
+                {/* <!-- Row #3 --> */}
+
+                <ul className="days">
+                    <Day othermonth = 'false' date = {String(day_info[month][14])} row = 'row3' col = '1'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][15])} row = 'row3' col = '2'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][16])} row = 'row3' col = '3'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][17])} row = 'row3' col = '4'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][18])} row = 'row3' col = '5'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][19])} row = 'row3' col = '6'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][20])} row = 'row3' col = '7'/>
+                </ul>
+
+                {/* <!-- Row #4 --> */}
+
+                <ul className="days">
+                    <Day othermonth = 'false' date = {String(day_info[month][21])} row = '4' col = '1'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][22])} row = '4' col = '2'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][23])} row = '4' col = '3'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][24])} row = '4' col = '4'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][25])} row = '4' col = '5'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][26])} row = '4' col = '6'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][27])} row = '4' col = '7'/>
+                </ul>
+
+                    {/* <!-- Row #5 --> */}
+
+                <ul className="days">
+                    <Day othermonth = 'false' date = {String(day_info[month][28])} row = '5' col = '1'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][29])} row = '5' col = '2'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][30])} row = '5' col = '3'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][31])} row = '5' col = '4'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][32])} row = '5' col = '5'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][33])} row = '5' col = '6'/>
+                    <Day othermonth = 'false' date = {String(day_info[month][34])} row = '5' col = '7'/>
+                </ul>
+
+                {/* <!-- Row #6 --> */}
+
+                {
+                    day_info[month].length > 40
+                    ?
+                    <>
+                    <ul className="days">
+                        <Day othermonth = {day_info[month][35] < 10 ? 'true' : 'false'} date = {String(day_info[month][35])} row = '6' col = '1'/>
+                        <Day othermonth = {day_info[month][36] < 10 ? 'true' : 'false'} date = {String(day_info[month][36])} row = '6' col = '2'/>
+                        <Day othermonth = {day_info[month][37] < 10 ? 'true' : 'false'} date = {String(day_info[month][37])} row = '6' col = '3'/>
+                        <Day othermonth = {day_info[month][38] < 10 ? 'true' : 'false'} date = {String(day_info[month][38])} row = '6' col = '4'/>
+                        <Day othermonth = {day_info[month][39] < 10 ? 'true' : 'false'} date = {String(day_info[month][39])} row = '6' col = '5'/>
+                        <Day othermonth = {day_info[month][40] < 10 ? 'true' : 'false'} date = {String(day_info[month][40])} row = '6' col = '6'/>
+                        <Day othermonth = {day_info[month][41] < 10 ? 'true' : 'false'} date = {String(day_info[month][41])} row = '6' col = '7'/>
+                    </ul>
+                    </>
+                    :
+                    <>
+                    </>
+                }
+            </div>
+        {/* <!-- /. calendar --> */}
+            <div id = "calendar-add-popup">
+                <div id = 'popup-component'>
+                    <button className  = 'popup-button' id  = 'popup-button-close' onClick = {evt => add_schedule()}>x</button>
+                    <input type = 'text' id = 'popup-title' placeholder = 'Title (Up to 40 characters)' wrap = 'hard'></input>
+                    <div id = 'popup-button-wrap'>
+                        <button className = 'popup-button' id = 'popup-button-work' onClick = {evt => select_category(evt)}>Work</button>
+                        <button className = 'popup-button' id = 'popup-button-family' onClick = {evt => select_category(evt)}>Family</button> 
+                        <button className = 'popup-button' id = 'popup-button-private' onClick = {evt => select_category(evt)}>Private</button>
+                        <button className = 'popup-button' id = 'popup-button-other' onClick = {evt => select_category(evt)}>Other</button>
+                    </div>
+                    <div id = 'popup-time-wrap'>
+                        <input type="time" className = 'popup-time' id="popup-time-start" min="00:00" max="24:00" required></input> ~ <input type="time" className = 'popup-time' id="popup-time-end" min="00:00" max="24:00" required></input>
+                    </div>
+                    <textarea id = 'popup-description' placeholder = 'Description'></textarea>
+
+                    <button className = 'popup-button' id = 'popup-submit'>Submit</button>
+                </div>
+            </div>
+        </div>
+    )
+}
+export default Calendar;
