@@ -55,8 +55,7 @@ function Donetaskpage() {
                     <Projectmenu />
                 </div>
                 <div className='subtaskContainer'>
-                    <p className='subtaskHeader'> Subtask  <button id="addBtn" onClick={openModal}> + </button> <SubModal open={modalOpen} close={closeModal} create={addTask}></SubModal>
-                     <button id="doneBtn"><Link to='/Subtasks'> Current Tasks </Link></button> </p>
+                    <p className='subtaskHeader'> Subtask <button id="doneBtn"><Link to='/Subtasks'> Current Tasks </Link></button> </p>
                     {/* <SubtaskBox className="subtask" taskname="Research" exp="Doing research about user and concept" date="5/8~5/10" related="5/8 Meeting with other Designers" />
                     <SubtaskBox className="subtask" taskname="Prototyping" exp="Make low/high fidelity prototypes" date="5/10~5/12" />
                     <SubtaskBox className="subtask" taskname="User-Testing" exp="Test the prototype and Improve" date="5/12~5/21" todo="Recruit 50 Users" related="5/15 Meeting with Developer"/> */}

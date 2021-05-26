@@ -16,8 +16,9 @@ const Modal = (props) => {
                         </p>  
                     </header>
                     <main>
-                        <p>Project: <input id='Projectname'/></p>
+                        <p>Title: <input id='Projectname'/></p>
                         <p>Duration: <input id='Duration'/></p>
+                        <p>Description: <br></br><textarea id='Description' rows='5'/></p>
                     </main>
                     <footer>
                         <button onClick={create}> Create </button>
