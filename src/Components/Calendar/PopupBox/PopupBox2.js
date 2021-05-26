@@ -4,6 +4,7 @@ import SendPopup from './SendPopup'
 
 function PopupBox2(props){
 
+    console.log('popupbox2', props.idx)
     function openSentPopup(){
         document.getElementById("sendBoxContainer" + props.idx).style.display = 'block' 
     }

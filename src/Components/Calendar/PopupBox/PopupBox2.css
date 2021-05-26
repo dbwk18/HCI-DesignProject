@@ -58,7 +58,6 @@
   color: white;
   background-color: #c82a2a;
   border-color: #c82a2a;
-  left: 80%;
   bottom: 70px;
   display: none;
   cursor: pointer;
@@ -69,7 +68,7 @@
   color: white;
   background-color: #c82a2a;
   border-color: #c82a2a;
-  left: 60%;
+  left: -20%;
   bottom: 70px;
   width: 60px;
   z-index: 10;
@@ -80,7 +79,7 @@
   color: white;
   background-color: #2A4CC8;
   border-color: #2A4CC8;
-  left: 65%;
+  left: 10%;
   bottom: 70px;
   width: 60px; 
   z-index: 10;

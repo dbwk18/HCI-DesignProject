@@ -4,7 +4,6 @@ import React from 'react';
 import Header from '../../Components/Header/Header'
 import Calendar from '../../Components/Calendar/Calendar'
 import Menubar from '../../Components/Menubar/Menubar'
-import PopupBox from '../../Components/PopupBox/PopupBox'
 
 function Mainpage_task3(props) {
 

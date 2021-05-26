@@ -6,7 +6,7 @@ import SendPopup from './SendPopup'
 function PopupBox0(props){
     const [pass, setPass] = useState(false)
 
-
+    console.log('popupbox0', props.idx)
 
     function openPopup(){
         document.getElementById("passBtn-" + props.idx).style.display='none';

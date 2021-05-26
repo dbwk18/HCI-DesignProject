@@ -2,7 +2,7 @@ import React from 'react'
 import './SendPopup.css'
 
 function SendPopup(props){
-
+    console.log('popupbox', props.idx)
     function isClose(){
         console.log('hellowadjflksjdfljsdfkjsd;ljs')
         // document.getElementById("popupBox" + props.idx).style.display = 'none'
