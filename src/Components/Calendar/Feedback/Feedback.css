@@ -1,0 +1,172 @@
+.feedback {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: none;
+  z-index: 1000;
+}
+
+.feedback-header-wrap {
+  padding-top: 5%;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5%;
+}
+
+.feedback-text {
+  display: inline;
+  text-align: center;
+  font-size: 20px;
+}
+
+.icon-feedback {
+  margin-right: 4%;
+}
+
+.feedback-icons {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 3%;
+}
+
+.feedback-icon-wrap {
+  display: inline;
+  cursor: pointer;
+}
+
+.feedback-icon {
+  display: inline;
+}
+
+
+.feedback-icon-text {
+  font-size: 15px;
+  margin-left: 2%;
+  margin-right: 6%;
+}
+
+.feedback-memo {
+  
+  display: block;
+  margin-top: 1.2%;
+  margin: auto;
+  width: 80%;
+  height: 30%;
+  resize: none;
+  margin-bottom: 5%;
+}
+
+.feedback-done-wrap {
+  width: 80%;
+  height: 10%;
+  margin: auto;
+}
+
+.feedback-done {
+  font-size: 18px;
+  text-align: center;
+  display: block;
+  float: right;
+  width: 25%;
+  border-radius: 10px;
+}
+
+.feedback-row0 {
+  top: -202px;
+}
+.feedback-row1 {
+  top: -21px;
+}
+.feedback-row2 {
+  top: 157px;
+}
+.feedback-row3 {
+  top: 335px;
+}
+.feedback-row4 {
+  top: 515px;
+}
+.feedback-row5 {
+  top: 695px;
+}
+.feedback-col0 {
+  left: -12.2%;
+}
+.feedback-col1 {
+  left: 2.1%;
+}
+.feedback-col2 {
+  left: 16.3%;
+}
+.feedback-col3 {
+  left: 30.6%;
+}
+.feedback-col4 {
+  left: 44.8%;
+}
+.feedback-col5 {
+  left: 59.1%;
+}
+.feedback-col6 {
+  left: 73.4%;
+}
+
+.icon-oncalendar {
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+} 
+.icon-row0 {
+  top: 25px;
+}
+.icon-row1 {
+  top: 185px;
+}
+.icon-row2 {
+  top: 365px;
+}
+.icon-row3 {
+  top: 545px;
+}
+.icon-row4 {
+  top: 725px;
+}
+.icon-row5 {
+  top: 905px;
+}
+.icon-col0 {
+  left: 12%;
+}
+.icon-col1 {
+  left: 26.2%;
+}
+.icon-col2 {
+  left: 40.5%;
+}
+.icon-col3 {
+  left: 54.7%;
+}
+.icon-col4 {
+  left: 69.0%;
+}
+.icon-col5 {
+  left: 83.2%;
+}
+.icon-col6 {
+  left: 97.5%;
+}
+
+
+/* remove exception */
+#schedule0526-feedback {
+  top: 515px;
+  left: 30.6%;
+}
+#schedule0412-icon-oncalendar {
+  top: 365px;
+  left: 40.5%;
+}

@@ -1,0 +1,23 @@
+.sendContent {
+  width: 400px;
+  height: 150px;
+  background-color: #e2e2e2;
+  border-radius: 15px;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.sendText {
+  padding: 10px;
+}
+
+#sendTextH {
+  font-size: 22px;
+}
+
+.close {
+  font-size: 20px;
+  padding-top: 50px;
+  padding-left: 370px;
+}

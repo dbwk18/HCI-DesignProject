@@ -1,0 +1,32 @@
+.popupBox {
+  background-color: #ffffff;
+  width: 500px;
+  height: 250px;
+  border-radius: 15px;
+}
+
+.popupHeader {
+  display: table-cell;
+  background-color: #e2e2e2;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 500px;
+  height: 50px;
+  font-size: 20px;
+  vertical-align: middle;
+  padding-left: 30px;
+}
+
+.passBtn {
+  position: relative;
+  color: white;
+  background-color: #c82a2a;
+  border-color: #c82a2a;
+  top: 15px;
+}
+
+.popupText {
+  font-size: 20px;
+  padding-left: 25px;
+  padding-top: 10px;
+}

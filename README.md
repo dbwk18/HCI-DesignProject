@@ -1,70 +1,89 @@
 # Getting Started with Create React App
 
+  
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+  
 
 ## Available Scripts
 
+  
+
 In the project directory, you can run:
+
+  
 
 ### `yarn start`
 
+  
+
 Runs the app in the development mode.\
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+  
+
 The page will reload if you make edits.\
+
 You will also see any lint errors in the console.
 
-### `yarn test`
+  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2021/05/21 업데이트
 
-### `yarn build`
+  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Router 추가
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- react-router-dom 패키지 설치, --save option으로 package-lock.json과 package.json에 저장
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Routes.js 추가하고 컴포넌트 연결, index.js에서 App.js가 아니라 Routes.js를 호출하도록 함
 
-### `yarn eject`
+- App.js를 쓰지않고 바로 Mainpage를 부르도록 함. 현재 App.js는 쓰이지 않는 상태이나 삭제는 하지 않고 주석처리만 해놓음
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. 달력 2021년 1월~12월 까지 추가
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 달력 오른쪽 위에 있는 '<', '>'버튼을 통해 월을 이동할 수 있게 해놓음
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 1월 이전, 12월 이후로는 못가게 해 놓음
 
-## Learn More
+- 기존에 달력에 있던 이벤트는 형태만 따로 저장해놓고 달력에서는 지워놓음
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Pop-up창 추가
 
-### Code Splitting
+- 달력 왼쪽 위에 있는 add버튼을 누를 시 클릭한 위치로부터 팝업창이 나오도록 설정해놓음
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- 내부 버튼들의 기능은 아직 안 만듦
 
-### Analyzing the Bundle Size
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 2021/05/25 업데이트
 
-### Making a Progressive Web App
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. **완성한 것**
 
-### Advanced Configuration
+- Task1 구현
+-- popup창은 새로 팝업창을 띄우지 않고 새롭게 element를 만들어서 구현
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Categorybox 구현
 
-### Deployment
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. **고칠 것/ 추가할 것**
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 24일~31일에 일정을 추가할 때 종종 해당 날짜에 일정이 생성되지 않고 달력의 첫 번째 행에서 생성됨
+-- day_info에서 같은 날이 두 번있어서 그럼
+- 같은 날에 일정이 여러 개인 경우 안겹치게 배치하기
+- 일정에 마우스 올려놓으면 세부정보가 보이도록
+-- 긴 일정: 시작일과 끝 일을 전부 연결하지 말고 처음날짜와 끝 날짜만 달력에 나타내면 좋지 않을까
+-- 일정의 시작에 마우스를 올려놓았을 때는 description과 일정의 끝을 보여주고 일정의 끝에 마우스를 올려놓았을 때는 description과 일정의 시작을 보여줌
+- 하루짜리 일정은 시작시간과 끝 시간을 보여줌
+- 긴 일정의 경우 시작일과 끝 일의 모양을 약간 다르게 함: 이펙트를 주거나 모양을 바꿈
+- 현재 feedback이모티콘이 추가만 되고 삭제가 되지 않음. 월 이동할 때 적절히 지우던지 display: none 해주던지 해야함
+- 
