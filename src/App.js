@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './App.css';
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
@@ -23,5 +24,18 @@ function App() {
     
   );
 }
+=======
+// import './App.css';
+// import React from 'react';
+// import Mainpage from './Pages/Mainpage/Mainpage'
+ 
+// function App() {
+//   return (
+//     <div>
+//       <Mainpage />
+//     </div>
+//   );
+// }
+>>>>>>> 2174701eec00143ca9653db979ca0ef6a783b3d7
 
-export default App;
+// export default App;

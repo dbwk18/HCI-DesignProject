@@ -4,28 +4,37 @@ import React from 'react';
 import Header from '../../Components/Header/Header'
 import Calendar from '../../Components/Calendar/Calendar'
 import Menubar from '../../Components/Menubar/Menubar'
-import PopupBox from '../../Components/PopupBox/PopupBox'
 
-function Mainpage() {
+function Mainpage_calendar(props) {
+
+    var p = undefined
+
+    console.log('Get props in Mainpage', props.location.props)
+    if (props.location.props === undefined) {
+        p = {mode: [true, false, false, false]}   
+    }
+    else {
+        p = props.location.props
+    }
+
+    console.log('Mainpage', p)
     return(
         <div className='Container'>
             <div className = 'headerContainer'>
-                <Header />
-            {/* <div>
-                <PopupBox />
-            </div> */}
+                <Header mode = {p.mode}/>
             </div>
             <div className = 'mainContainer'>
                 <div className='menubarContainer'>
-                    <Menubar />
+                    <Menubar mode = {p.mode}/>
                 </div>
                 <div className='calendarContainer'>
-                    <Calendar/>
+                    <Calendar mode = {p.mode}/>
                 </div>
             </div>
-            
+
         </div>
     )
+
 }
 
-export default Mainpage;
+export default Mainpage_calendar;

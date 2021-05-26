@@ -40,7 +40,7 @@ function Projectmenu(){
 
             <div className = 'projectmenu-category' id = 'project1'>Web K Design</div>
             <div className = 'projectmenu-category' id = 'project2'>Project A</div>
-            <div className = 'projectmenu-category' id = 'project3'>Designing app B UI</div>
+            <div className = 'projectmenu-category' id = 'project3'><Link to='/Subtasks'>Designing app B UI</Link></div>
             <div className = 'projectmenu-category' id = 'project4'>Redesigning J</div>
             <Boxes project={pjname}></Boxes>
 

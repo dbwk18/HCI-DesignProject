@@ -61,10 +61,10 @@ function Subtaskpage() {
                 <div className='subtaskContainer'>
                     <p className='subtaskHeader'> Subtask  <button id="addBtn" onClick={openModal}> + </button> <SubModal open={modalOpen} close={closeModal} create={addTask}></SubModal>
                      <button id="doneBtn"> <Link to='/Donetasks'> Done Tasks </Link> </button> </p>
-                    {/* <SubtaskBox className="subtask" taskname="Research" exp="Doing research about user and concept" date="5/8~5/10" related="5/8 Meeting with other Designers" />
-                    <SubtaskBox className="subtask" taskname="Prototyping" exp="Make low/high fidelity prototypes" date="5/10~5/12" />
-                    <SubtaskBox className="subtask" taskname="User-Testing" exp="Test the prototype and Improve" date="5/12~5/21" todo="Recruit 50 Users" related="5/15 Meeting with Developer"/> */}
-                    <SubtaskBoxes className="subtask" taskname={taskname} exp={exp} start={start} end={end} todo={todo} related={related}/>
+                    <SubtaskBox id="subtask1" className="subtask" taskname="Research" exp="Doing research about user and concept" start="5/8" end="5/10" todo="Interview possible target users"related="5/8 Meeting with other Designers" />
+                    <SubtaskBox id="subtask2" className="subtask" taskname="Prototyping" exp="Make low/high fidelity prototypes" start="5/10" end="5/12" todo="Revise the menubar icon, color"/>
+                    <SubtaskBox id="subtask3" className="subtask" taskname="User-Testing" exp="Test the prototype and Improve" start="5/12" end="5/21" todo="Recruit 50 Users" related="5/15 Meeting with Developer"/>
+                    <SubtaskBoxes id="subtask4" className="subtask" taskname={taskname} exp={exp} start={start} end={end} todo={todo} related={related}/>
              {/* props 사용? 어떤거 적어줄지 */}
                 </div>
             </div>
