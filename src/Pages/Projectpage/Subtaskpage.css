@@ -13,13 +13,13 @@
   width: 77%;
 }
 
-button {
+/* button {
   float: right;
   margin-right: 20px;
   height: 40px;
   font-size: 18px;
   border-radius: 10px;
-}
+} */
 
 .subtaskHeader {
   margin-left: 40px;
