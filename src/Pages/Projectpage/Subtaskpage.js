@@ -53,7 +53,7 @@ function Subtaskpage() {
         <div className='Container'>
             <div className = 'headerContainer'>
                 <Header />
-                <button id="closeBtn"><Link to='/'>Close</Link></button>
+                <button id="closeBtn"><Link to='/mainpage3'>Close</Link></button>
             </div>
             <div className = 'mainContainer'>
                 <div className='projectmenuContainer'>
