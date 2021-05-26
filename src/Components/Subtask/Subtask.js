@@ -6,12 +6,13 @@ function SubtaskBox(props){
     return(
         <div>
             <div className="subtaskBox">
+                <div><input type="checkbox" class="enable-stage" /></div>
                 <h2 className="text" id="taskname">{props.taskname}</h2>
                 <div className="text" id="explanation">{props.exp}</div>
                 <br></br>
-                <div className="text" id="date">Date: {props.date}</div>
-                <div className="text" id="todo">ToDo: {props.todo}</div>
-                <div className="text" id="related">Related Schedule: {props.related}</div>
+                <div className="text" id="date"><b>Duration:</b> {props.start} ~ {props.end}</div>
+                <div className="text" id="todo"><b>ToDo:</b> {props.todo}</div>
+                <div className="text" id="related"><b>Related Schedule:</b> {props.related}</div>
             </div>
         </div>
     )

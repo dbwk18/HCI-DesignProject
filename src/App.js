@@ -14,6 +14,8 @@ function App() {
             <Route path="/" component={Mainpage} exact={true} />
             <Route path="/Projects" component={Projectpage} />
             <Route path="/Subtasks" component={Subtaskpage} />
+            {/* <Route path="/Subtasks" component={Subtaskpage} /> */}
+            {/* Done Task 를 위한 Page 추가 필요해보임 */}
           </Switch>
         </div>
       </BrowserRouter>

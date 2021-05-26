@@ -11,9 +11,9 @@ function Mainpage() {
         <div className='Container'>
             <div className = 'headerContainer'>
                 <Header />
-            <div>
+            {/* <div>
                 <PopupBox />
-            </div>
+            </div> */}
             </div>
             <div className = 'mainContainer'>
                 <div className='menubarContainer'>
