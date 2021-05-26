@@ -78,24 +78,6 @@ function Menubar(props){
     console.log('menubar:', props.mode)
 
     return(
-<<<<<<< HEAD
-      <div className = 'mainbox-sidemenu'>
-        <p className = 'mainbox-sidemenu-left-text'>View by Category:</p>
-        <div className = 'sidemenu-category' id = 'category-all'>View all</div>
-        <div className = 'sidemenu-category' id = 'category-work'>Work</div>
-        <div className = 'sidemenu-category' id = 'category-family'>Family</div>
-        <div className = 'sidemenu-category' id = 'category-private'>Private</div>
-        <p className = 'sidemenu-left-border'></p>
-        <p className = 'mainbox-sidemenu-left-text'>View as:</p>
-        <div className = 'sidemenu-category' id = 'category-calendar'>Calendar</div>
-        <div className = 'sidemenu-category' id = 'category-categorybox'>Category Box</div>
-        <p className = 'sidemenu-left-border'></p>
-        <button className = 'sidemenu-category' id = 'category-project'>
-            <Link to='/projects'>View Project Manager</Link>
-            {/* 프로젝트 화면으로 넘어갑니다 */}
-        </button>
-    </div>
-=======
         <div className = 'mainbox-sidemenu'>
             <p className = 'mainbox-sidemenu-left-text'>View by Category:</p>
             <div className = 'sidemenu-category' id = {'category-all-' + props.mode[0]} onClick = {evt => click_category(evt)}>View all  </div>
@@ -108,10 +90,9 @@ function Menubar(props){
             <div className = 'sidemenu-category' id = 'category-categorybox' onClick = {evt => history.push('./categorybox')} >Category Box</div>
             <p className = 'sidemenu-left-border'></p>
             <button id = 'category-project'>
-                View Project Manager
+                <Link to='/Projects'>View Project Manager</Link>
             </button>
         </div>
->>>>>>> 2174701eec00143ca9653db979ca0ef6a783b3d7
     )
 }
 export default Menubar;

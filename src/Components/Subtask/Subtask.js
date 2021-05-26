@@ -4,15 +4,15 @@ import './Subtask.css'
 
 function SubtaskBox(props){
 
-    function isChecked(){
-        // alert('hi')
-        document.getElementById("subtask1").display = 'none';
-    }
+    // function isChecked(){
+    //     // alert('hi')
+    //     document.getElementById("subtask1").display = 'none';
+    // }
 
     return(
         <div>
             <div className="subtaskBox">
-                <input id="checkdone" type="checkbox" className="enable-stage" onClick={isChecked} />
+                <input id="checkdone" type="checkbox" className="enable-stage" />
                 <h2 className="text" id="taskname">{props.taskname}</h2>
                 <div className="text" id="explanation">{props.exp}</div>
                 <br></br>
