@@ -87,7 +87,7 @@ function Menubar(props){
             <div className = 'sidemenu-category' id = 'category-calendar'  onClick = {evt => history.push('/')}>Calendar</div>
             <div className = 'sidemenu-category' id = 'category-categorybox' onClick = {evt => history.push('./categorybox')} >Category Box</div>
             <p className = 'sidemenu-left-border'></p>
-            <button className = 'sidemenu-category' id = 'category-project'>
+            <button id = 'category-project'>
                 View Project Manager
             </button>
         </div>

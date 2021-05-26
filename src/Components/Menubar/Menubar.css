@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+#category-project {
+  text-align: center;
+  margin-left: 40px; 
+}
 
 
 .sidemenu-left-border {
