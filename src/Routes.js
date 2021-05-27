@@ -16,7 +16,7 @@ class Routes extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Mainpage_calendar}/>
+                    <Route exact path="/HCI-DesignProject" component={Mainpage_calendar}/>
                     <Route exact path="/categorybox" component={Mainpage_categorybox}/>
                     <Route exact path="/mainpage3" component={Mainpage_task3}/>
                     <Route path="/Projects" component={Projectpage} />
