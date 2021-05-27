@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/HCI-DesignProject/static/css/main.1de9e773.chunk.css",
+    "main.js": "/HCI-DesignProject/static/js/main.ba9e7cb8.chunk.js",
+    "main.js.map": "/HCI-DesignProject/static/js/main.ba9e7cb8.chunk.js.map",
+    "runtime-main.js": "/HCI-DesignProject/static/js/runtime-main.38e75e55.js",
+    "runtime-main.js.map": "/HCI-DesignProject/static/js/runtime-main.38e75e55.js.map",
+    "static/css/2.0cfad52a.chunk.css": "/HCI-DesignProject/static/css/2.0cfad52a.chunk.css",
+    "static/js/2.02f7a81e.chunk.js": "/HCI-DesignProject/static/js/2.02f7a81e.chunk.js",
+    "static/js/2.02f7a81e.chunk.js.map": "/HCI-DesignProject/static/js/2.02f7a81e.chunk.js.map",
+    "static/js/3.0f265d14.chunk.js": "/HCI-DesignProject/static/js/3.0f265d14.chunk.js",
+    "static/js/3.0f265d14.chunk.js.map": "/HCI-DesignProject/static/js/3.0f265d14.chunk.js.map",
+    "index.html": "/HCI-DesignProject/index.html",
+    "static/css/2.0cfad52a.chunk.css.map": "/HCI-DesignProject/static/css/2.0cfad52a.chunk.css.map",
+    "static/css/main.1de9e773.chunk.css.map": "/HCI-DesignProject/static/css/main.1de9e773.chunk.css.map",
+    "static/js/2.02f7a81e.chunk.js.LICENSE.txt": "/HCI-DesignProject/static/js/2.02f7a81e.chunk.js.LICENSE.txt",
+    "static/media/bad.afc31111.png": "/HCI-DesignProject/static/media/bad.afc31111.png",
+    "static/media/img_sent.fdfcb309.png": "/HCI-DesignProject/static/media/img_sent.fdfcb309.png",
+    "static/media/img_you.b6968441.png": "/HCI-DesignProject/static/media/img_you.b6968441.png",
+    "static/media/smile.2232e6aa.png": "/HCI-DesignProject/static/media/smile.2232e6aa.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.38e75e55.js",
+    "static/css/2.0cfad52a.chunk.css",
+    "static/js/2.02f7a81e.chunk.js",
+    "static/css/main.1de9e773.chunk.css",
+    "static/js/main.ba9e7cb8.chunk.js"
+  ]
+}
