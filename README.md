@@ -28,6 +28,17 @@ The page will reload if you make edits.\
 
 You will also see any lint errors in the console.
 
+
+### File Structure ###
+
+- src/Components 
+  : Here contains codes for reusable Components used in Colics Service. There are Components such as Calendar, Header, Menubar, Timeline, Subtask etc. We imported these components to compose each pages. Every components is made with .js and .css file. 
+- src/Icons
+ : This file contains icon images that we used in designing UI. 
+- src/Pages
+ : Here consists several pages that user actually view. There are 'Main Page' that user first sees when we access to the url, and 'Project Page' and 'Subtask Page' that user can see when clicks Project Manager button.
+- src/Routes.js
+ : Here we define each path for pages, and implement page-routing for page navigation using 'react-router-dom'.
   
 
 ### 2021/05/21 업데이트
