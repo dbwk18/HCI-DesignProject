@@ -11,7 +11,7 @@ function Projectpage() {
         <div className='Container'>
             <div className = 'headerContainer'>
                 <Header />
-                <button id="closeBtn"><Link to='/'>Close</Link></button>
+                <button id="closeBtn"><Link to='/mainpage3'>Close</Link></button>
                 {/* 메인 화면으로 돌아갈 수 있습니다 */}
             </div>
             <div className = 'mainContainer'>

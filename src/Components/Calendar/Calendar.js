@@ -13,7 +13,8 @@ import img_sent from '../../Icons/img_sent.png'
 
 function Calendar(props){
 
-    console.log('-----------Calendar------------', props)
+    // props.data.mode : boolean으로 이루어지고 길이가 4인 리스트. 메뉴바에 all, work. family, private가 어떻게 선택되어 있는지를 나타냄
+    console.log('-----------Calendar------------', props.data)
 
     const day_info = calendar_info.day_info
     const month_info = calendar_info.month_info
@@ -24,6 +25,7 @@ function Calendar(props){
     // 0 : none, 1 : work, 2 : family, 3 : private, 4 : otehr, 5 : 공휴일, 달력에 기본적으로 있는 날
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
+    // const [schedules, setSchedules] = useState(calendar_info.initial_schedule_task1)
     
     //code for task3
     const [schedules, setSchedules] = useState(props.task3 ? calendar_info.initial_schedule_task3 : calendar_info.initial_schedule_task1);

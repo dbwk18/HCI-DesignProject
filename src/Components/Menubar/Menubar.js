@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect}  from 'react';
+
 import {useHistory} from "react-router";
 import './Menubar.css'
 import { Link } from 'react-router-dom';
@@ -10,15 +11,22 @@ import img_private from '../../Icons/private.png';
 
 function Menubar(props){
 
+    // props.mode : boolean으로 이루어진 길이 4짜리 리스트. all, work, family, private중 선택된 것을 보여줌
+    // props.view_as : 0 또는 1, 0이면 기본형식인 캘린더로 보는 것이고, 1이면 카테고리박스로 보는 것.
+
     console.log('------------Menubar-------------', props.mode)
 
     const history = useHistory();
     const click_category = (evt) => {
+        if (props.view_as === 1) {
+            alert('You can choose category only in CALENDAR mode. Please select Calendar in VIEW-AS tab')
+            return
+        }
         console.log('menubar print location', window.location.href, window.location.href.split('/'))
         var location_tokens = window.location.href.split('/')
-        var location = '/'
+        var location = ''
         for (let i = 3;i < location_tokens.length; i++) {
-            location += location_tokens[i]
+            location += '/' + location_tokens[i]
         }
         console.log('resulting location', location)
         var elem_id = evt.target.id.slice(9,)
@@ -30,8 +38,9 @@ function Menubar(props){
             history.push({
                 pathname: location,
                 props: {
-                    mode: [true, false, false, false],
-                    task3: props.task3
+                  mode: [true, false, false, false],
+                  view_as: props.view_as,
+                  task3: props.task3
                 }
             })
 
@@ -45,8 +54,9 @@ function Menubar(props){
             history.push({
                 pathname: location,
                 props: {
-                    mode : new_mode,
-                    task3 : props.task3
+                    mode: new_mode,
+                    view_as: props.view_as,
+                    task3: props.task3
                 }
             })
 
@@ -57,6 +67,7 @@ function Menubar(props){
                 pathname: location,
                 props: {
                     mode: new_mode,
+                    view_as: props.view_as,
                     task3: props.task3
                 }
             })
@@ -68,11 +79,41 @@ function Menubar(props){
                 pathname: location,
                 props: {
                     mode: new_mode,
+                    view_as: props.view_as,
                     task3: props.task3
                 }
             })
 
         }
+    }
+
+    const change_view = (evt) => {
+        console.log('change_view', props.view_as, evt.target.id)
+        if (evt.target.id === 'category-calendar' && props.view_as === 1) {
+            console.log('aklsjflkjfd;lsjflkjsdf')
+            history.push({
+                pathname: '/HCI-DesignProject/calendar',
+                props: {
+                    mode: [true, false, false, false],
+                    view_as: 0
+                }
+            })
+            console.log('hihihi')
+        }
+        else if (evt.target.id === 'category-categorybox' && props.view_as === 0) {
+            history.push('/HCI-DesignProject/categorybox')
+        }
+    }
+
+    const hover_on_event = (evt) => {
+        console.log('helllllo')
+        evt.target.style.border = '1px solid black'
+    }
+
+    const hover_down_event = (evt) => {
+        console.log('hello? out')
+
+        evt.target.style.border = 'none'
     }
 
     console.log('menubar:', props.mode)
@@ -86,8 +127,24 @@ function Menubar(props){
             <div className = 'sidemenu-category' id = {'category-private-' + props.mode[3]} onClick = {evt => click_category(evt)}>Private <img src={img_private} width = "28"/></div>
             <p className = 'sidemenu-left-border'></p>
             <p className = 'mainbox-sidemenu-left-text'>View as:</p>
-            <div className = 'sidemenu-category' id = 'category-calendar'  onClick = {evt => history.push('/')}>Calendar</div>
-            <div className = 'sidemenu-category' id = 'category-categorybox' onClick = {evt => history.push('./categorybox')} >Category Box</div>
+            <div
+              className = 'sidemenu-category'
+              id = 'category-calendar'  
+              onClick = {evt => change_view(evt)}
+              onMouseOver = {evt => hover_on_event(evt)}
+              onMouseOut = {evt => hover_down_event(evt)}
+              style = {{border: (props.view_as === 0 ? '1px, solid black' : 'none'), backgroundColor: (props.view_as === 0 ? 'skyblue' : 'none')}}>
+                Calendar
+            </div>
+            <div
+              className = 'sidemenu-category' 
+              id = 'category-categorybox' 
+              onClick = {evt => change_view(evt)}
+              onMouseOver = {evt => hover_on_event(evt)}
+              onMouseOut = {evt => hover_down_event(evt)}
+              style = {{border: (props.view_as === 1 ? '1px, solid black' : 'none'), backgroundColor: (props.view_as === 1 ? 'skyblue' : 'none')}}>
+                Category Box
+            </div>
             <p className = 'sidemenu-left-border'></p>
             <button id = 'category-project'>
                 <Link to='/Projects'>View Project Manager</Link>

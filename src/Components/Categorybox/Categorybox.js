@@ -36,7 +36,7 @@ function Categorybox () {
                         </div>
                     </Board>
                 </div>
-                <div class = 'b'>
+                <div className = 'b'>
                     <Board id = 'privateB' className = 'board'>
                         <img className = 'icon' id = 'img-private' src = {img_private} alt = 'private-board' style = {{alignSelf: 'center'}} />
                         <div id = 'private-wrap'>

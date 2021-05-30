@@ -12,12 +12,14 @@ import Subtaskpage from './Pages/Projectpage/Subtaskpage'
 import Donetaskpage from './Pages/Projectpage/Donetaskpage'
 
 class Routes extends React.Component {
+
     render() {
         return (
             <Router>
                 <Switch>
                     <Route exact path="/HCI-DesignProject" component={Mainpage_calendar}/>
-                    <Route exact path="/categorybox" component={Mainpage_categorybox}/>
+                    <Route exact path="/HCI-DesignProject/calendar" component={Mainpage_calendar}/>
+                    <Route exact path="/HCI-DesignProject/categorybox" component={Mainpage_categorybox}/>
                     <Route exact path="/mainpage3" component={Mainpage_task3}/>
                     <Route path="/Projects" component={Projectpage} />
                     <Route path="/Subtasks" component={Subtaskpage} />
