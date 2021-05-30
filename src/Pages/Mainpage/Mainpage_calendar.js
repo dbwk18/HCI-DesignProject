@@ -12,7 +12,7 @@ function Mainpage_calendar(props) {
     var p = undefined
 
     console.log('Get props in Mainpage', props.location.props)
-    if (props.location.props === undefined) {
+    if (props.location.props === undefined) { 
         p = {mode: [true, false, false, false]}   
     }
     else {
