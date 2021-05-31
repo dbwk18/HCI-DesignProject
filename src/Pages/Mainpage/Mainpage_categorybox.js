@@ -5,33 +5,24 @@ import Header from '../../Components/Header/Header'
 import Categorybox from '../../Components/Categorybox/Categorybox'
 import Menubar from '../../Components/Menubar/Menubar'
 
-function Mainpage_categorybox(props) {
+function Mainpage_categorybox() {
 
-    var p = undefined
+    console.log('mainpage-categorybox')
 
-    console.log('Get props in Mainpage', props.location.props)
-    if (props.location.props === undefined) {
-        p = {mode: [true, false, false, false]}   
-    }
-    else {
-        p = props.location.props
-    }
-
-    console.log('Mainpage', p)
+    console.log('Mainpage')
     return(
         <div className='Container'>
             <div className = 'headerContainer'>
-                <Header mode = {p.mode}/>
+                <Header/>
             </div>
             <div className = 'mainContainer'>
                 <div className='menubarContainer'>
-                    <Menubar mode = {p.mode}/>
+                    <Menubar mode = {[false, false, false, false]} view_as = {1}/>
                 </div>
                 <div className='calendarContainer'>
                     <Categorybox/>
                 </div>
             </div>
-
         </div>
     )
 

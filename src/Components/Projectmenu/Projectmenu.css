@@ -50,3 +50,60 @@
   border-radius: 10px;
   justify-content: center;
 }
+
+.flexbox {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-content: column;
+  flex-direction: column;
+  /* max-width: 1200px; */
+  /* height: 50vh; */
+  filter: drop-shadow(2px 4px 4px #5555);
+  overflow: hidden;
+  margin-top: 20px;
+  /* margin: 100 auto; */
+  padding-top: 20 px;
+  padding: 15 px;
+}
+
+.flexbox .board {
+  display: flex;
+  flex-direction: column;
+  align-items: 'center';
+  margin: 10px 10px 10px;
+  border-radius: 7px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+}
+
+
+.card-family {
+  padding: 15px 25px;
+  background-color:rgb(224, 255, 255);
+  border-style: hidden;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-bottom: 15px;
+
+}
+
+.card-private {
+  padding: 15px 25px;
+  background-color:rgb(255, 230, 255);
+  border-style: hidden;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-bottom: 15px;
+
+}
+.card-work {
+  padding: 15px 25px;
+  background-color:rgb(252, 255, 224);
+  border-style: hidden;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-bottom: 15px;
+
+}
