@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './Feedback.css'
-import img_good from '../../../Icons/smile.png';
-import img_hmm from '../../../Icons/hmm.png';
-import img_bad from '../../../Icons/bad.png';
-import img_feedback from '../../../Icons/feedback.png';
+import img_good from '../../Icons/smile.png';
+import img_hmm from '../../Icons/hmm.png';
+import img_bad from '../../Icons/bad.png';
+import img_feedback from '../../Icons/feedback.png';
 
 function Feedback (props) {
     // 0 : None, 1 : good, 2 : hmm, 3 : bad

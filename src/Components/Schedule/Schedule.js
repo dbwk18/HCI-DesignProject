@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import * as calendar_info from '../calendar_infomation.js'
+import * as calendar_info from '../Calendar/calendar_infomation.js'
 import './Schedule.css'
-import Feedback from '../Feedback/Feedback.js'
-import Message from '../../Message/Message'
+import Feedback from '../Feedback/Feedback'
+import Message from '../Message/Message'
 
 function Schedule(props) {
     // props.data: 일정의 모든 정보를 담은 오브젝트

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
-import Schedule from './Schedule/Schedule.js'
+import Schedule from '../Schedule/Schedule.js'
 
 
 function Calendar(props){
