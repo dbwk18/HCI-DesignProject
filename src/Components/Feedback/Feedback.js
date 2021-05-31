@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {db, firebaseApp} from '../../firebase'
 import './Feedback.css'
 import img_good from '../../Icons/smile.png';
 import img_hmm from '../../Icons/hmm.png';
@@ -8,6 +9,8 @@ import img_feedback from '../../Icons/feedback.png';
 function Feedback (props) {
     // 0 : None, 1 : good, 2 : hmm, 3 : bad
     // console.log(props)
+    console.log('----------feedback--------------')
+
     const [icon, setIcon] = useState(0);
     const [memo, setMemo] = useState('');
 
@@ -45,24 +48,11 @@ function Feedback (props) {
 
         var new_memo = document.getElementById(props.id + '-feedback-memo').value
         setMemo(new_memo)
-        // console.log('submit with [icon, memo] : ', icon, memo)
 
-        var new_icon = document.createElement('img')
-        new_icon.setAttribute('id', props.id + '-icon-oncalendar')
-        new_icon.setAttribute('class', 'icon-oncalendar icon-row' + props.row + ' icon-col' + props.col)
-        if (icon === 1) {
-            new_icon.src = 'https://user-images.githubusercontent.com/74011145/119400291-f0178180-bd14-11eb-9007-b69533624992.png'
-        } else if (icon === 2) {
-            new_icon.src = 'https://user-images.githubusercontent.com/74011145/119401544-944df800-bd16-11eb-96d4-806f447c95af.png'
-        } else if (icon === 3) {
-            new_icon.src = 'https://user-images.githubusercontent.com/74011145/119401630-adef3f80-bd16-11eb-8917-121462d9e020.png'
-        }
-        
-        new_icon.setAttribute('title', document.getElementById(props.id + '-feedback-memo').value)
-        document.getElementById(props.id + '-feedback-memo').value = ''
-
-
-        document.getElementById('feedback-wrap').appendChild(new_icon)
+        db.collection('schedules').doc(props.id).update({
+            "memo": new_memo,
+            "sat": icon,
+        })
             
 
         document.getElementById(props.id + '-feedback').setAttribute('style', 'display: none')

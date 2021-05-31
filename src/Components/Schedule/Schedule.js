@@ -4,6 +4,10 @@ import './Schedule.css'
 import Feedback from '../Feedback/Feedback'
 import Message from '../Message/Message'
 
+import img_good from '../../Icons/smile.png';
+import img_hmm from '../../Icons/hmm.png';
+import img_bad from '../../Icons/bad.png';
+
 function Schedule(props) {
     // props.data: 일정의 모든 정보를 담은 오브젝트
     // props.id(string) : schedule0523과 같이 어느날짜에 속하는 스케쥴인지를 나타냄
@@ -27,13 +31,11 @@ function Schedule(props) {
     
 
     const show_button = (evt) => {
-        console.log('show_button: ', evt.target.id)
         document.getElementById(props.id + '-button').style.display = 'inline'
 
     }
 
     const hide_button = (evt) => {
-        console.log('hide_button: ', evt.target.id)
         document.getElementById(props.id + '-button').style.display = 'none'
         
     }
@@ -47,7 +49,6 @@ function Schedule(props) {
 
     // }
 
-    console.log(props.id,start_date, end_date)
     var calendar_location_start = day_info[start_month].slice(start_date).indexOf(start_date) + start_date
     var calendar_location_end = day_info[end_month].slice(end_date).indexOf(end_date) + end_date
     var schedule_days = []
@@ -63,7 +64,7 @@ function Schedule(props) {
     var calendar_row = parseInt(calendar_location_start / 7)
     var calendar_col = calendar_location_start % 7
     var title_len_limit = 15 + 20 * (schedule_days.length - 1)
-    console.log(props.id, schedule_days)
+    console.log('--------------- schedule -------------------', calendar_location_start, calendar_location_end)
     return(
         <>
         <div
@@ -110,6 +111,21 @@ function Schedule(props) {
                 })
             }
         </div>
+        {
+          props.data.sat !== 0
+          ?
+          <>
+          <img
+              className = {'feedback-icon icon-oncalendar icon-feedback icon-row' + parseInt(calendar_location_end / 7) + ' icon-col' + (calendar_location_end % 7)}
+              src = {props.data.sat === 1 ? img_good : (props.data.sat === 2 ? img_hmm : img_bad)}
+              alt = 'feedback'
+              title = {props.data.memo}
+              />
+          </>
+          :
+          <>
+          </>
+        }
         
         <Feedback key = {props.id + '-feedback'} id = {props.id} row = {calendar_row} col = {calendar_col}/>
         <Message key = {props.id + '-messageadd'} id = {props.id} row = {parseInt(calendar_location_end / 7)} col = {(calendar_location_end) % 7} data = {props.data}/>

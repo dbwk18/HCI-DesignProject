@@ -10,13 +10,7 @@ function Message (props) {
     // props.col: 일정이 속한 열
     // props.type: 나에게 온 메세지인지, 내가 보내는 메세지인지
 
-    // props.category: 스케쥴이 어떤 카테고리 인지.
-    // props.start: 일정이 시작하는 시기. 연/월/일/시(24시기준):분
-    // props.end: 일정이 끝나는 시기. 끝나는 시간이 정해지지 않았으면 'none', 아니면 연/월/일/시(24시기준):분
-    // props.description: 일정의 description
-    // props.memo: 일정의 memo
-    // props.sat: 일정의 만족도
-    // props.
+    console.log('-----------message------------')
 
     console.log(props.id, 'message', props.data)
 

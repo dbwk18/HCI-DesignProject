@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
+import {db, firebaseApp} from '../../firebase.js'
 import Schedule from '../Schedule/Schedule.js'
 
 
 function Calendar(props){
 
     // props.data.mode : boolean으로 이루어지고 길이가 4인 리스트. 메뉴바에 all, work. family, private가 어떻게 선택되어 있는지를 나타냄
-    console.log('-----------Calendar------------', props.data)
 
     const day_info = calendar_info.day_info
     const month_info = calendar_info.month_info
@@ -18,10 +18,21 @@ function Calendar(props){
     // 0 : none, 1 : work, 2 : family, 3 : private, 4 : other
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
-    const [schedules, setSchedules] = useState(calendar_info.initial_schedule)
+    const [schedules, setSchedules] = useState([])
+    const saved_schedule = []
 
     useEffect(() => {
-        // console.log('Selected_category: ', category)
+        const schedules_ref = db.collection('schedules');
+        schedules_ref.onSnapshot((snapshot) => {
+            const data = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            setSchedules(data);
+        })
+    }, [])
+
+    useEffect(() => {
         document.getElementById('popup-button-work').setAttribute('style', 'background-color: none');
         document.getElementById('popup-button-family').setAttribute('style', 'background-color: none');
         document.getElementById('popup-button-private').setAttribute('style', 'background-color: none');
@@ -38,7 +49,6 @@ function Calendar(props){
     }, [category]);
 
     useEffect(() => {
-        // console.log('Current popup state: ', popup)
         var popup_div = document.getElementById('calendar-add-popup')
         if (popup) {
             popup_div.setAttribute('style', 'display: block')
@@ -46,6 +56,7 @@ function Calendar(props){
             popup_div.setAttribute('style', 'display : none')
         }
     }, [popup])
+
 
     const add_schedule = (evt) => {
         setPopup(popup => !popup)
@@ -68,7 +79,6 @@ function Calendar(props){
     }
 
     const select_category = (evt) => {
-        // console.log(evt.target.id)
         var targetId = evt.target.id
         if (targetId.endsWith('work')) {
             if (category === 1) {
@@ -101,6 +111,7 @@ function Calendar(props){
     }
 
     const create_new_schedule = () => {
+        console.log('~~~~~~~~~~create_new_schedule~~~~~~~~~~~~~~~~~')
         var title = document.getElementById('popup-title').value
         var desc = document.getElementById('popup-description').value
         var start_time = document.getElementById('popup-time-start').value
@@ -143,19 +154,15 @@ function Calendar(props){
 
         let new_schedules = [...schedules]
         new_schedules.push(new_schedule)
+        db.collection('schedules').doc().set(new_schedule)
         setSchedules(new_schedules)
 
     }
 
-    const print_target = (evt) => {
-        console.log(evt.target, evt.target.id)
-    }
-
-    
-
     // console.log('current month: ', month)
 
     // console.log('(Calendar) Current active element: ', document.activeElement.id)
+    console.log('!!!!!!!!!!!!!!!!!!! reload !!!!!!!!!!!!!!!!!!!!!')
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
@@ -167,7 +174,7 @@ function Calendar(props){
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
             </div>
         
-            <div id="calendar" onClick = {evt => print_target(evt)}>
+            <div id="calendar">
 
             {/* <!-- Days from previous month --> */}
 
@@ -345,7 +352,7 @@ function Calendar(props){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
-                            console.log(s)
+                            console.log('===', s.id)
                             var start = s.start.split('/')
                             var start_month = parseInt(start[1])
 
@@ -354,11 +361,10 @@ function Calendar(props){
                             if (start_month !== month || (!props.mode[0] && s.category !== 4 && !props.mode[s.category])) {
                               return 
                             }
-                            console.log(s.title + s.start + s.end, 'adfadsfsaf', s.end)
                             return (
                                 <Schedule 
-                                    key = {'schedule-' + s.title + s.start + s.end} 
-                                    id = {'schedule' + (start_month < 10 ? '0' + start_month : start_month) +  (start_date < 10 ? '0' + start_date : start_date)}
+                                    key = {s.id} 
+                                    id = {s.id}
                                     data = {s} />
                             )
                         })
