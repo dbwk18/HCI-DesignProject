@@ -3,13 +3,6 @@ import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
 import Schedule from './Schedule/Schedule.js'
 
-//code for task3
-import PopupBox1 from './PopupBox/PopupBox1'
-import PopupBox0 from './PopupBox/PopupBox0'
-import PopupBox2 from './PopupBox/PopupBox2'
-import SendPopup from './PopupBox/SendPopup'
-import img_you from '../../Icons/img_you.png'
-import img_sent from '../../Icons/img_sent.png'
 
 function Calendar(props){
 
@@ -22,20 +15,10 @@ function Calendar(props){
 
     const [month, setMonth] = useState(5);
 
-    // 0 : none, 1 : work, 2 : family, 3 : private, 4 : otehr, 5 : 공휴일, 달력에 기본적으로 있는 날
+    // 0 : none, 1 : work, 2 : family, 3 : private, 4 : other
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
-    // const [schedules, setSchedules] = useState(calendar_info.initial_schedule_task1)
-    
-    //code for task3
-    const [schedules, setSchedules] = useState(props.task3 ? calendar_info.initial_schedule_task3 : calendar_info.initial_schedule_task1);
-
-    const show_popup_1 = () => {
-        document.getElementById('popupbox0-wrap').style.display = 'block';
-    }
-    const show_popup_2 = () => {
-        document.getElementById('popupbox1-wrap').style.display = 'block';
-    }
+    const [schedules, setSchedules] = useState(calendar_info.initial_schedule)
 
     useEffect(() => {
         // console.log('Selected_category: ', category)
@@ -138,23 +121,34 @@ function Calendar(props){
         // 팝업 없앰
         setPopup(popup => !popup)
 
+        start_date = start_date.split('-')
+        end_date = end_date.split('-')
+        var no_end_date = end_date.length === 1 ? true : false
+
+        var no_start_time = start_time.length === 0 ? true : false
+        var no_end_time = end_time.length === 0 ? true : false
+
 
         var new_schedule = {
             title: title,
-            description: desc,
-            start_time: start_time,
-            end_time: end_time,
-            start_month: start_date.split('-')[1],
-            start_date: start_date.split('-')[2],
-            end_month: end_date.split('-')[1],
-            end_date: end_date.split('-')[2],
             category: category,
+            start: start_date[0] + '/' + start_date[1] + '/' + start_date[2] + '/' + (no_start_time ? '' : start_time),
+            end: (no_end_date ? '' : end_date[0] + '/' + end_date[1] + '/' + end_date[2] + '/' + (no_end_time ? '' : end_time)),
+            description: desc,
+            memo: '',
+            sat: 0,
+            owner: '',
+            pinned: false
         }
 
         let new_schedules = [...schedules]
         new_schedules.push(new_schedule)
         setSchedules(new_schedules)
 
+    }
+
+    const print_target = (evt) => {
+        console.log(evt.target, evt.target.id)
     }
 
     
@@ -173,7 +167,7 @@ function Calendar(props){
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
             </div>
         
-            <div id="calendar">
+            <div id="calendar" onClick = {evt => print_target(evt)}>
 
             {/* <!-- Days from previous month --> */}
 
@@ -351,41 +345,27 @@ function Calendar(props){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
+                            console.log(s)
+                            var start = s.start.split('/')
+                            var start_month = parseInt(start[1])
 
-                            if (parseInt(s.start_month) !== month || (!props.mode[0] && s.category !== 4 && !props.mode[s.category])) {
+                            var start_date = parseInt(start[2])
+
+                            if (start_month !== month || (!props.mode[0] && s.category !== 4 && !props.mode[s.category])) {
                               return 
                             }
-
+                            console.log(s.title + s.start + s.end, 'adfadsfsaf', s.end)
                             return (
                                 <Schedule 
-                                    key = {10000 * s.start_month + 100 * s.start_date + s.title.length} 
-                                    id = {s.id} month = {s.start_month} 
-                                    class = {s.class === undefined ? 'length-1' : s.class}
-                                    date = {s.start_date} 
-                                    title = {s.title}
-                                    category = {category_map[s.category]} />
+                                    key = {'schedule-' + s.title + s.start + s.end} 
+                                    id = {'schedule' + (start_month < 10 ? '0' + start_month : start_month) +  (start_date < 10 ? '0' + start_date : start_date)}
+                                    data = {s} />
                             )
                         })
                     }
                 </div>
                 <div id = 'feedback-wrap'></div>
-                <div id = 'messengers-wrap'>
-                    {
-                        props.task3
-                        ?
-                        <>
-                        <div className = 'task3' id = 'popupbox0-wrap'><PopupBox0 idx = {0}/></div>
-                        <div className = 'task3' id = 'popupbox1-wrap'><PopupBox1 idx = {1}/></div>
-
-                        <img id = 'task3-you' src={img_you} width = "20" height = '20' onClick = {() => show_popup_1() }/>
-                        <img id = 'task3-sent' src={img_sent} width = "20" height = '20' onClick = {() => show_popup_2() }/>
-                        </>
-                        :
-                        <>
-                        </>
-                    }
-                    
-                </div>
+                <div id = 'messengers-wrap'></div>
             </div>
         {/* <!-- /. calendar --> */}
             <div id = "calendar-add-popup">

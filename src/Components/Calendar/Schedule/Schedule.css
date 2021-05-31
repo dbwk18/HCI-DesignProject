@@ -1,9 +1,17 @@
 /* handle exceptional cases */
 .schedule {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-#schedule0526 {
-  left: 42.9%;
-  top: 750px;
+
+.schedule-button {
+  background-color: transparent;
+  border: none;
+  color: gray;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  margin-right: 5%;
 }

@@ -44,87 +44,127 @@ const category_map = {
     '5': 'none'
 }
 
-const initial_schedule_task1 = [
+const initial_schedule = [
     {
-        start_month: '4',
-        start_date: '21',
-        id: 'schedule0426',
-        class: 'length-4',
         title: 'Child Spring Camp',
-        category: 2
+        category: 2,
+        start: '2021/04/21/',
+        end: '2021/04/24/',
+        desc: 'child spring camp',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '4',
-        start_date: '12',
-        id: 'schedule0412',
-        class: 'length-2',
         title: 'Meeting A',
-        category: 1
+        category: 1,
+        start: '2021/04/12/',
+        end: '2021/04/13/',
+        desc: 'child spring camp',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '4',
-        start_date: '5',
-        id: 'schedule0412',
-        class: 'length-3',
         title: 'Going to Yang Yang',
-        category: 2
+        category: 2,
+        start: '2021/04/05/',
+        end: '2021/04/07/',
+        desc: 'going to yang yang',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '4',
-        start_date: '1',
-        id: 'schedule0401',
-        class: 'length-2',
         title: 'Visiting parents-in-law',
-        category: 2
+        category: 2,
+        start: '2021/04/01/',
+        end: '2021/04/02/',
+        desc: 'visiting parents-in-law',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '4',
-        start_date: '8',
-        id: 'schedule0413',
         title: 'Presentation',
-        category: 1
+        category: 1,
+        start: '2021/04/08/13:00',
+        end: '',
+        desc: 'presentation',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '5',
-        start_date: '3',
-        id: 'schedule0503',
         title: 'Meeting A',
-        category: 1
+        category: 1,
+        start: '2021/05/03/13:00',
+        end: '',
+        desc: 'meeting A',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '5',
-        start_date: '7',
-        id: 'schedule0507',
-        title: 'Going out to eat!',
-        category: 2
+        title: 'Going out to eat',
+        category: 2,
+        start: '2021/05/07/20:00',
+        end: '',
+        desc: 'going to yang yang',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '5',
-        start_date: '8',
-        id: 'schedule0508',
-        title: 'Go to museum',
-        category: 2
+        title: 'Going to museum',
+        category: 2,
+        start: '2021/05/08/17:00',
+        end: '',
+        desc: 'going to museum',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '5',
-        start_date: '20',
-        id: 'schedule0520',
         title: 'School Sports Day',
-        category: 2
+        category: 2,
+        start: '2021/05/20/',
+        end: '2021/05/20/',
+        desc: 'school sports day',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '5',
-        start_date: '22',
-        id: 'schedule0522',
         title: 'Spring-clean',
-        category: 2
+        category: 2,
+        start: '2021/05/22/13:00',
+        end: '',
+        desc: 'clean-up house!',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     },
     {
-        start_month: '5',
-        start_date: '26',
-        id: 'schedule0526',
-        title: 'Parent Participation Day',
-        category: 2
+        title: 'Parent participation day',
+        category: 2,
+        start: '2021/05/26/13:00',
+        end: '',
+        desc: 'parent participation day',
+        memo: '',
+        sat: 0,
+        owner: '',
+        pinned: false
     }
     
 ]
@@ -229,4 +269,4 @@ const initial_schedule_task3 = [
 ]
 
 
-export {day_info, month_info, color_map, category_map, initial_schedule_task1, initial_schedule_task3} 
+export {day_info, month_info, color_map, category_map, initial_schedule, initial_schedule_task3} 
