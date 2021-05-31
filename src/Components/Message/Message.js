@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {db, firebaseApp} from '../../firebase'
 import * as calendar_info from '../Calendar/calendar_infomation'
 import './Messenger.css'
 
@@ -22,6 +23,19 @@ function Message (props) {
     }
 
     const close_messagebox = () => {
+        document.getElementById(props.id + '-message').style.display = 'none' 
+    }
+
+    const update_schedule = () => {
+        db.collection('schedules').doc(props.id).update({
+            "title": document.getElementById(props.id + '-title').value,
+            "category": document.getElementById(props.id + '-category').value,
+            "start": document.getElementById(props.id + '-start').value,
+            "end": document.getElementById(props.id + '-end').value,
+            "desc": document.getElementById(props.id + '-desc').value,
+            "owner": document.getElementById(props.id + '-owner').value,
+            "message": (owner === 'partner' ? document.getElementById(props.id + '-messageContext').value : ''),
+        })
         document.getElementById(props.id + '-message').style.display = 'none'
     }
 
@@ -84,7 +98,10 @@ function Message (props) {
                     <>
                     <div className = 'message-body-wrap-textarea'>
                         <label className = 'message-body-subject message-body-stretch'>Message</label>
-                        <textarea className = 'message-body-textarea' type = 'text'></textarea>
+                        <textarea 
+                            className = 'message-body-textarea'
+                            type = 'text'
+                            id = {props.id + '-messageContext'}></textarea>
                     </div>
                     </>
                     :
@@ -105,11 +122,12 @@ function Message (props) {
                     <textarea
                         className = 'message-body-textarea'
                         type = 'text'
+                        id = {props.id + '-desc'}
                         defaultValue = {props.data.desc}></textarea>
                 </div>
             </div>
             <div className = 'message-submit-wrap'>
-                <button className = 'message-submit' id = {props.id + '-message-submit'}>Submit</button>
+                <button className = 'message-submit' id = {props.id + '-message-submit'} onClick = {evt => update_schedule()}>Submit</button>
             </div>
         </div>
     )

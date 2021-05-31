@@ -7,6 +7,10 @@ import Message from '../Message/Message'
 import img_good from '../../Icons/smile.png';
 import img_hmm from '../../Icons/hmm.png';
 import img_bad from '../../Icons/bad.png';
+import img_you from '../../Icons/img_you.png';
+import img_sent from '../../Icons/img_sent.png';
+import img_sending from '../../Icons/img_sending.png';
+
 
 function Schedule(props) {
     // props.data: 일정의 모든 정보를 담은 오브젝트
@@ -71,6 +75,7 @@ function Schedule(props) {
             key = {props.id + '-schedules'} 
             id = {props.id}
             className = {'schedule-wrap'}
+            title = {props.data.desc}
             onMouseEnter = {evt => show_button(evt)}
             onMouseLeave = {evt => hide_button(evt)}>
 
@@ -102,7 +107,21 @@ function Schedule(props) {
                                 <></>
                             }
                             {
-                                isLast ? <div key = {props.id + '-button'} className = 'schedule-button' id = {props.id + '-button'} onClick = {evt => show_message()}>+</div> : <></>
+                                isLast
+                                ?
+                                <div key = {props.id + '-button'} className = 'schedule-button' id = {props.id + '-button'} onClick = {evt => show_message()}>
+                                    {
+                                        props.data.owner === '' ? '+'
+                                        :
+                                        <img
+                                            width = '25' height = '25'
+                                            src = {props.data.owner === 'me' ? img_you : img_sending}
+                                            alt = {props.data.owner === 'me' ? 'you' : 'sending'}
+                                            />
+                                    }
+                                </div>
+                                :
+                                <></>
                             }
                         </div>
                         
