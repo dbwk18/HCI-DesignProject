@@ -36,6 +36,10 @@ function Schedule(props) {
 
     const show_button = (evt) => {
         document.getElementById(props.id + '-button').style.display = 'inline'
+        var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
+        if (target !== null) {
+            target.style.display = 'block'
+        }
 
     }
 
@@ -43,12 +47,29 @@ function Schedule(props) {
         if (props.data.owner === ''){
             document.getElementById(props.id + '-button').style.display = 'none'
         }
+        var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
+        if (target !== null) {
+            target.style.display = 'none'
+        }
     }
 
     const show_message = (evt) => {
         document.getElementById(props.id + '-message').style.display = 'block'
     }
 
+    // const show_icon = (evt) => {
+    //     var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
+    //     if (target !== null) {
+    //         target.style.display = 'none'
+    //     }
+    // }
+
+    // const hide_icon = (evt) => {
+    //     var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
+    //     if (target !== null) {
+    //         target.style.display = 'block'
+    //     }
+    // }
 
     // const show_selection_box = () => {
 
@@ -76,7 +97,7 @@ function Schedule(props) {
             key = {props.id + '-schedules'} 
             id = {props.id}
             className = {'schedule-wrap'}
-            title = {props.data.desc}
+            title = {"Description: " + props.data.desc + '\n' + "Memo : " + props.data.memo + '\n\n\n'}
             onMouseEnter = {evt => show_button(evt)}
             onMouseLeave = {evt => hide_button(evt)}>
 
@@ -93,7 +114,7 @@ function Schedule(props) {
                         <div
                             key = {props.id + '-' + i}
                             id = {props.id + '-'+ i}
-                            className = {'schedule row' + calendar_row + ' col' + calendar_col + ' ' + category_map[props.data.category] + (isFirstLast ? ' schedule-firstlast' : (isLast ? ' schedule-last' : ' schedule-normal'))}
+                            className = {'schedule row' + calendar_row + '-' + props.data.loc+ ' col' + calendar_col + ' ' + category_map[props.data.category] + (isFirstLast ? ' schedule-firstlast' : (isLast ? ' schedule-last' : ' schedule-normal'))}
                             onDoubleClick = {evt => add_feedback(evt)}
                             >
                             {
@@ -137,8 +158,10 @@ function Schedule(props) {
           <>
           <img
               className = {'feedback-icon icon-oncalendar icon-feedback icon-row' + parseInt(calendar_location_end / 7) + ' icon-col' + (calendar_location_end % 7)}
+              id = {props.id + '-feedback-icon-oncalendar'}
               src = {props.data.sat === 1 ? img_good : (props.data.sat === 2 ? img_hmm : img_bad)}
               alt = 'feedback'
+              style = {{display : 'none'}}
               title = {props.data.memo}
               />
           </>
@@ -147,7 +170,7 @@ function Schedule(props) {
           </>
         }
         
-        <Feedback key = {props.id + '-feedback'} id = {props.id} row = {calendar_row} col = {calendar_col}/>
+        <Feedback key = {props.id + '-feedback'} id = {props.id} row = {calendar_row} col = {calendar_col} data = {props.data}/>
         <Message key = {props.id + '-messageadd'} id = {props.id} row = {parseInt(calendar_location_end / 7)} col = {(calendar_location_end) % 7} data = {props.data}/>
 
         </>

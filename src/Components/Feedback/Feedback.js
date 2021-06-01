@@ -60,7 +60,7 @@ function Feedback (props) {
     // console.log('changed')
     // console.log('(Feedback) Current active element: ', document.activeElement.id)
     return (
-        <div className = {'feedback feedback-row' + props.row + ' feedback-col' + props.col} id = {props.id + '-feedback'}>
+        <div className = {'feedback feedback-row' + props.row + '-' + props.data.loc + ' feedback-col' + props.col} id = {props.id + '-feedback'}>
             <div className = 'feedback-header-wrap'>
                 <img className = 'feedback-icon icon-feedback' src = {img_feedback} width = '16' height = '16' alt = 'feedback'/>
                 <p className = 'feedback-text'>How did it go?</p>

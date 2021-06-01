@@ -11,25 +11,75 @@ function Calendar(props){
 
     const day_info = calendar_info.day_info
     const month_info = calendar_info.month_info
-    const category_map = calendar_info.category_map
 
-    const [month, setMonth] = useState(6);
+    const [month, setMonth] = useState(5);
 
     // 0 : none, 1 : work, 2 : family, 3 : private, 4 : other
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
     const [schedules, setSchedules] = useState([])
-    const saved_schedule = []
 
     useEffect(() => {
+        console.log('in useEffect~~~~~~~~~~~~~~~~~~~~')
+        var day_schedule_occupied = {}
+        var temp_start = ''
+        var temp_end = ''
+        var temp_date = ''
+        var i = 0
+        var j = 0
+        var empty = true
         const schedules_ref = db.collection('schedules');
         schedules_ref.onSnapshot((snapshot) => {
-            const data = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
+            console.log('onSnapshot********************', snapshot.docs)
+            day_schedule_occupied = {}
+            var data = snapshot.docs.map((doc) => {
+                temp_start = doc.data().start.split('/')
+                temp_end = doc.data().end.split('/')
+                
+                console.log('asdlkjadsflkjasdfjasdflkjsdaflkjsdafkjasdflkjsfdalk;j', doc.data().duration, temp_start, temp_end)
+                for(i = 1; i < 10; i++) {
+                    empty = true
+                    for (j = 0; j < doc.data().duration; j++){
+                        temp_date = temp_start[1] + (parseInt(temp_start[2]) + j < 10 ? '0' + (parseInt(temp_start[2]) + j) : parseInt(temp_start[2]) + j) + i
+                        console.log(temp_date, day_schedule_occupied[temp_date])
+                        if (day_schedule_occupied[temp_date] !== undefined) {
+                            empty = false
+                            break
+                        } else {
+                            
+                        }
+                    }
+                    if (empty) {
+                        for (j = 0; j < doc.data().duration; j++){
+                            temp_date = temp_start[1] + (parseInt(temp_start[2]) + j < 10 ? '0' + (parseInt(temp_start[2]) + j) : parseInt(temp_start[2]) + j) + i
+                            day_schedule_occupied[temp_date] = true
+                        }
+                        break
+                    }
+                }
+
+                // for(i = 0; i <= doc.date.duration; i++) {
+                //     temp_date = temp_start[1] + (parseInt(temp_start[2]) + i < 10 ? '0' + (parseInt(temp_start[2]) + i) : parseInt(temp_start[2]) + i)
+                //     if (day_schedule_occupied[temp_date] === undefined) {
+                //         day_schedule_occupied[temp_date] = 1
+                //     }
+                //     else {
+                //         day_schedule_occupied[temp_date] += 1
+                //     }
+                //     console.log('check : ', temp_date, day_schedule_occupied[temp_date], max_cnt)
+                //     if (max_cnt < day_schedule_occupied[temp_date]) {
+                //         max_cnt = day_schedule_occupied[temp_date]
+                //     }
+                // }
+                return {
+                    id : doc.id,
+                    loc: i,
+                    ...doc.data()
+                }
+            });
             setSchedules(data);
         })
+        console.log('end of useEffect~~~~~~~~~~~~~~~~~')
     }, [])
 
     useEffect(() => {
@@ -111,7 +161,7 @@ function Calendar(props){
     }
 
     const create_new_schedule = () => {
-        console.log('~~~~~~~~~~create_new_schedule~~~~~~~~~~~~~~~~~')
+        // console.log('~~~~~~~~~~create_new_schedule~~~~~~~~~~~~~~~~~')
         var title = document.getElementById('popup-title').value
         var desc = document.getElementById('popup-description').value
         var start_time = document.getElementById('popup-time-start').value
@@ -145,11 +195,12 @@ function Calendar(props){
             category: category,
             start: start_date[0] + '/' + start_date[1] + '/' + start_date[2] + '/' + (no_start_time ? '' : start_time),
             end: (no_end_date ? '' : end_date[0] + '/' + end_date[1] + '/' + end_date[2] + '/' + (no_end_time ? '' : end_time)),
-            descs: desc,
+            desc: desc,
             memo: '',
             sat: 0,
             owner: '',
-            pinned: false
+            pinned: false,
+            duration: (no_end_date ? 1 : parseInt(end_date[2]) - parseInt(start_date[2])) 
         }
 
         let new_schedules = [...schedules]
@@ -162,7 +213,7 @@ function Calendar(props){
     // console.log('current month: ', month)
 
     // console.log('(Calendar) Current active element: ', document.activeElement.id)
-    console.log('!!!!!!!!!!!!!!!!!!! reload !!!!!!!!!!!!!!!!!!!!!')
+    // console.log('!!!!!!!!!!!!!!!!!!! reload !!!!!!!!!!!!!!!!!!!!!')
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
@@ -352,7 +403,7 @@ function Calendar(props){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
-                            console.log('===', s.id)
+                            console.log('===', s)
                             var start = s.start.split('/')
                             var start_month = parseInt(start[1])
 

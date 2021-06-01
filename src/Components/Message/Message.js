@@ -13,7 +13,7 @@ function Message (props) {
 
     console.log('-----------message------------')
 
-    console.log(props.id, 'message', props.data)
+    // console.log(props.id, 'message', props.data)
 
     const category_map = calendar_info.category_map
     const [owner, setOwner] = useState('');
@@ -27,14 +27,20 @@ function Message (props) {
     }
 
     const update_schedule = () => {
+        var start= document.getElementById(props.id + '-start').value
+        var end = document.getElementById(props.id + '-end').value
+        var duration = end === '' ? 1 : parseInt(end.split('/')[2]) - parseInt(start.split('/')[2]) + 1
+
         db.collection('schedules').doc(props.id).update({
             "title": document.getElementById(props.id + '-title').value,
             "category": parseInt(document.getElementById(props.id + '-category').value),
             "start": document.getElementById(props.id + '-start').value,
             "end": document.getElementById(props.id + '-end').value,
             "desc": document.getElementById(props.id + '-desc').value,
-            "owner": document.getElementById(props.id + '-owner').value,
+            "owner": (props.data.category === 2 ? document.getElementById(props.id + '-owner').value : ''),
             "message": (owner === 'partner' ? document.getElementById(props.id + '-messageContext').value : ''),
+            "duration": duration
+            
         })
         document.getElementById(props.id + '-message').style.display = 'none'
     }
@@ -42,7 +48,7 @@ function Message (props) {
     console.log(props.id, props.data.owner, typeof(props.data.owner))
 
     return(
-        <div className = {'message message-row' + props.row + ' message-col' + props.col} id = {props.id + '-message'}>
+        <div className = {'message message-row' + props.row + '-' + props.data.loc + ' message-col' + props.col} id = {props.id + '-message'}>
             <div className = 'message-header'>
                 <div className = 'message-header-text'>Set Schedule</div>
                 <div className = 'message-header-close' onClick = {evt => close_messagebox()}>&times;</div>
