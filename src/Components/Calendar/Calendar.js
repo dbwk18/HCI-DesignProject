@@ -13,7 +13,7 @@ function Calendar(props){
     const month_info = calendar_info.month_info
     const category_map = calendar_info.category_map
 
-    const [month, setMonth] = useState(5);
+    const [month, setMonth] = useState(6);
 
     // 0 : none, 1 : work, 2 : family, 3 : private, 4 : other
     const [category, setCategory] = useState(0);
@@ -145,7 +145,7 @@ function Calendar(props){
             category: category,
             start: start_date[0] + '/' + start_date[1] + '/' + start_date[2] + '/' + (no_start_time ? '' : start_time),
             end: (no_end_date ? '' : end_date[0] + '/' + end_date[1] + '/' + end_date[2] + '/' + (no_end_time ? '' : end_time)),
-            description: desc,
+            descs: desc,
             memo: '',
             sat: 0,
             owner: '',

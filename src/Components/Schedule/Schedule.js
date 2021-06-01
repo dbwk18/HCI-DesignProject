@@ -40,8 +40,9 @@ function Schedule(props) {
     }
 
     const hide_button = (evt) => {
-        document.getElementById(props.id + '-button').style.display = 'none'
-        
+        if (props.data.owner === ''){
+            document.getElementById(props.id + '-button').style.display = 'none'
+        }
     }
 
     const show_message = (evt) => {
@@ -68,7 +69,7 @@ function Schedule(props) {
     var calendar_row = parseInt(calendar_location_start / 7)
     var calendar_col = calendar_location_start % 7
     var title_len_limit = 15 + 20 * (schedule_days.length - 1)
-    console.log('--------------- schedule -------------------', calendar_location_start, calendar_location_end)
+    console.log('schedule.js', props.data.owner)
     return(
         <>
         <div
@@ -109,7 +110,7 @@ function Schedule(props) {
                             {
                                 isLast
                                 ?
-                                <div key = {props.id + '-button'} className = 'schedule-button' id = {props.id + '-button'} onClick = {evt => show_message()}>
+                                <div key = {props.id + '-button'} className = {props.data.owner === '' ? 'schedule-button' : 'schedule-icon'} id = {props.id + '-button'} onClick = {evt => show_message()} style = {{display: (props.data.owner === '' ? 'none' : 'inline')}}>
                                     {
                                         props.data.owner === '' ? '+'
                                         :
@@ -151,19 +152,6 @@ function Schedule(props) {
 
         </>
     )
-    {/* <div
-            id = {props.id}
-            className = {'schedule ' + 'row' + calendar_row + " col" + calendar_col + ' ' + props.category + ' ' + props.class}
-            onDoubleClick = {evt => add_feedback(evt)}
-            onMouseEnter = {evt => show_button(evt)}
-            onMouseLeave = {evt => hide_button(evt)}>
-            <div className = 'schedule-text'>
-                {
-                    props.title.length > title_len_limit ? props.title.slice(0, title_len_limit) + '...' : props.title
-                }
-            </div>
-            <div className = 'schedule-button' id = {props.id + '-button'} onClick = {evt => show_message()}>+</div>
-        </div> */}
 }
 
 export default Schedule

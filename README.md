@@ -1,33 +1,3 @@
-# Getting Started with Create React App
-
-  
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-  
-
-## Available Scripts
-
-  
-
-In the project directory, you can run:
-
-  
-
-### `yarn start`
-
-  
-
-Runs the app in the development mode.\
-
-Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
-
-  
-
-The page will reload if you make edits.\
-
-You will also see any lint errors in the console.
-
 
 ### File Structure ###
 
@@ -39,7 +9,12 @@ You will also see any lint errors in the console.
  : Here consists several pages that user actually view. There are 'Main Page' that user first sees when we access to the url, and 'Project Page' and 'Subtask Page' that user can see when clicks Project Manager button.
 - src/Routes.js
  : Here we define each path for pages, and implement page-routing for page navigation using 'react-router-dom'.
-  
+
+### Before Start ###
+
+- **You cannot add more than one schedule for each day**. For example, You cannot add two schedules where one is from 5/16 to 5/19, and another one is from 5/18 to 5/20 because 5/18 and 5/19 are overlapped. If you add such schedules, two schedules will be overlapped. We couldn't fix this because of complexity of task and design issue. Since we place feedback icon on the right top of the schedule, we cannot stack two schedules in one day(if then, feedback icon of one schedule will be placed on other schedule). We will discuss about it and fix it.
+- **You cannot add a schedule that starting month and ending month are different**. For example, you cannot add a schedule that starts at 5/30 and ends at 6/2 because and 5 and 6 are different. Since our design is discrete(Not continuously connected between months), it is hard to leave feedback, or set schedule in such cases. 
+
 
 ### 2021/05/21 업데이트
 
@@ -122,5 +97,3 @@ You will also see any lint errors in the console.
 2. **문제점 & 고칠 것**
 - 월이 달라지는 일정(예를 들어 5/30~6/5)은 표시가 불가능
 - 한 날짜에는 일정이 2개 이상 존재할 수 없음. 존재하는 순간 겹쳐서 어느 하나가 가려짐
-- 각 일정이 색칠되는 영역을 잠시 네모로 바꿔놓음. 두 일정이 붙어있으면 구분이 잘 안가므로 수정하기
-- 원래 set schedule로 통하는 '+' 버튼은 일정에 마우스를 올려놓아야만 보이는데, 만약 메세지를 보내거나 받아서 알림이 와있는 상태면은 항상 보이게끔 수정

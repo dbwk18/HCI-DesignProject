@@ -29,7 +29,7 @@ function Message (props) {
     const update_schedule = () => {
         db.collection('schedules').doc(props.id).update({
             "title": document.getElementById(props.id + '-title').value,
-            "category": document.getElementById(props.id + '-category').value,
+            "category": parseInt(document.getElementById(props.id + '-category').value),
             "start": document.getElementById(props.id + '-start').value,
             "end": document.getElementById(props.id + '-end').value,
             "desc": document.getElementById(props.id + '-desc').value,
@@ -38,6 +38,8 @@ function Message (props) {
         })
         document.getElementById(props.id + '-message').style.display = 'none'
     }
+
+    console.log(props.id, props.data.owner, typeof(props.data.owner))
 
     return(
         <div className = {'message message-row' + props.row + ' message-col' + props.col} id = {props.id + '-message'}>
@@ -84,14 +86,28 @@ function Message (props) {
                         type = 'text'
                         placeholder = {props.id + ''}></input>
                 </div> */}
-                <div className = 'message-body-wrap'>
+                {
+                    props.data.category === 2
+                    ?
+                    <div className = 'message-body-wrap'>
+                        <label className = 'message-body-subject'>Who</label>
+                        <select className = 'message-body-input' id = {props.id + '-owner'} onChange = {evt => change_owner(evt)} defaultValue = {props.data.owner}>
+                            <option value = ''>Not selected</option>
+                            <option value = 'me'>Me</option>
+                            <option value = 'partner'>MinSeok Yoo(Partner)</option>
+                        </select>
+                    </div>
+                    :
+                    <></>
+                }
+                {/* <div className = 'message-body-wrap'>
                     <label className = 'message-body-subject'>Who</label>
                     <select className = 'message-body-input' id = {props.id + '-owner'} onChange = {evt => change_owner(evt)} defaultValue = {props.data.owner}>
                         <option value = ''>Not selected</option>
                         <option value = 'me'>Me</option>
                         <option value = 'partner'>MinSeok Yoo(Partner)</option>
                     </select>
-                </div>
+                </div> */}
                 {
                     (owner === 'partner')
                     ?

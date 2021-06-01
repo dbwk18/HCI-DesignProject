@@ -15,3 +15,9 @@
   display: none;
   margin-right: 5%;
 }
+
+.schedule-icon {
+  border: none;
+  cursor: pointer;
+  margin-right: 5%;
+}
