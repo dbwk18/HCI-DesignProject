@@ -3,7 +3,9 @@ import ReactDOM from 'react';
 import './Timeline.css'
 import './Projectmenu/Projectmenu.css'
 import Boxes from './Projectmenu/Boxes';
-
+import Card from './Projectmenu/Card/Card';
+import Board from './Projectmenu/Board/Board';
+import { Projectmenu, flexbox } from './Projectmenu/Projectmenu';
 import { Link } from 'react-router-dom';
 
 
@@ -16,11 +18,11 @@ function Timeline(){
         console.log(event.target.innerText);
         setprname(event.target.innerText);
 
-        var inputbox = document.createElement("div");
+        var inputbox = document.createElement("Board");
         inputbox.innerText= event.target.innerText;
         var position = document.getElementById('priorityMenu');
         position.appendChild(inputbox);
-
+        document.getElementsByClassName({flexbox}).appendChild(inputbox);
         var priorityClass = event.target.getAttribute('class');
         inputbox.style.fontSize = 24+"px"
         inputbox.style.textAlign = "center"
@@ -37,18 +39,14 @@ function Timeline(){
 
     return(
         <div>
-            <div className='projectmenuContainer'>
-                <div className = 'projectMenuHeader'>
-                    <p className = 'projectHeaderText'>This week's <b>Priorities</b></p>
-                </div>
-            
-                <div className='priorityMenu' id='priorityMenu'>
-                    
-                </div>
-            
-
-        </div>
-
+            <div className = 'projectmenuContainer'>
+                <Projectmenu />
+                <Board className = 'board'>
+                    <div className='priorityMenu' id='priorityMenu'>
+                        
+                    </div>
+                </Board>
+            </div>
             <div className="timelineContainer">
                 <ul class="days">
                     <li class="day">
