@@ -23,11 +23,11 @@
   background-color: white;
 }
 
-.doneprojectBtn {
+/* .doneprojectBtn {
   position: fixed;
   margin-left: 120px;
-  /* display: flex; */
+  display: flex; 
   margin-top: 140px;
-  /* align-items: flex-end; */
+  align-items: flex-end; 
   justify-content: center;
-}
+} */

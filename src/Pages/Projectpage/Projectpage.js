@@ -17,7 +17,7 @@ function Projectpage() {
             <div className = 'mainContainer'>
                 <div className='projectmenuContainer'>
                     <Projectmenu />
-                    <button className = 'doneprojectBtn'>Done Projects</button>
+                    {/* <button className = 'doneprojectBtn'>Done Projects</button> */}
                     
                 </div>
                 <div className='timelineContainer'>
