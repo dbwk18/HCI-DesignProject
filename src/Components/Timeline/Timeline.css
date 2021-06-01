@@ -1,27 +1,58 @@
-.timeline {
-  overflow-x: scroll;
-  width: 100%;
-  /* height: 200%; */
-  white-space: nowrap;
-  padding-bottom: 180px;
+.projectmenuContainer {
+  float: left;
+  width: 23%;
+  /* border-bottom: 1px solid lightgray; */
 }
 
-.timeline ul {
+.timelineContainer {
+  position: relative;
+  /* top: -20px; */
+  float: left;
+  width: 77%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 740px;
+  white-space: nowrap;
+}
+
+.dayweek {
+  margin-top: 20px;
+}
+
+.date {
+  margin-top: 10px;
+}
+
+.today {
+  position: relative;
+  /* padding: 12px; */
+  border-radius: 50px;
+  /* opacity: 65%; */
+  width: 60px;
+  height: 60px;
+  left: 47px;
+  top: -54px;
+  border: 3px solid palevioletred;
+}
+
+.timelineContainer ul {
   margin: 0px;
-  /* padding-top: 0px; */
   /* padding-bottom: 10px; */
   padding-left: 5px;
   list-style: none;
+  top: -20px;
   /* border-bottom: 1px solid lightgray; */
   /* margin-bottom: 10px; */
 }
 
-.timeline li {
-  width: 50px;
+.timelineContainer li {
+  width: 160px;
+  border-left: 1.5px solid rgba(0, 0, 0, 0.795);
   display: inline-block;
   padding-top: 0px;
   padding-bottom: 10px;
   text-align: center;
+  height: 740px;
   /* padding-left: 20px; */
   /* padding-right: 20px; */
 }
@@ -32,14 +63,155 @@
   text-align: center;
 }
 
-#today {
-  background-color: palevioletred;
-  padding: 12px;
-  border-radius: 15px;
-  opacity: 70%;
+.familyschedule {
+  position: relative;
+  width: 150px;
+  background-color: #c8f7f4;
+  border-radius: 10px;
+  height: 40px;
+  line-height: 40px;
+  left: 5px;
+  text-align: center;
 }
 
-#project1_1 {
+.workschedule {
+  position: relative;
+  width: 150px;
+  background-color: #fffdc6;
+  border-radius: 10px;
+  height: 40px;
+  line-height: 40px;
+  left: 5px;
+  top: 30px;
+  text-align: center;
+}
+
+.privateschedule {
+  position: relative;
+  width: 150px;
+  background-color: #ffdcfb;
+  border-radius: 10px;
+  height: 40px;
+  line-height: 40px;
+  left: 5px;
+  text-align: center;
+}
+
+#sch1 {
+  position: relative;
+  top: -330px;
+  left: 10px;
+}
+
+#sch2 {
+  position: relative;
+  left: 170px;
+  top: -690px;
+}
+
+#sch3 {
+  position: relative;
+  left: 170px;
+  top: -680px;
+}
+
+#sch4 {
+  position: relative;
+  left: 335px;
+  top: -450px;
+}
+
+#sch5 {
+  position: relative;
+  left: 818px;
+  top: -570px;
+}
+
+#sch6 {
+  position: relative;
+  left: 980px;
+  top: -660px;
+}
+
+#sch7 {
+  position: relative;
+  left: 655px;
+  top: -570px;
+}
+
+#sch8 {
+  position: relative;
+  left: 1305px;
+  top: -930px;
+}
+
+#sch9 {
+  position: relative;
+  left: 818px;
+  top: -970px;
+}
+
+#sch10 {
+  position: relative;
+  left: 335px;
+  top: -820px;
+}
+
+#sch11 {
+  position: relative;
+  left: 655px;
+  top: -1050px;
+}
+
+#sch12 {
+  position: relative;
+  left: 818px;
+  top: -900px;
+}
+
+#sch13 {
+  position: relative;
+  left: 1625px;
+  top: -800px;
+}
+
+#sch14 {
+  position: relative;
+  left: 2110px;
+  top: -975px;
+}
+
+#sch15 {
+  position: relative;
+  left: 1625px;
+  top: -1210px;
+}
+
+#sch16 {
+  position: relative;
+  left: 1785px;
+  top: -1050px;
+}
+
+#sch17 {
+  position: relative;
+  left: 335px;
+  top: -1290px;
+}
+
+#sch18 {
+  position: relative;
+  left: 335px;
+  top: -1280px;
+}
+
+#sch19 {
+  position: relative;
+  left: 335px;
+  top: -1270px;
+}
+
+/* #project1_1 {
   position: relative;
   left: 50px;
   width: 300px;
@@ -131,4 +303,4 @@
   left: 1300px;
   width: 300px;
   background-color: #e5fff9;
-}
+} */
