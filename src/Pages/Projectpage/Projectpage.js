@@ -3,7 +3,7 @@ import './Projectpage.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Components/Header/Header'
-import Projectmenu from '../../Components/Timeline/Projectmenu/Projectmenu'
+// import Projectmenu from '../../Components/Timeline/Projectmenu/Projectmenu'
 import Timeline from '../../Components/Timeline/Timeline'
 
 function Projectpage() {
