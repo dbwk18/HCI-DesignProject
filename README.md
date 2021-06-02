@@ -1,7 +1,9 @@
 ### Introduction ###
+
 Hi, We're team Colics.
 We have designed a web app for those who **often have trouble remembering and managing both work and family schedules**, Especially **working mom and dad**. 
 So, you are going to experience managing your schedules in a single platform through our website.
+
 
 
 
@@ -35,13 +37,12 @@ So, you are going to experience managing your schedules in a single platform thr
 
 **Main page Calendar**
 - You can add your schedule w/ Categories (Work, Family, Private, Other)
-- You can add your schedule w/o end date, start time, end time. But you should fill start date. 
+- You can add your schedule w/o end date, start time, end time. But you should fill start date
 - You can see your detail schedule by hovering(description, memo, satisfaction icon)
 - You can leave feedbacks to your past schedule
-- You can modify schedule information(including start/end date, time, description, memo, ...).
+- You can modify schedule information(start/end date, time, description, memo, etc) by <+> button that appears when you hover on 
 - You can receive request from your parter
 - You can also send request to your partner
-- You can revise you schedule by + button that appears when you hover on
 
 **Priority Manager**
 - You can view your weekly schedules by Timeline
