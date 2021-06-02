@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/HCI-DesignProject/static/css/main.c2f95313.chunk.css",
-    "main.js": "/HCI-DesignProject/static/js/main.16d5f7d2.chunk.js",
-    "main.js.map": "/HCI-DesignProject/static/js/main.16d5f7d2.chunk.js.map",
+    "main.js": "/HCI-DesignProject/static/js/main.f4225d24.chunk.js",
+    "main.js.map": "/HCI-DesignProject/static/js/main.f4225d24.chunk.js.map",
     "runtime-main.js": "/HCI-DesignProject/static/js/runtime-main.b6adf825.js",
     "runtime-main.js.map": "/HCI-DesignProject/static/js/runtime-main.b6adf825.js.map",
     "static/css/2.0cfad52a.chunk.css": "/HCI-DesignProject/static/css/2.0cfad52a.chunk.css",
@@ -25,6 +25,6 @@
     "static/css/2.0cfad52a.chunk.css",
     "static/js/2.df00b523.chunk.js",
     "static/css/main.c2f95313.chunk.css",
-    "static/js/main.16d5f7d2.chunk.js"
+    "static/js/main.f4225d24.chunk.js"
   ]
 }
