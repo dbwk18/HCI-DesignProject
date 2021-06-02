@@ -4,6 +4,9 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
 import Mainpage_calendar from './Pages/Mainpage/Mainpage_calendar'
 import Mainpage_categorybox from './Pages/Mainpage/Mainpage_categorybox'
 import Mainpage_task3 from './Pages/Mainpage/Mainpage_task3'
@@ -15,6 +18,7 @@ class Routes extends React.Component {
 
     render() {
         return (
+            // <DndProvider backend={HTML5Backend}>
             <Router>
                 <Switch>
                     <Route exact path="/HCI-DesignProject" component={Mainpage_calendar}/>
@@ -26,6 +30,7 @@ class Routes extends React.Component {
                     <Route path="/Donetasks" component={Donetaskpage} />
                 </Switch>
             </Router>
+            // </DndProvider>
         )
     }
 }

@@ -3,11 +3,11 @@ import './Subtaskpage.css';
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Components/Header/Header'
-import Projectmenu from '../../Components/Projectmenu/Projectmenu'
+// import Projectmenu from '../../Components/Projectmenu/Projectmenu'
 import SubtaskBox from '../../Components/Subtask/Subtask'
 import SubModal from '../../Components/Subtask/SubModal';
 import SubtaskBoxes from '../../Components/SubtaskBoxes';
-import Boxes from '../../Components/Projectmenu/Boxes/index'
+// import Boxes from '../../Components/Projectmenu/Boxes/index'
 
 
 function Subtaskpage() {
@@ -57,7 +57,7 @@ function Subtaskpage() {
             </div>
             <div className = 'mainContainer'>
                 <div className='projectmenuContainer'>
-                    <Projectmenu />
+                    {/* <Projectmenu /> */}
                     <div className = 'projectmenu-category' id = 'project5'>Project B</div>
                     <button className = 'doneprojectBtn'>Done Projects</button>
                 </div>
