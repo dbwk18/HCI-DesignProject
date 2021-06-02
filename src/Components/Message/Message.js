@@ -131,7 +131,7 @@ function Message (props) {
                     <>
                     </>
                 }
-                <div className = 'message-body-wrap'>
+                <div className = 'message-body-wrap'> 
                     <label className = 'message-body-subject'>Category</label>
                     <select className = 'message-body-input' id = {props.id + '-category'} defaultValue = {props.data.category}>
                         <option value = '1'>Work</option>
