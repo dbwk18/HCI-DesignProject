@@ -3,7 +3,7 @@ import './Donetaskpage.css';
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../Components/Header/Header'
-import Projectmenu from '../../Components/Projectmenu/Projectmenu'
+// import Projectmenu from '../../Components/Projectmenu/Projectmenu'
 import SubtaskBox from '../../Components/Subtask/Subtask'
 import SubModal from '../../Components/Subtask/SubModal';
 import SubtaskBoxes from '../../Components/SubtaskBoxes';
@@ -52,7 +52,7 @@ function Donetaskpage() {
             </div>
             <div className = 'mainContainer'>
                 <div className='projectmenuContainer'>
-                    <Projectmenu />
+                    {/* <Projectmenu /> */}
                     <div className = 'projectmenu-category' id = 'project5'>Project B</div>
                 </div>
                 <div className='subtaskContainer'>
