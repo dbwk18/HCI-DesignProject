@@ -45,7 +45,7 @@ function Message (props) {
         document.getElementById(props.id + '-message').style.display = 'none'
     }
 
-    console.log(props.id, props.data.owner, typeof(props.data.owner))
+    console.log(props.id, props.data)
 
     return(
         <div className = {'message message-row' + props.row + '-' + props.data.loc + ' message-col' + props.col} id = {props.id + '-message'}>
@@ -115,7 +115,7 @@ function Message (props) {
                     </select>
                 </div> */}
                 {
-                    (owner === 'partner')
+                    (owner === 'partner' || (props.data.owner === 'me' && props.id === '5DVoYqXozfGAvTF2ezw2'))
                     ?
                     <>
                     <div className = 'message-body-wrap-textarea'>
@@ -123,7 +123,8 @@ function Message (props) {
                         <textarea 
                             className = 'message-body-textarea'
                             type = 'text'
-                            id = {props.id + '-messageContext'}></textarea>
+                            id = {props.id + '-messageContext'}
+                            placeholder = {props.data.message}></textarea>
                     </div>
                     </>
                     :

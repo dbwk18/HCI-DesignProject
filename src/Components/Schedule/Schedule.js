@@ -44,6 +44,9 @@ function Schedule(props) {
     }
 
     const hide_button = (evt) => {
+        // if (props.id === '5DVoYqXozfGAvTF2ezw2') {
+        //     return
+        // }
         if (props.data.owner === ''){
             document.getElementById(props.id + '-button').style.display = 'none'
         }
@@ -90,7 +93,7 @@ function Schedule(props) {
     var calendar_row = parseInt(calendar_location_start / 7)
     var calendar_col = calendar_location_start % 7
     var title_len_limit = 15 + 20 * (schedule_days.length - 1)
-    console.log('schedule.js', props.data.owner)
+    console.log('schedule.js', props.data)
     return(
         <>
         <div
@@ -131,13 +134,28 @@ function Schedule(props) {
                             {
                                 isLast
                                 ?
-                                <div key = {props.id + '-button'} className = {props.data.owner === '' ? 'schedule-button' : 'schedule-icon'} id = {props.id + '-button'} onClick = {evt => show_message()} style = {{display: (props.data.owner === '' ? 'none' : 'inline')}}>
+                                <div key = {props.id + '-button'} className = {(props.data.owner !== '' || props.id === '5DVoYqXozfGAvTF2ezw2')  ? 'schedule-icon' : 'schedule-button' } id = {props.id + '-button'} onClick = {evt => show_message()} style = {{display: (props.data.owner !== '' || props.id === '5DVoYqXozfGAvTF2ezw2'? 'inline' : 'none')}}>
                                     {
                                         props.data.owner === '' ? '+'
+                                        // ?
+                                        //     ((props.id === '5DVoYqXozfGAvTF2ezw2')
+                                        //     ?
+                                        //     <img
+                                        //     width = '25' height = '25'
+                                        //     src = {img_sent}
+                                        //     alt = {props.data.owner === 'me' ? 'you' : 'sending'}
+                                        //     />
+                                        //     :
+                                        //     '+'
+                                        //     )
+                                        // :
+                                        // (
+
+                                        // )
                                         :
                                         <img
                                             width = '25' height = '25'
-                                            src = {props.data.owner === 'me' ? img_you : img_sending}
+                                            src = {props.data.owner === 'me' ? (props.id === '5DVoYqXozfGAvTF2ezw2' ? img_sent : img_you) : img_sending}
                                             alt = {props.data.owner === 'me' ? 'you' : 'sending'}
                                             />
                                     }
