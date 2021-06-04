@@ -1,9 +1,12 @@
 import React, {useState, useEffect}  from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from "react-bootstrap";
+import { withStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import {useHistory} from "react-router";
 import './Menubar.css'
 import { Link } from 'react-router-dom';
-
 
 import img_work from '../../Icons/work.png';
 import img_family from '../../Icons/family.png';
@@ -113,19 +116,32 @@ function Menubar(props){
         }
     }
 
-
     console.log('menubar:', props.mode)
+
+    const checkBoxStyles = theme => ({
+        root: {
+          '&$checked': {
+            color: 'black',
+          },
+        },
+        checked: {},
+       })
+    
+    const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
     return(
         <div className = 'mainbox-sidemenu'>
-            <p className = 'mainbox-sidemenu-left-text'>View by Category:</p>
+            <p className = 'mainbox-sidemenu-left-text'>View Options:</p>
+            <div>
+                <CustomCheckbox id='custom'></CustomCheckbox>Work
+            </div>
             <div
                 className = 'sidemenu-category'
                 id = {'category-all-' + props.mode[0]}
                 style = {{backgroundColor: (props.mode[0] ? '#d2ffd1' : 'transparent')}}
                 onClick = {evt => click_category(evt)}
                 onMouseEnter = {evt => category_hover_in(evt)}
-                onMouseLeave = {evt => category_hover_out(evt)}>View all  </div>
+                onMouseLeave = {evt => category_hover_out(evt)}> All  </div>
             <div 
                 className = 'sidemenu-category'
                 id = {'category-work-' + props.mode[1]}
@@ -157,17 +173,19 @@ function Menubar(props){
                 <img className = 'sidemenu-category-img' src={img_private} width = "28"/>
             </div>
             <p className = 'sidemenu-left-border'></p>
-            <button id = 'category-project'>
-                <Link to='/Projects'>View Project Manager</Link>
-            </button>
-            <div className = 'category-help'>
+            <div id='category-project'>
+                <Link to='/Projects' className='default-link'>
+                    <Button class="btn btn-outline-warning">Open Project Manager</Button>
+                </Link>
+            </div>
+            {/* <div className = 'category-help'>
                 <div className = 'category-help-1'>
                     &bull; <span className = 'stress'>Mouseover</span> each schedule to see detail
                 </div>
                 <div className = 'category-help-2'>
                     &bull; <span className = 'stress'>DoubleClick</span> each schedule to add feeback
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

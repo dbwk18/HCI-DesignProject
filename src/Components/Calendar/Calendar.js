@@ -3,6 +3,7 @@ import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
 import {db, firebaseApp} from '../../firebase.js'
 import Schedule from '../Schedule/Schedule.js'
+import {Button} from "react-bootstrap";
 
 
 function Calendar(props){
@@ -214,13 +215,16 @@ function Calendar(props){
 
     // console.log('(Calendar) Current active element: ', document.activeElement.id)
     // console.log('!!!!!!!!!!!!!!!!!!! reload !!!!!!!!!!!!!!!!!!!!!')
+
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
-                <button id = 'calendar-add' onClick = {evt => {add_schedule(evt)}}>Add +</button>
+                <Button class="btn btn-danger" id = 'calendar-add' onClick = {evt => {add_schedule(evt)}}>Add +</Button>
                 <div id = 'calendar-changemonth'>
-                    <button id = 'calendar-nextmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
-                    <button id = 'calendar-prevmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
+                    {/* <button id = 'calendar-nextmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button> */}
+                    <Button class="btn btn-outline-secondary" id = 'calendar-nextmonth' onClick = {evt => {see_next_month(month)}}>&#62;</Button>
+                    <Button class="btn btn-outline-secondary" id = 'calendar-prevmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</Button>
+                    {/* <button id = 'calendar-prevmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button> */}
                 </div>
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
             </div>
