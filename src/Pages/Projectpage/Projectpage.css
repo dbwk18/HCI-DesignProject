@@ -13,10 +13,18 @@
   width: 77%;
 }
 
+#banner {
+  float: right;
+  position: relative;
+  top: -30px;
+  left: -30px;
+}
+
 #closeBtn {
   font-size: 25px;
   position: relative;
   top: -80px;
+  left: 280px;
   float: right;
   width: 100px;
   border-width: 0px;

@@ -1,6 +1,8 @@
 .projectmenuContainer {
   float: left;
-  width: 23%;
+  width: 21%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   /* border-bottom: 1px solid lightgray; */
 }
 
@@ -72,6 +74,7 @@
   line-height: 40px;
   left: 5px;
   text-align: center;
+  box-shadow: 1px 1px 5px 1px #dadce0;
 }
 
 .workschedule {
@@ -84,6 +87,7 @@
   left: 5px;
   top: 30px;
   text-align: center;
+  box-shadow: 1px 1px 5px 1px #dadce0;
 }
 
 .privateschedule {
@@ -95,6 +99,19 @@
   line-height: 40px;
   left: 5px;
   text-align: center;
+  box-shadow: 1px 1px 5px 1px #dadce0;
+}
+
+.workschedule:hover {
+  opacity: 0.7;
+}
+
+.familyschedule:hover {
+  opacity: 0.7;
+}
+
+.privateschedule:hover {
+  opacity: 0.7;
 }
 
 #sch1 {

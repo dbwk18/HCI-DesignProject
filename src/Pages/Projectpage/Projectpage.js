@@ -11,6 +11,7 @@ function Projectpage() {
         <div className='Container'>
             <div className = 'headerContainer'>
                 <Header />
+                <div id="banner"><i><b>Double-click</b> schedule to add in 'Priorities'</i></div>
                 <button id="closeBtn"><Link to='/HCI-DesignProject'>Close</Link></button>
                 {/* 메인 화면으로 돌아갈 수 있습니다 */}
             </div>
