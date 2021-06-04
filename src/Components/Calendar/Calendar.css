@@ -17,19 +17,26 @@ header {
 }
 
 #calendar-add {
-  font-size: 40px;
-  border: 2px solid gray;
+  font-size: 30px;
+  padding: 10px;
+  padding-left: 10px;
+  background-color: rgb(243, 243, 243);
+  border: none;
   float: left;
   border-radius: 10px;
+  cursor: pointer;
+  box-shadow: rgb(173, 173, 173) 0px 2px 5px;
+
 }
 
-#calendar-changemonth  button{
+#calendar-changemonth button{
   margin-top: 10px;
   font-size: 30px;
   border: 2px solid;
   float: right;
   margin-right: 10px;
   border: none;
+  cursor: pointer;
 }
 
 #calendar-add-plus {
@@ -103,7 +110,8 @@ header {
 #calendar .event-desc {
   color: #666;
   margin: 3px 0 7px 0;
-  text-decoration: none;  
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #calendar .other-month {
@@ -111,26 +119,367 @@ header {
   color: #666;
 }
 
-/* ============================
-        Mobile Responsiveness
-   ============================*/
-/* 
 
-@media(max-width: 768px) {
+#calendar-add-popup {
+  position: absolute;
+  top: 210px;
+  left: 340px;
+  width: 320px;
+  height: 570px;
+  background-color: white;
+  border: none;
+  box-shadow: rgb(173, 173, 173) 0px 3px 8px;
+  border-radius: 8px;
+  
+}
 
-  #calendar .weekdays, #calendar .other-month {
-    display: none;
-  }
+#popup-component {
+  padding-top: 20px;
+  margin: auto;
+  width: 300px;
+  height: 570px;
+} 
 
-  #calendar li {
-    height: auto !important;
-    border: 1px solid #ededed;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: -1px;
-  }
+#popup-header-wrap {
+  width: 270px;
+  margin: auto;
+  margin-bottom: 10px;
+}
 
-  #calendar .date {
-    float: none;
-  }
-} */
+#popup-header-text {
+  font-size: 30px;
+  color:rgb(66, 66, 66);
+}
+
+
+#popup-title {
+  
+  display: block;
+  margin: auto;
+  top: 20px;
+  width: 270px;
+  height: 40px;
+  cursor: text;
+  background-color:rgb(255, 255, 255); 
+  border-top:rgb(182, 182, 182);
+  border-left:rgb(182, 182, 182);
+  border-right:rgb(182, 182, 182);
+  border-color:rgb(133, 133, 133);
+  border-width: 2px;
+  /* border: none; */
+  /* border-radius: 5px; */
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+
+.popup-button {
+  color:rgb(66, 66, 66);
+  width: 60px;
+  height: 30px;
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#popup-button-close{
+  font-size: 30px;
+  color:rgb(95, 95, 95);
+  float: right;
+  left: 270px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  margin-top: -2px;
+  margin-bottom: 0px;
+  align-self: right;
+}
+
+#popup-button-work {
+  color:rgb(66, 66, 66);
+  margin-left: 10px;
+  margin-right: 14px;
+}
+
+#popup-button-work:hover {
+  background-color: #fffdc6;
+}
+
+#popup-button-family {
+  color:rgb(66, 66, 66);
+  margin-right: 14px;
+}
+
+#popup-button-family:hover {
+  background-color: #c8f7f4;
+}
+
+#popup-button-private {
+  color:rgb(66, 66, 66);
+  margin-right: 14px;
+}
+
+#popup-button-private:hover {
+  background-color: #ffdcfb;
+}
+
+#popup-button-other:hover{
+  background-color: lightgray;
+}
+
+#popup-date-wrap {
+  width: 270px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#popup-time-wrap {
+  margin-left: 10px
+}
+
+.popup-time {
+  width: 122px;
+
+}
+
+#popup-description {
+  font-family: Tahoma;
+  margin-left: 10px;
+  margin-top: 30px;
+  width: 270px;
+  height: 200px;
+  font-size: 15px;
+  border: none;
+  background-color:rgb(248, 248, 248);
+  margin-bottom: 30px;
+  box-shadow: rgb(173, 173, 173) 1px 1px 3px;
+}
+
+
+#popup-button-submit {
+  position: absolute;
+  left: 240px;
+  top: 520px;
+  color: white;
+  background-color: rgb(163, 163, 163);
+}
+
+#schedules-wrap {
+  position: relative;
+}
+#feedback-wrap {
+  position: relative;
+}
+#messengers-wrap {
+  position: relative;
+}
+
+.schedule {
+  position: absolute;
+  /* left: 345px;
+  top: 975px; */
+  background-color: lightgray;
+  height : 30px;
+  font-size: 17px;
+
+}
+
+.schedule-text {
+  margin-left: 5px;
+}
+
+.family {
+  background-color: #c8f7f4;
+}
+
+.work {
+  background-color: #fffdc6;
+}
+
+.private {
+  background-color: #ffdcfb;
+}
+
+.other {
+  background-color: lightgray;
+}
+.none {
+  background-color: green;
+  color: white;
+}
+
+
+.col0 {
+  left: 0%;
+}
+.col1 {
+  left: 14.2%;
+}
+.col2 {
+  left: 28.6%;
+}
+.col3 {
+  left: 42.9%;
+}
+.col4 {
+  left: 57.2%;
+}
+.col5 {
+  left: 71.5%;
+}
+.col6 {
+  left: 85.8%;
+}
+
+.row0 {
+  top: 50px;
+}
+.row1 {
+  top: 210px
+}
+.row2 {
+  top: 390px;
+}
+.row3 {
+  top: 570px;
+}
+.row4 {
+  top: 750px;
+}
+.row5 {
+  top: 930px;
+}
+
+.row0-1 {
+  top: 50px;
+}
+.row0-2 {
+  top: 80px;
+}
+.row0-3 {
+  top: 110px;
+}
+.row0-4 {
+  top: 140px;
+}
+.row0-5 {
+  top: 170px;
+}
+
+.row1-1 {
+  top: 210px
+}
+.row1-2 {
+  top: 240px
+}
+.row1-3 {
+  top: 270px
+}
+.row1-4 {
+  top: 300px
+}
+.row1-5 {
+  top: 330px
+}
+.row1-6 {
+  top: 360px
+}
+
+.row2-1 {
+  top: 390px;
+}
+.row2-2 {
+  top: 420px;
+}
+.row2-3 {
+  top: 450px;
+}
+.row2-4 {
+  top: 480px;
+}
+.row2-5 {
+  top: 510px;
+}
+.row2-6 {
+  top: 540px;
+}
+
+.row3-1 {
+  top: 570px;
+}
+.row3-2 {
+  top: 600px;
+}
+.row3-3 {
+  top: 630px;
+}
+.row3-4 {
+  top: 660px;
+}
+.row3-5 {
+  top: 690px;
+}
+.row3-6 {
+  top: 720px;
+}
+
+.row4-1 {
+  top: 750px;
+}
+.row4-2 {
+  top: 780px;
+}
+.row4-3 {
+  top: 810px;
+}
+.row4-4 {
+  top: 840px;
+}
+.row4-5 {
+  top: 870px;
+}
+.row4-6 {
+  top: 900px;
+}
+
+.row5-1 {
+  top: 930px;
+}
+.row5-2 {
+  top: 960px;
+}
+.row5-3 {
+  top: 990px;
+}
+.row5-4 {
+  top: 1020px;
+}
+.row5-5 {
+  top: 1050px;
+}
+.row5-6 {
+  top: 1080px;
+}
+
+.schedule-normal {
+  width: 14.4%;
+}
+.schedule-last {
+  width: 14.2%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: center;
+  border-radius: 0px  15px 15px 0px; 
+}
+.schedule-firstlast {
+  width: 14.3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0px 15px 15px 0px;
+}

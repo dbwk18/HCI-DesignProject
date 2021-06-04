@@ -1,0 +1,269 @@
+.message {
+  position: absolute;
+  width: 300px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: rgb(173, 173, 173) 1px 3px 3px;
+  display: none;
+  z-index: 1000;
+}
+
+.message-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  border-radius: 15px;
+  font-size: 40px;
+}
+
+.message-header-text {
+  background-color: transparent;
+  font-size: 30px;
+  margin-left: 5%;
+}
+
+.message-header-close {
+  background-color: transparent;
+  border: none;
+  font-weight: bolder;
+  font-size: 25px;
+  margin-right: 5%;
+  cursor: pointer;
+}
+
+.message-body {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: white;
+}
+
+.message-body-wrap {
+  display: flex;
+  flex-basis: 50px;
+}
+
+.message-body-subject {
+  margin-left: 5%;
+  flex-basis: 25%;
+  align-self: center;
+}
+
+.message-body-stretch {
+  align-self: stretch;
+}
+
+.message-body-input {
+  display: inline; 
+  width: 60%;
+  height: 20px;
+  align-self: center;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.message-body-time-wrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 60%;
+  height: 50px;
+  align-self: center;
+}
+
+.message-body-time-wrap-wrap {
+  display: flex;
+}
+
+.message-body-input-time {
+  width: 60%;
+  align-self: center;
+}
+
+.message-body-time-wrap-text {
+  flex-basis: 25%;
+  align-self: center;
+  font-size: 12px;
+}
+.message-body-wrap-textarea {
+  display: flex;
+
+}
+
+.message-body-textarea {
+  width: 60%;
+  height: 80px;
+  box-shadow: rgb(173, 173, 173) 1px 1px 3px;
+  resize: none;
+}
+
+.message-submit-wrap {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  width: 80%;
+  height: 30px;
+  margin: auto;
+}
+
+.message-submit {
+  float: right;
+  border: none;
+  height: 100%;
+
+}
+
+.message-row0 {
+  top: 80px;
+}
+.message-row1 {
+  top: 240px;
+}
+.message-row2 {
+  top: 420px;
+}
+.message-row3 {
+  top: 600px;
+}
+.message-row4 {
+  top: 780px;
+}
+.message-row5 {
+  top: 960px;
+}
+
+.message-row0-1 {
+  top: 80px;
+}
+.message-row0-2 {
+  top: 110px;
+}
+.message-row0-3 {
+  top: 140px;
+}
+.message-row0-4 {
+  top: 170px;
+}
+.message-row0-5 {
+  top: 200px;
+}
+
+.message-row1-1 {
+  top: 240px;
+}
+.message-row1-2 {
+  top: 270px;
+}
+.message-row1-3 {
+  top: 300px;
+}
+.message-row1-4 {
+  top: 330px;
+}
+.message-row1-5 {
+  top: 360px;
+}
+.message-row1-6 {
+  top: 390px;
+}
+
+.message-row2-1 {
+  top: 420px;
+}
+.message-row2-2 {
+  top: 450px;
+}
+.message-row2-3 {
+  top: 480px;
+}
+.message-row2-4 {
+  top: 510px;
+}
+.message-row2-5 {
+  top: 540px;
+}
+.message-row2-6 {
+  top: 570px;
+}
+
+.message-row3-1 {
+  top: 600px;
+}
+.message-row3-2 {
+  top: 630px;
+}
+.message-row3-3 {
+  top: 660px;
+}
+.message-row3-4 {
+  top: 690px;
+}
+.message-row3-5 {
+  top: 720px;
+}
+.message-row3-6 {
+  top: 750px;
+}
+
+.message-row4-1 {
+  top: 780px;
+}
+.message-row4-2 {
+  top: 810px;
+}
+.message-row4-3 {
+  top: 840px;
+}
+.message-row4-4 {
+  top: 870px;
+}
+.message-row4-5 {
+  top: 900px;
+}
+.message-row4-6 {
+  top: 930px;
+}
+
+.message-row5-1 {
+  top: 960px;
+}
+.message-row5-2 {
+  top: 990px;
+}
+.message-row5-3 {
+  top: 1020px;
+}
+.message-row5-4 {
+  top: 1050px;
+}
+.message-row5-5 {
+  top: 1080px;
+}
+.message-row5-6 {
+  top: 1110px;
+}
+
+
+.message-col0 {
+  left: 0%;
+}
+.message-col1 {
+  left: 4.7%;
+}
+.message-col2 {
+  left: 19.1%;
+}
+.message-col3 {
+  left: 33.4%;
+}
+.message-col4 {
+  left: 47.7%;
+}
+.message-col5 {
+  left: 62.0%;
+}
+.message-col6 {
+  left: 76.3%;
+}
+

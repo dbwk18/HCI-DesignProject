@@ -1,0 +1,13 @@
+.projectmenu-category {
+  text-align: center;
+  margin: 0px;
+  /* width: 300px; */
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  background-color: #dbfed6;
+}
+
+#project {
+  background-color: #dbfed6;
+}

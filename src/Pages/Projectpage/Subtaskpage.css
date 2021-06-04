@@ -13,13 +13,13 @@
   width: 77%;
 }
 
-button {
+/* button {
   float: right;
   margin-right: 20px;
   height: 40px;
   font-size: 18px;
   border-radius: 10px;
-}
+} */
 
 .subtaskHeader {
   margin-left: 40px;
@@ -43,4 +43,17 @@ button {
   width: 100px;
   border-width: 0px;
   background-color: white;
+}
+
+.doneprojectBtn {
+  position: fixed;
+  margin-left: 120px;
+  margin-top: 140px;
+  justify-content: center;
+}
+
+#project5 {
+  position: relative;
+  background-color: #dbfed6;
+  bottom: 88px;
 }

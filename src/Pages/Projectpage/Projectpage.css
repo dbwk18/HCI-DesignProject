@@ -1,6 +1,6 @@
-.headerContainer {
+/* .headerContainer {
   border-bottom: 1px solid lightgray;
-}
+} */
 
 .projectmenuContainer {
   float: left;
@@ -21,4 +21,13 @@
   width: 100px;
   border-width: 0px;
   background-color: white;
+}
+
+.doneprojectBtn {
+  position: fixed;
+  margin-left: 120px;
+  /* display: flex; */
+  margin-top: 140px;
+  /* align-items: flex-end; */
+  justify-content: center;
 }

@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+### Introduction ###
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi, We're team Colics.
+We have designed a web app for those who **often have trouble remembering and managing both work and family schedules**, Especially **working mom and dad**. 
+So, you are going to experience managing your schedules in a single platform through our website.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### File Structure ###
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- src/Components 
+  : Here contains codes for reusable Components used in Colics Service. There are Components such as Calendar, Header, Menubar, Timeline, Subtask etc. We imported these components to compose each pages. Every components is made with .js and .css file. 
+- src/Icons
+ : This file contains icon images that we used in designing UI. 
+- src/Pages
+ : Here consists several pages that user actually view. There are 'Main Page' that user first sees when we access to the url, and 'Project Page' and 'Subtask Page' that user can see when clicks Project Manager button.
+- src/Routes.js
+ : Here we define each path for pages, and implement page-routing for page navigation using 'react-router-dom'.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Updated after DP4 ###
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**View Project Manager**
+- We changed this part to **Priority Manager**!!
+- Priority Manager helps user to choose their priority works from massive schedules.
+- Users can remeber important schedules more simply, and easily remember what was important things to do this week.
+- Since we target working moms & dads who have various type of schedules and their goal is to manage schedule without forgetting, 
+  we tried to help them more conveniently.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Key Function ###
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Main page Calendar**
+- You can add your schedule w/ Categories (Work, Family, Private, Other)
+- You can add your schedule w/o end date, start time, end time. But you should fill start date
+- You can see your detail schedule by hovering(description, memo, satisfaction icon)
+- You can leave feedbacks to your past schedule
+- You can modify schedule information(start/end date, time, description, memo, etc) by <+> button that appears when you hover on 
+- You can receive request from your parter
+- You can also send request to your partner
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Priority Manager**
+- You can view your weekly schedules by Timeline
+- You can choose schedules that you want to put in priority (can add priority by double-clicking schedule)
+- You can assign order of priority schedules (available by drag-drop)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### Before Start ###
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **You cannot add a schedule that starting month and ending month are different**. For example, you cannot add a schedule that starts at 5/30 and ends at 6/2 because and 5 and 6 are different. Since our design is discrete(Not continuously connected between months), it is hard to leave feedback, or set schedule in such cases. 
+- **Drag-Drop** in Prioirty Manager might be not working interactively depending on what device you are using (mouse, trackpad, etc). Still, it works!
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

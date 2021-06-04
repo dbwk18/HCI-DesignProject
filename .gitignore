@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/src/Components/Calendar/temp.txt
 # testing
 /coverage
 
@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+dp4_plan.txt
+0524_backup.txt

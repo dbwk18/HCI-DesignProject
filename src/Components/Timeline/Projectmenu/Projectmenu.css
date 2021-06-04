@@ -1,3 +1,7 @@
+.projectMenu {
+  height: 550px;
+}
+
 .projectHeaderText {
   font-size: 28px;
   margin-left: 30px;
@@ -36,14 +40,9 @@
 #project4 {
   background-color: #e5fff9;
 }
-.doneBtnWrapper {
-  display: flex;
-  padding-top: 240px;
-  /* align-items: flex-end; */
-  justify-content: center;
-}
 
 .doneprojectBtn {
+  position: fixed;
   width: 160px;
   text-align: center;
   font-size: 18px;
