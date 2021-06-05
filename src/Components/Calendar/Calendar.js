@@ -1,44 +1,88 @@
 import React, {useState, useEffect} from 'react';
 import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
-import Schedule from './Schedule/Schedule.js'
+import {db, firebaseApp} from '../../firebase.js'
+import Schedule from '../Schedule/Schedule.js'
 
-//code for task3
-import PopupBox1 from './PopupBox/PopupBox1'
-import PopupBox0 from './PopupBox/PopupBox0'
-import PopupBox2 from './PopupBox/PopupBox2'
-import SendPopup from './PopupBox/SendPopup'
-import img_you from '../../Icons/img_you.png'
-import img_sent from '../../Icons/img_sent.png'
 
 function Calendar(props){
 
     // props.data.mode : boolean으로 이루어지고 길이가 4인 리스트. 메뉴바에 all, work. family, private가 어떻게 선택되어 있는지를 나타냄
-    console.log('-----------Calendar------------', props.data)
 
     const day_info = calendar_info.day_info
     const month_info = calendar_info.month_info
-    const category_map = calendar_info.category_map
 
     const [month, setMonth] = useState(5);
 
-    // 0 : none, 1 : work, 2 : family, 3 : private, 4 : otehr, 5 : 공휴일, 달력에 기본적으로 있는 날
+    // 0 : none, 1 : work, 2 : family, 3 : private, 4 : other
     const [category, setCategory] = useState(0);
     const [popup, setPopup] = useState(false);
-    // const [schedules, setSchedules] = useState(calendar_info.initial_schedule_task1)
-    
-    //code for task3
-    const [schedules, setSchedules] = useState(props.task3 ? calendar_info.initial_schedule_task3 : calendar_info.initial_schedule_task1);
-
-    const show_popup_1 = () => {
-        document.getElementById('popupbox0-wrap').style.display = 'block';
-    }
-    const show_popup_2 = () => {
-        document.getElementById('popupbox1-wrap').style.display = 'block';
-    }
+    const [schedules, setSchedules] = useState([])
 
     useEffect(() => {
-        // console.log('Selected_category: ', category)
+        console.log('in useEffect~~~~~~~~~~~~~~~~~~~~')
+        var day_schedule_occupied = {}
+        var temp_start = ''
+        var temp_end = ''
+        var temp_date = ''
+        var i = 0
+        var j = 0
+        var empty = true
+        const schedules_ref = db.collection('schedules');
+        schedules_ref.onSnapshot((snapshot) => {
+            console.log('onSnapshot********************', snapshot.docs)
+            day_schedule_occupied = {}
+            var data = snapshot.docs.map((doc) => {
+                temp_start = doc.data().start.split('/')
+                temp_end = doc.data().end.split('/')
+                
+                console.log('asdlkjadsflkjasdfjasdflkjsdaflkjsdafkjasdflkjsfdalk;j', doc.data().duration, temp_start, temp_end)
+                for(i = 1; i < 10; i++) {
+                    empty = true
+                    for (j = 0; j < doc.data().duration; j++){
+                        temp_date = temp_start[1] + (parseInt(temp_start[2]) + j < 10 ? '0' + (parseInt(temp_start[2]) + j) : parseInt(temp_start[2]) + j) + i
+                        console.log(temp_date, day_schedule_occupied[temp_date])
+                        if (day_schedule_occupied[temp_date] !== undefined) {
+                            empty = false
+                            break
+                        } else {
+                            
+                        }
+                    }
+                    if (empty) {
+                        for (j = 0; j < doc.data().duration; j++){
+                            temp_date = temp_start[1] + (parseInt(temp_start[2]) + j < 10 ? '0' + (parseInt(temp_start[2]) + j) : parseInt(temp_start[2]) + j) + i
+                            day_schedule_occupied[temp_date] = true
+                        }
+                        break
+                    }
+                }
+
+                // for(i = 0; i <= doc.date.duration; i++) {
+                //     temp_date = temp_start[1] + (parseInt(temp_start[2]) + i < 10 ? '0' + (parseInt(temp_start[2]) + i) : parseInt(temp_start[2]) + i)
+                //     if (day_schedule_occupied[temp_date] === undefined) {
+                //         day_schedule_occupied[temp_date] = 1
+                //     }
+                //     else {
+                //         day_schedule_occupied[temp_date] += 1
+                //     }
+                //     console.log('check : ', temp_date, day_schedule_occupied[temp_date], max_cnt)
+                //     if (max_cnt < day_schedule_occupied[temp_date]) {
+                //         max_cnt = day_schedule_occupied[temp_date]
+                //     }
+                // }
+                return {
+                    id : doc.id,
+                    loc: i,
+                    ...doc.data()
+                }
+            });
+            setSchedules(data);
+        })
+        console.log('end of useEffect~~~~~~~~~~~~~~~~~')
+    }, [])
+
+    useEffect(() => {
         document.getElementById('popup-button-work').setAttribute('style', 'background-color: none');
         document.getElementById('popup-button-family').setAttribute('style', 'background-color: none');
         document.getElementById('popup-button-private').setAttribute('style', 'background-color: none');
@@ -55,7 +99,6 @@ function Calendar(props){
     }, [category]);
 
     useEffect(() => {
-        // console.log('Current popup state: ', popup)
         var popup_div = document.getElementById('calendar-add-popup')
         if (popup) {
             popup_div.setAttribute('style', 'display: block')
@@ -63,6 +106,7 @@ function Calendar(props){
             popup_div.setAttribute('style', 'display : none')
         }
     }, [popup])
+
 
     const add_schedule = (evt) => {
         setPopup(popup => !popup)
@@ -85,7 +129,6 @@ function Calendar(props){
     }
 
     const select_category = (evt) => {
-        // console.log(evt.target.id)
         var targetId = evt.target.id
         if (targetId.endsWith('work')) {
             if (category === 1) {
@@ -118,6 +161,7 @@ function Calendar(props){
     }
 
     const create_new_schedule = () => {
+        // console.log('~~~~~~~~~~create_new_schedule~~~~~~~~~~~~~~~~~')
         var title = document.getElementById('popup-title').value
         var desc = document.getElementById('popup-description').value
         var start_time = document.getElementById('popup-time-start').value
@@ -138,30 +182,38 @@ function Calendar(props){
         // 팝업 없앰
         setPopup(popup => !popup)
 
+        start_date = start_date.split('-')
+        end_date = end_date.split('-')
+        var no_end_date = end_date.length === 1 ? true : false
+
+        var no_start_time = start_time.length === 0 ? true : false
+        var no_end_time = end_time.length === 0 ? true : false
+
 
         var new_schedule = {
             title: title,
-            description: desc,
-            start_time: start_time,
-            end_time: end_time,
-            start_month: start_date.split('-')[1],
-            start_date: start_date.split('-')[2],
-            end_month: end_date.split('-')[1],
-            end_date: end_date.split('-')[2],
             category: category,
+            start: start_date[0] + '/' + start_date[1] + '/' + start_date[2] + '/' + (no_start_time ? '' : start_time),
+            end: (no_end_date ? '' : end_date[0] + '/' + end_date[1] + '/' + end_date[2] + '/' + (no_end_time ? '' : end_time)),
+            desc: desc,
+            memo: '',
+            sat: 0,
+            owner: '',
+            pinned: false,
+            duration: (no_end_date ? 1 : parseInt(end_date[2]) - parseInt(start_date[2])) 
         }
 
         let new_schedules = [...schedules]
         new_schedules.push(new_schedule)
+        db.collection('schedules').doc().set(new_schedule)
         setSchedules(new_schedules)
 
     }
 
-    
-
     // console.log('current month: ', month)
 
     // console.log('(Calendar) Current active element: ', document.activeElement.id)
+    // console.log('!!!!!!!!!!!!!!!!!!! reload !!!!!!!!!!!!!!!!!!!!!')
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
@@ -351,41 +403,26 @@ function Calendar(props){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
+                            console.log('===', s)
+                            var start = s.start.split('/')
+                            var start_month = parseInt(start[1])
 
-                            if (parseInt(s.start_month) !== month || (!props.mode[0] && s.category !== 4 && !props.mode[s.category])) {
+                            var start_date = parseInt(start[2])
+
+                            if (start_month !== month || (!props.mode[0] && s.category !== 4 && !props.mode[s.category])) {
                               return 
                             }
-
                             return (
                                 <Schedule 
-                                    key = {10000 * s.start_month + 100 * s.start_date + s.title.length} 
-                                    id = {s.id} month = {s.start_month} 
-                                    class = {s.class === undefined ? 'length-1' : s.class}
-                                    date = {s.start_date} 
-                                    title = {s.title}
-                                    category = {category_map[s.category]} />
+                                    key = {s.id} 
+                                    id = {s.id}
+                                    data = {s} />
                             )
                         })
                     }
                 </div>
                 <div id = 'feedback-wrap'></div>
-                <div id = 'messengers-wrap'>
-                    {
-                        props.task3
-                        ?
-                        <>
-                        <div className = 'task3' id = 'popupbox0-wrap'><PopupBox0 idx = {0}/></div>
-                        <div className = 'task3' id = 'popupbox1-wrap'><PopupBox1 idx = {1}/></div>
-
-                        <img id = 'task3-you' src={img_you} width = "20" height = '20' onClick = {() => show_popup_1() }/>
-                        <img id = 'task3-sent' src={img_sent} width = "20" height = '20' onClick = {() => show_popup_2() }/>
-                        </>
-                        :
-                        <>
-                        </>
-                    }
-                    
-                </div>
+                <div id = 'messengers-wrap'></div>
             </div>
         {/* <!-- /. calendar --> */}
             <div id = "calendar-add-popup">

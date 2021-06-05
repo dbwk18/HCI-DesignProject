@@ -1,6 +1,10 @@
 .mainbox-sidemenu {
-  border-right: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  height: 1170px; 
   padding-right: 20px;
+  border-right: 1px solid lightgray;
+
 }
 
 .mainbox-sidemenu-left-text {
@@ -10,6 +14,8 @@
 }
 
 .sidemenu-category {
+  display: flex;
+  align-items: center;
   height: 20px;
   font-size: 20px;
   padding-top: 15px;
@@ -18,9 +24,14 @@
   cursor: pointer;
 }
 
+.sidemenu-category-text {
+  flex-basis: 30%;
+}
+
 #category-project {
   text-align: center;
   margin-left: 40px; 
+  flex-basis: 50px;
 }
 
 
@@ -43,4 +54,28 @@
 
 #category-private-true {
   background-color: #ffdcfb;
+}
+
+.category-help {
+  margin-top: 30px;
+  margin-left: 20px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-help-1 {
+  font-size: 20px;
+  flex-basis:50px;
+  margin-bottom: 20px;
+}
+.category-help-2 {
+  font-size: 20px;
+  flex-basis: 50px;
+}
+
+.stress {
+  font-weight: bolder;
+  font-size: 24px;
+  color: skyblue;
 }

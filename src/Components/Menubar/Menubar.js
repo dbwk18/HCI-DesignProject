@@ -17,6 +17,32 @@ function Menubar(props){
     console.log('------------Menubar-------------', props.mode)
 
     const history = useHistory();
+    const category_hover_in = (evt) => {
+        var elem_id = evt.target.id.slice(9)
+        if (elem_id.startsWith('all')) {
+            evt.target.style.backgroundColor = '#D2FFD1'
+        } else if (elem_id.startsWith('work')){
+            evt.target.style.backgroundColor = '#fffdc6'
+        } else if (elem_id.startsWith('family')) {
+            evt.target.style.backgroundColor = '#c8f7f4'
+        } else if (elem_id.startsWith('private')) {
+            evt.target.style.backgroundColor = '#ffdcfb'
+        }
+    }
+
+    const category_hover_out = (evt) => {
+        var elem_id = evt.target.id.slice(9)
+        if (elem_id.startsWith('all') && !props.mode[0]) {
+            evt.target.style.backgroundColor = 'transparent'
+        } else if (elem_id.startsWith('work') && !props.mode[1]){
+            evt.target.style.backgroundColor = 'transparent'
+        } else if (elem_id.startsWith('family') && !props.mode[2]) {
+            evt.target.style.backgroundColor = 'transparent'
+        } else if (elem_id.startsWith('private') && !props.mode[3]) {
+            evt.target.style.backgroundColor = 'transparent'
+        }
+    }
+
     const click_category = (evt) => {
         if (props.view_as === 1) {
             alert('You can choose category only in CALENDAR mode. Please select Calendar in VIEW-AS tab')
@@ -87,68 +113,61 @@ function Menubar(props){
         }
     }
 
-    const change_view = (evt) => {
-        console.log('change_view', props.view_as, evt.target.id)
-        if (evt.target.id === 'category-calendar' && props.view_as === 1) {
-            console.log('aklsjflkjfd;lsjflkjsdf')
-            history.push({
-                pathname: '/HCI-DesignProject/calendar',
-                props: {
-                    mode: [true, false, false, false],
-                    view_as: 0
-                }
-            })
-            console.log('hihihi')
-        }
-        else if (evt.target.id === 'category-categorybox' && props.view_as === 0) {
-            history.push('/HCI-DesignProject/categorybox')
-        }
-    }
-
-    const hover_on_event = (evt) => {
-        console.log('helllllo')
-        evt.target.style.border = '1px solid black'
-    }
-
-    const hover_down_event = (evt) => {
-        console.log('hello? out')
-
-        evt.target.style.border = 'none'
-    }
 
     console.log('menubar:', props.mode)
 
     return(
         <div className = 'mainbox-sidemenu'>
             <p className = 'mainbox-sidemenu-left-text'>View by Category:</p>
-            <div className = 'sidemenu-category' id = {'category-all-' + props.mode[0]} onClick = {evt => click_category(evt)}>View all  </div>
-            <div className = 'sidemenu-category' id = {'category-work-' + props.mode[1]} onClick = {evt => click_category(evt)}>Work <img src={img_work} width = "30" /></div>
-            <div className = 'sidemenu-category' id = {'category-family-' + props.mode[2]} onClick = {evt => click_category(evt)}>Family <img src={img_family} width = "35" /></div>
-            <div className = 'sidemenu-category' id = {'category-private-' + props.mode[3]} onClick = {evt => click_category(evt)}>Private <img src={img_private} width = "28"/></div>
-            <p className = 'sidemenu-left-border'></p>
-            <p className = 'mainbox-sidemenu-left-text'>View as:</p>
             <div
-              className = 'sidemenu-category'
-              id = 'category-calendar'  
-              onClick = {evt => change_view(evt)}
-              onMouseOver = {evt => hover_on_event(evt)}
-              onMouseOut = {evt => hover_down_event(evt)}
-              style = {{border: (props.view_as === 0 ? '1px, solid black' : 'none'), backgroundColor: (props.view_as === 0 ? 'skyblue' : 'none')}}>
-                Calendar
+                className = 'sidemenu-category'
+                id = {'category-all-' + props.mode[0]}
+                style = {{backgroundColor: (props.mode[0] ? '#d2ffd1' : 'transparent')}}
+                onClick = {evt => click_category(evt)}
+                onMouseEnter = {evt => category_hover_in(evt)}
+                onMouseLeave = {evt => category_hover_out(evt)}>View all  </div>
+            <div 
+                className = 'sidemenu-category'
+                id = {'category-work-' + props.mode[1]}
+                style = {{backgroundColor: (props.mode[1] ? '#fffdc6' : 'transparent')}}
+                onClick = {evt => click_category(evt)}
+                onMouseEnter = {evt => category_hover_in(evt)}
+                onMouseLeave = {evt => category_hover_out(evt)}>
+                <div className = 'sidemenu-category-text'>Work</div>
+                <img className= 'sidemenu-category-img' src={img_work} width = "30" />
             </div>
             <div
-              className = 'sidemenu-category' 
-              id = 'category-categorybox' 
-              onClick = {evt => change_view(evt)}
-              onMouseOver = {evt => hover_on_event(evt)}
-              onMouseOut = {evt => hover_down_event(evt)}
-              style = {{border: (props.view_as === 1 ? '1px, solid black' : 'none'), backgroundColor: (props.view_as === 1 ? 'skyblue' : 'none')}}>
-                Category Box
+                className = 'sidemenu-category'
+                id = {'category-family-' + props.mode[2]}
+                style = {{backgroundColor: (props.mode[2] ? '#c8f7f4' : 'transparent')}}
+                onClick = {evt => click_category(evt)}
+                onMouseEnter = {evt => category_hover_in(evt)}
+                onMouseLeave = {evt => category_hover_out(evt)}>
+                <div className = 'sidemenu-category-text'>Family</div>
+                <img className = 'sidemenu-category-img' src={img_family} width = "35" />
+            </div>
+            <div
+                className = 'sidemenu-category'
+                id = {'category-private-' + props.mode[3]}
+                style = {{backgroundColor: (props.mode[3] ? '#ffdcfb' : 'transparent')}}
+                onClick = {evt => click_category(evt)}
+                onMouseEnter = {evt => category_hover_in(evt)}
+                onMouseLeave = {evt => category_hover_out(evt)}>
+                <div className = 'sidemenu-category-text'>Private</div>
+                <img className = 'sidemenu-category-img' src={img_private} width = "28"/>
             </div>
             <p className = 'sidemenu-left-border'></p>
             <button id = 'category-project'>
                 <Link to='/Projects'>View Project Manager</Link>
             </button>
+            <div className = 'category-help'>
+                <div className = 'category-help-1'>
+                    &bull; <span className = 'stress'>Mouseover</span> each schedule to see detail
+                </div>
+                <div className = 'category-help-2'>
+                    &bull; <span className = 'stress'>DoubleClick</span> each schedule to add feeback
+                </div>
+            </div>
         </div>
     )
 }

@@ -286,14 +286,11 @@ header {
   background-color: lightgray;
   height : 30px;
   font-size: 17px;
-  border-radius: 10px;
 
 }
 
 .schedule-text {
-  margin-top: 4px;
   margin-left: 5px;
- 
 }
 
 .family {
@@ -321,7 +318,7 @@ header {
   left: 0%;
 }
 .col1 {
-  left: 14.3%;
+  left: 14.2%;
 }
 .col2 {
   left: 28.6%;
@@ -358,56 +355,131 @@ header {
   top: 930px;
 }
 
-.length-1 {
-  width: 14.2%;
+.row0-1 {
+  top: 50px;
 }
-.length-2 {
-  width: 28.3%;
+.row0-2 {
+  top: 80px;
 }
-.length-3 {
-  width: 42.4%;
+.row0-3 {
+  top: 110px;
 }
-.length-4 {
-  width: 56.8%;
+.row0-4 {
+  top: 140px;
 }
-.length-5 {
-  width: 71.0%;
-}
-.length-6 {
-  width: 85.2%;
-}
-.length-7 {
-  width: 99.5%;
+.row0-5 {
+  top: 170px;
 }
 
-/* code for task 3 */
-.task3 {
-  position: absolute;
-  width: 500px;
-  height: 250px;
+.row1-1 {
+  top: 210px
+}
+.row1-2 {
+  top: 240px
+}
+.row1-3 {
+  top: 270px
+}
+.row1-4 {
+  top: 300px
+}
+.row1-5 {
+  top: 330px
+}
+.row1-6 {
+  top: 360px
 }
 
-#popupbox0-wrap {
-  left: 42%;
+.row2-1 {
+  top: 390px;
+}
+.row2-2 {
   top: 420px;
-  display: none;
+}
+.row2-3 {
+  top: 450px;
+}
+.row2-4 {
+  top: 480px;
+}
+.row2-5 {
+  top: 510px;
+}
+.row2-6 {
+  top: 540px;
 }
 
-#popupbox1-wrap {
-  left: 56%;
+.row3-1 {
+  top: 570px;
+}
+.row3-2 {
   top: 600px;
-  display: none;
+}
+.row3-3 {
+  top: 630px;
+}
+.row3-4 {
+  top: 660px;
+}
+.row3-5 {
+  top: 690px;
+}
+.row3-6 {
+  top: 720px;
 }
 
-#task3-you {
-  position: absolute;
-  left: 83.5%;
-  top: 395px;
-  cursor: pointer;
+.row4-1 {
+  top: 750px;
 }
-#task3-sent {
-  position: absolute;
-  left: 98%;
-  top: 576px;
-  cursor: pointer;
+.row4-2 {
+  top: 780px;
+}
+.row4-3 {
+  top: 810px;
+}
+.row4-4 {
+  top: 840px;
+}
+.row4-5 {
+  top: 870px;
+}
+.row4-6 {
+  top: 900px;
+}
+
+.row5-1 {
+  top: 930px;
+}
+.row5-2 {
+  top: 960px;
+}
+.row5-3 {
+  top: 990px;
+}
+.row5-4 {
+  top: 1020px;
+}
+.row5-5 {
+  top: 1050px;
+}
+.row5-6 {
+  top: 1080px;
+}
+
+.schedule-normal {
+  width: 14.4%;
+}
+.schedule-last {
+  width: 14.2%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: center;
+  border-radius: 0px  15px 15px 0px; 
+}
+.schedule-firstlast {
+  width: 14.3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0px 15px 15px 0px;
 }
