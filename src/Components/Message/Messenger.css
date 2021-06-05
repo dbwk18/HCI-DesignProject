@@ -8,6 +8,10 @@
   z-index: 1000;
 }
 
+#red{
+  color:rgb(168, 41, 41);
+}
+
 .message-header {
   display: flex;
   width: 100%;

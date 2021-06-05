@@ -20,6 +20,7 @@ header {
   font-size: 30px;
   padding: 10px;
   padding-left: 10px;
+  margin-right: 15px;
   background-color: rgb(243, 243, 243);
   border: none;
   float: left;
@@ -27,6 +28,30 @@ header {
   cursor: pointer;
   box-shadow: rgb(173, 173, 173) 0px 2px 5px;
 
+}
+
+.category-help {
+  margin-top: 10px;
+  margin-left: 50px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-help-1 {
+  font-size: 12px;
+  flex-basis:5px;
+  margin-bottom: 3px;
+}
+.category-help-2 {
+  font-size: 12px;
+  flex-basis: 5px;
+}
+
+.stress {
+  font-weight: bolder;
+  font-size: 15px;
+  color: rgb(179, 181, 182);
 }
 
 #calendar-changemonth button{

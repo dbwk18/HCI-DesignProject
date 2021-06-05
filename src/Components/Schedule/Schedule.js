@@ -8,6 +8,7 @@ import img_good from '../../Icons/smile.png';
 import img_hmm from '../../Icons/hmm.png';
 import img_bad from '../../Icons/bad.png';
 import img_you from '../../Icons/img_you.png';
+import img_partner from '../../Icons/img_partner.png';
 import img_sent from '../../Icons/img_sent.png';
 import img_sending from '../../Icons/img_sending.png';
 

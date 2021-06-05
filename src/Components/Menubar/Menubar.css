@@ -56,7 +56,41 @@
   background-color: #ffdcfb;
 }
 
-.category-help {
+#notifications {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+.request {
+  margin-left: 10px;
+  width: rem;
+  height: 10%;
+  background-color: rgb(240, 240, 240);
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+}
+.request-arrived {
+  font-weight: bold;
+  font-size: 17px
+}
+.request-content {
+  font-size: 13px;
+}
+
+.request-view {
+  border: none;
+  background-color: rgb(255, 255, 255);
+  width: 60px;
+  border-radius: 15px;
+  padding: 5px 5px 5px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 170px;
+  margin-top: 0px;
+  
+}
+
+/* .category-help {
   margin-top: 30px;
   margin-left: 20px;
   align-self: center;
@@ -72,10 +106,10 @@
 .category-help-2 {
   font-size: 20px;
   flex-basis: 50px;
-}
+} */
 
-.stress {
+/* .stress {
   font-weight: bolder;
   font-size: 24px;
   color: skyblue;
-}
+} */

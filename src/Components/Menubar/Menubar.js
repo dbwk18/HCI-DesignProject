@@ -4,7 +4,7 @@ import {useHistory} from "react-router";
 import './Menubar.css'
 import { Link } from 'react-router-dom';
 
-
+import img_notification from '../../Icons/img_notification.png';
 import img_work from '../../Icons/work.png';
 import img_family from '../../Icons/family.png';
 import img_private from '../../Icons/private.png';
@@ -160,14 +160,24 @@ function Menubar(props){
             <button id = 'category-project'>
                 <Link to='/Projects'>View Project Manager</Link>
             </button>
-            <div className = 'category-help'>
+            {/* <div className = 'category-help'>
                 <div className = 'category-help-1'>
                     &bull; <span className = 'stress'>Mouseover</span> each schedule to see detail
                 </div>
                 <div className = 'category-help-2'>
                     &bull; <span className = 'stress'>DoubleClick</span> each schedule to add feeback
                 </div>
+            </div> */}
+            <p className = 'sidemenu-left-border'></p>
+            <p id = "notifications">Notifications:</p>
+            <div className = 'request' id= 'request-1'>
+                <img src = {img_notification} width = "30" /> <div className = 'request-arrived'>Request arrived</div>
+                <p></p><div className = 'request-content'>About 5.22 Spring-clean</div>
+                <input type="button" className = 'request-view' value = "View"/>
             </div>
+            {/* <div className = 'request' id= 'request-2'>
+
+            </div> */}
         </div>
     )
 }

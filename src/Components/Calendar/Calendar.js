@@ -218,6 +218,14 @@ function Calendar(props){
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
                 <button id = 'calendar-add' onClick = {evt => {add_schedule(evt)}}>Add +</button>
+                <div className = 'category-help'>
+                    <div className = 'category-help-1'>
+                        <span className = 'stress'>Mouseover</span> each schedule to see detail
+                    </div>
+                    <div className = 'category-help-2'>
+                        <span className = 'stress'>DoubleClick</span> each schedule to add feeback
+                    </div>
+                </div>
                 <div id = 'calendar-changemonth'>
                     <button id = 'calendar-nextmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
                     <button id = 'calendar-prevmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>

@@ -50,7 +50,7 @@ function Message (props) {
     return(
         <div className = {'message message-row' + props.row + '-' + props.data.loc + ' message-col' + props.col} id = {props.id + '-message'}>
             <div className = 'message-header'>
-                <div className = 'message-header-text'>Set Schedule</div>
+                <div className = 'message-header-text'>Edit Schedule</div>
                 <div className = 'message-header-close' onClick = {evt => close_messagebox()}>&times;</div>
             </div>
             <div className = 'message-body'>
@@ -100,7 +100,7 @@ function Message (props) {
                         <select className = 'message-body-input' id = {props.id + '-owner'} onChange = {evt => change_owner(evt)} defaultValue = {props.data.owner}>
                             <option value = ''>Not selected</option>
                             <option value = 'me'>Me</option>
-                            <option value = 'partner'>MinSeok Yoo(Partner)</option>
+                            <option value = 'partner'>Pass to:  MinSeok Yoo(Partner)</option>
                         </select>
                     </div>
                     :
