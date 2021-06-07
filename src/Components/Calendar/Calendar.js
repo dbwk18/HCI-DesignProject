@@ -223,10 +223,6 @@ function Calendar(props){
                 <div id = 'calendar-add-wrap'>
                     <button id = 'calendar-add-button' 
                         onClick = {evt => {add_schedule(evt)}} onMouseEnter = {_ => enter_add()} onMouseLeave = {_ => leave_add()}>Add +</button>
-                    <div id = 'calendar-add-text'>
-                        <p>MouseOver each schedule to see detail</p>
-                        <p>DoubleClick each schedule to add feeback</p>
-                    </div>
                 </div>
                 
 
