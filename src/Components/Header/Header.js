@@ -7,12 +7,16 @@ function Header() {
     const history = useHistory();
 
     const move_to_homepage = () => {
+        var pathname = window.location.pathname
+        if (pathname.endsWith('/HCI-DesignProject')) {
+            return
+        }
         console.log('move_to_homepage')
         history.push({
-          pathname: './mainpage3',
+          pathname: '/HCI-DesignProject',
           props: {
-            mode: [true, false, false, false],
-            task3: true
+              mode: [true, false, false, false],
+              task3: true
           }
         })
     }

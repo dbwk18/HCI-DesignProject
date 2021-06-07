@@ -8,9 +8,9 @@ import img_good from '../../Icons/smile.png';
 import img_hmm from '../../Icons/hmm.png';
 import img_bad from '../../Icons/bad.png';
 import img_you from '../../Icons/img_you.png';
-import img_sent from '../../Icons/img_sent.png';
-import img_sending from '../../Icons/img_sending.png';
-
+import img_partner from '../../Icons/partner.png';
+import img_notification from '../../Icons/notification.png';
+import img_sending from '../../Icons/img_sending.png'
 
 function Schedule(props) {
     // props.data: 일정의 모든 정보를 담은 오브젝트
@@ -44,10 +44,7 @@ function Schedule(props) {
     }
 
     const hide_button = (evt) => {
-        // if (props.id === '5DVoYqXozfGAvTF2ezw2') {
-        //     return
-        // }
-        if (props.data.owner === ''){
+        if (props.data.status <= 0){
             document.getElementById(props.id + '-button').style.display = 'none'
         }
         var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
@@ -60,23 +57,6 @@ function Schedule(props) {
         document.getElementById(props.id + '-message').style.display = 'block'
     }
 
-    // const show_icon = (evt) => {
-    //     var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
-    //     if (target !== null) {
-    //         target.style.display = 'none'
-    //     }
-    // }
-
-    // const hide_icon = (evt) => {
-    //     var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
-    //     if (target !== null) {
-    //         target.style.display = 'block'
-    //     }
-    // }
-
-    // const show_selection_box = () => {
-
-    // }
 
     var calendar_location_start = day_info[start_month].slice(start_date).indexOf(start_date) + start_date
     var calendar_location_end = day_info[end_month].slice(end_date).indexOf(end_date) + end_date
@@ -134,28 +114,13 @@ function Schedule(props) {
                             {
                                 isLast
                                 ?
-                                <div key = {props.id + '-button'} className = {(props.data.owner !== '' || props.id === '5DVoYqXozfGAvTF2ezw2')  ? 'schedule-icon' : 'schedule-button' } id = {props.id + '-button'} onClick = {evt => show_message()} style = {{display: (props.data.owner !== '' || props.id === '5DVoYqXozfGAvTF2ezw2'? 'inline' : 'none')}}>
+                                <div key = {props.id + '-button'} className = {(props.data.status >= 1)  ? 'schedule-icon' : 'schedule-button' } id = {props.id + '-button'} onClick = {evt => show_message()} style = {{display: (props.data.status >= 1 ? 'inline' : 'none')}}>
                                     {
-                                        props.data.owner === '' ? '+'
-                                        // ?
-                                        //     ((props.id === '5DVoYqXozfGAvTF2ezw2')
-                                        //     ?
-                                        //     <img
-                                        //     width = '25' height = '25'
-                                        //     src = {img_sent}
-                                        //     alt = {props.data.owner === 'me' ? 'you' : 'sending'}
-                                        //     />
-                                        //     :
-                                        //     '+'
-                                        //     )
-                                        // :
-                                        // (
-
-                                        // )
+                                        props.data.status <= 0 ? '+'
                                         :
                                         <img
                                             width = '25' height = '25'
-                                            src = {props.data.owner === 'me' ? (props.id === '5DVoYqXozfGAvTF2ezw2' ? img_sent : img_you) : img_sending}
+                                            src = {props.data.status === 1 ? img_sending : (props.data.status === 2 ? img_notification : (props.data.status === 3 ? img_you : (props.data.status === 4 ? img_partner : '')))}
                                             alt = {props.data.owner === 'me' ? 'you' : 'sending'}
                                             />
                                     }

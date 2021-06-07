@@ -20,7 +20,7 @@ function Calendar(props){
     const [schedules, setSchedules] = useState([])
 
     useEffect(() => {
-        console.log('in useEffect~~~~~~~~~~~~~~~~~~~~')
+        // console.log('in useEffect~~~~~~~~~~~~~~~~~~~~')
         var day_schedule_occupied = {}
         var temp_start = ''
         var temp_end = ''
@@ -30,13 +30,13 @@ function Calendar(props){
         var empty = true
         const schedules_ref = db.collection('schedules');
         schedules_ref.onSnapshot((snapshot) => {
-            console.log('onSnapshot********************', snapshot.docs)
+            // console.log('onSnapshot********************', snapshot.docs)
             day_schedule_occupied = {}
             var data = snapshot.docs.map((doc) => {
                 temp_start = doc.data().start.split('/')
                 temp_end = doc.data().end.split('/')
                 
-                console.log('asdlkjadsflkjasdfjasdflkjsdaflkjsdafkjasdflkjsfdalk;j', doc.data().duration, temp_start, temp_end)
+                // console.log('asdlkjadsflkjasdfjasdflkjsdaflkjsdafkjasdflkjsfdalk;j', doc.data().duration, temp_start, temp_end)
                 for(i = 1; i < 10; i++) {
                     empty = true
                     for (j = 0; j < doc.data().duration; j++){
@@ -79,7 +79,7 @@ function Calendar(props){
             });
             setSchedules(data);
         })
-        console.log('end of useEffect~~~~~~~~~~~~~~~~~')
+        // console.log('end of useEffect~~~~~~~~~~~~~~~~~')
     }, [])
 
     useEffect(() => {
@@ -217,12 +217,23 @@ function Calendar(props){
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
-                <button id = 'calendar-add' onClick = {evt => {add_schedule(evt)}}>Add +</button>
-                <div id = 'calendar-changemonth'>
-                    <button id = 'calendar-nextmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
-                    <button id = 'calendar-prevmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
+                
+                <div id = 'calendar-add-wrap'>
+                    <button id = 'calendar-add-button' onClick = {evt => {add_schedule(evt)}}>Add +</button>
+                    <div id = 'calendar-add-text'>
+                        <p>MouseOver each schedule to see detail</p>
+                        <p>DoubleClick each schedule to add feeback</p>
+                    </div>
                 </div>
+                
+
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
+
+                <div id = 'calendar-changemonth'>
+                    <button id = 'calendar-nextmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
+                    <button id = 'calendar-prevmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
+                </div>
+                
             </div>
         
             <div id="calendar">

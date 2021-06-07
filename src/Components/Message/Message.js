@@ -92,7 +92,7 @@ function Message (props) {
                         type = 'text'
                         placeholder = {props.id + ''}></input>
                 </div> */}
-                {
+                {/* {
                     props.data.category === 2
                     ?
                     <div className = 'message-body-wrap'>
@@ -105,7 +105,7 @@ function Message (props) {
                     </div>
                     :
                     <></>
-                }
+                } */}
                 {/* <div className = 'message-body-wrap'>
                     <label className = 'message-body-subject'>Who</label>
                     <select className = 'message-body-input' id = {props.id + '-owner'} onChange = {evt => change_owner(evt)} defaultValue = {props.data.owner}>
@@ -114,7 +114,7 @@ function Message (props) {
                         <option value = 'partner'>MinSeok Yoo(Partner)</option>
                     </select>
                 </div> */}
-                {
+                {/* {
                     (owner === 'partner' || (props.data.owner === 'me' && props.id === '5DVoYqXozfGAvTF2ezw2'))
                     ?
                     <>
@@ -130,7 +130,7 @@ function Message (props) {
                     :
                     <>
                     </>
-                }
+                } */}
                 <div className = 'message-body-wrap'> 
                     <label className = 'message-body-subject'>Category</label>
                     <select className = 'message-body-input' id = {props.id + '-category'} defaultValue = {props.data.category}>

@@ -1,0 +1,141 @@
+.request-wrap {
+  background-color: lightgray;
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.request {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+.request-arrived {
+  font-weight: bold;
+  font-size: 17px
+}
+.request-content {
+  font-size: 13px;
+}
+
+.request-view {
+  border: none;
+  background-color: rgb(255, 255, 255);
+  width: 60px;
+  border-radius: 15px;
+  padding: 5px 5px 5px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.request-message-wrap {
+  position: absolute;
+  background-color: lightgray;
+  padding-left: 5%;
+  left: 300px;
+  top:  0px;
+  width: 300px;  
+  border-radius : 15px;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.request-message-default {
+  width: 90%;
+  display : flex;
+  flex-direction: column;
+}
+.request-body-wrap {
+  display: flex;
+  flex-basis: 30px;
+}
+.request-body-button-wrap {
+  flex-basis: 30px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.request-body-message-wrap {
+  flex-basis: 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.request-body-subject {
+  font-weight: bold;
+  flex-basis: 70px;
+}
+
+.request-body-subject-message {
+  font-weight: bold;
+}
+
+.request-body-message {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  background-color: #f0f0f0;
+  border-radius : 15px;
+  height: 80px;
+  font-size: 15px;
+}
+
+.request-message-default p {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+.request-message-close {
+  background-color: transparent;
+  font-size: 30px;
+  border: none;
+}
+
+.request-message-button-accept {
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+.request-message-button-deny {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+.request-message-button-send {
+  background-color: #f0f0f0;
+  font-size: 15px;
+  border-radius: 15px;
+  border: none;
+}
+
+.request-message-deny {
+  width: 90%;
+  display : flex;
+  flex-direction: column;
+
+}
+
+.request-body-textarea {
+  width: 100%;
+  height: 80px;
+  background-color: #f0f0f0;
+  border-radius : 15px;
+  border: none;
+  box-shadow: rgb(173, 173, 173) 1px 1px 3px;
+  resize: none;
+  font-family:arial;
+  font-size: 15px;
+}
+
+

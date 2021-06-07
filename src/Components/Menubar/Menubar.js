@@ -1,13 +1,15 @@
 import React, {useState, useEffect}  from 'react';
-
+import {db, firebaseApp} from '../../firebase'
 import {useHistory} from "react-router";
 import './Menubar.css'
 import { Link } from 'react-router-dom';
 
+import Request from '../Request/Request'
 
 import img_work from '../../Icons/work.png';
 import img_family from '../../Icons/family.png';
 import img_private from '../../Icons/private.png';
+
 
 function Menubar(props){
 
@@ -15,6 +17,28 @@ function Menubar(props){
     // props.view_as : 0 또는 1, 0이면 기본형식인 캘린더로 보는 것이고, 1이면 카테고리박스로 보는 것.
 
     console.log('------------Menubar-------------', props.mode)
+
+    const [requests, setRequests] = useState([])
+
+    useEffect(() => {
+        
+        const schedules_ref = db.collection('schedules');
+        schedules_ref.onSnapshot((snapshot) =>{
+            var filtered_data = snapshot.docs.filter(doc=> {
+                return doc.data().status === 2
+            })
+            var mapped_data = filtered_data.map(doc => {
+                return {
+                    id: doc.id,
+                    ...doc.data()
+                }
+            })
+            setRequests(mapped_data)
+        })
+        console.log('----------- end of useEffect in Request ------------')
+    }, [])
+
+    console.log(requests)
 
     const history = useHistory();
     const category_hover_in = (evt) => {
@@ -160,14 +184,19 @@ function Menubar(props){
             <button id = 'category-project'>
                 <Link to='/Projects'>View Project Manager</Link>
             </button>
-            <div className = 'category-help'>
-                <div className = 'category-help-1'>
-                    &bull; <span className = 'stress'>Mouseover</span> each schedule to see detail
-                </div>
-                <div className = 'category-help-2'>
-                    &bull; <span className = 'stress'>DoubleClick</span> each schedule to add feeback
-                </div>
+            <p className = 'sidemenu-left-border'></p>
+            <p className = 'mainbox-sidemenu-left-text'>Notifications:</p>
+            <div id = 'notification-box'>
+                {
+                    requests.map(r => {
+                        console.log('hello world!', r)
+                        return (
+                            <Request key = {r.id + '-request'} data = {r} id = {r.id}/>
+                        )
+                    })
+                }
             </div>
+            
         </div>
     )
 }
