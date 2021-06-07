@@ -3,11 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from "react-bootstrap";
 import { withStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import cyan from '@material-ui/core/colors/cyan';
 import amber from '@material-ui/core/colors/amber';
 import pink from '@material-ui/core/colors/pink';
+import teal from '@material-ui/core/colors/teal';
 
 
 
@@ -22,9 +21,10 @@ import img_private from '../../Icons/private.png';
 
 function Menubar(props){
 
+    const color_all = teal[100];
     const color_work = amber[200];
     const color_priv = pink[100];
-    const color_fam = cyan[100];
+    const color_fam = cyan[100];    
 
     const AmberCheckbox = withStyles({
         root: {
@@ -51,6 +51,16 @@ function Menubar(props){
           color: color_fam,
           '&$checked': {
             color: cyan[300],
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
+
+      const TealCheckbox = withStyles({
+        root: {
+          color: color_all,
+          '&$checked': {
+            color: teal[200],
           },
         },
         checked: {},
@@ -159,59 +169,67 @@ function Menubar(props){
     }
 
     console.log('menubar:', props.mode)
+
+    const HI = () => {
+        console.log("Hi")
+    }
     
     return(
         <div className = 'mainbox-sidemenu'>
             <p className = 'mainbox-sidemenu-left-text'>View Options:</p>
-            {/* <div>
-                <FormControlLabel control={<PinkCheckbox name="checkedG" />} label="Private"
-                labelPlacement="end"/>
-            </div> */}
+
             <div
                 className = 'sidemenu-category'
-                id = {'category-all-' + props.mode[0]}
                 style = {{backgroundColor: (props.mode[0] ? '#d2ffd1' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
-                onMouseEnter = {evt => category_hover_in(evt)}
-                onMouseLeave = {evt => category_hover_out(evt)}> All  </div>
-            <div 
-                className = 'sidemenu-category'
-                id = {'category-work-' + props.mode[1]}
-                style = {{backgroundColor: (props.mode[1] ? '#fffdc6' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
                 onMouseEnter = {evt => category_hover_in(evt)}
                 onMouseLeave = {evt => category_hover_out(evt)}>
+                <TealCheckbox
+                id = {'category-all-' + props.mode[0]}
+                checked = {props.mode[0]}
+                onClick = {evt => click_category(evt)}/>  
+                <div className = 'sidemenu-category-text'>All</div>
+            </div>
+            
+
+            <div
+                className = 'sidemenu-category'
+                style = {{backgroundColor: (props.mode[1] ? '#fffdc6' : 'transparent')}}
+                onMouseEnter = {evt => category_hover_in(evt)}
+                onMouseLeave = {evt => category_hover_out(evt)}>
+                <AmberCheckbox
+                id = {'category-work-' + props.mode[1]}
+                checked = {props.mode[1]}
+                onClick = {evt => click_category(evt)}/>  
                 <div className = 'sidemenu-category-text'>Work</div>
-                <FormControlLabel
-                control={<AmberCheckbox name="checkedG" chekched='' onChange=''/>} 
-                label="Work"
-                labelPlacement="end"/>
                 <img className= 'sidemenu-category-img' src={img_work} width = "30" />
             </div>
+
             <div
                 className = 'sidemenu-category'
-                id = {'category-family-' + props.mode[2]}
                 style = {{backgroundColor: (props.mode[2] ? '#c8f7f4' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
                 onMouseEnter = {evt => category_hover_in(evt)}
                 onMouseLeave = {evt => category_hover_out(evt)}>
+                <CyanCheckbox
+                id = {'category-family-' + props.mode[2]}
+                checked = {props.mode[2]}
+                onClick = {evt => click_category(evt)}/>  
                 <div className = 'sidemenu-category-text'>Family</div>
-                <FormControlLabel control={<CyanCheckbox name="checkedG" />} label="Family"
-                labelPlacement="end"/>
-                <img className = 'sidemenu-category-img' src={img_family} width = "35" />
+                <img className= 'sidemenu-category-img' src={img_family} width = "35" />
             </div>
+
             <div
                 className = 'sidemenu-category'
-                id = {'category-private-' + props.mode[3]}
                 style = {{backgroundColor: (props.mode[3] ? '#ffdcfb' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
                 onMouseEnter = {evt => category_hover_in(evt)}
                 onMouseLeave = {evt => category_hover_out(evt)}>
+                <PinkCheckbox
+                id = {'category-private-' + props.mode[3]}
+                checked = {props.mode[3]}
+                onClick = {evt => click_category(evt)}/>  
                 <div className = 'sidemenu-category-text'>Private</div>
-                <FormControlLabel control={<PinkCheckbox name="checkedG" />} label="Private"
-                labelPlacement="end"/>
                 <img className = 'sidemenu-category-img' src={img_private} width = "28"/>
             </div>
+
             <p className = 'sidemenu-left-border'></p>
             <div id='category-project'>
                 <Link to='/Projects' className='default-link'>

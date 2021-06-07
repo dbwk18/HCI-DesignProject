@@ -28,7 +28,7 @@
 .mainbox-sidemenu-left-text {
   margin-left: 20px;
   margin-top: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-size: 20px;
   font-family: Abel;
 }
@@ -39,18 +39,20 @@
   height: 50px;
   font-size: 18px;
   font-family: Promp-Mid;
-  padding-top: 15px;
-  padding-bottom: 20px;
-  padding-left: 40px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  padding-left: 25px;
   cursor: pointer;
 }
 
 .sidemenu-category-text {
+  padding-top: 3px;
   flex-basis: 30%;
 }
 
 .sidemenu-category-img {
   padding-left: 10px;
+  padding-top: 3px;
 }
 
 #category-project {
