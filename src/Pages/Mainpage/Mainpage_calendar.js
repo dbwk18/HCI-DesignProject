@@ -33,6 +33,9 @@ function Mainpage_calendar(props) {
                     <Calendar mode = {p.mode}/>
                 </div>
             </div>
+            <div id = 'send'>
+                Send Message
+            </div>
 
         </div>
     )

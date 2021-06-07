@@ -50,7 +50,7 @@ function Message (props) {
     return(
         <div className = {'message message-row' + props.row + '-' + props.data.loc + ' message-col' + props.col} id = {props.id + '-message'}>
             <div className = 'message-header'>
-                <div className = 'message-header-text'>Set Schedule</div>
+                <div className = 'message-header-text'>Edit Schedule</div>
                 <div className = 'message-header-close' onClick = {evt => close_messagebox()}>&times;</div>
             </div>
             <div className = 'message-body'>
@@ -84,53 +84,7 @@ function Message (props) {
                     </div>
                     
                 </div>
-                {/* <div className = 'message-body-wrap'>
-                    <label className = 'message-body-subject'>Where</label>
-                    <input
-                        className = 'message-body-input'
-                        id = {props.id + '-where'}
-                        type = 'text'
-                        placeholder = {props.id + ''}></input>
-                </div> */}
-                {/* {
-                    props.data.category === 2
-                    ?
-                    <div className = 'message-body-wrap'>
-                        <label className = 'message-body-subject'>Who</label>
-                        <select className = 'message-body-input' id = {props.id + '-owner'} onChange = {evt => change_owner(evt)} defaultValue = {props.data.owner}>
-                            <option value = ''>Not selected</option>
-                            <option value = 'me'>Me</option>
-                            <option value = 'partner'>MinSeok Yoo(Partner)</option>
-                        </select>
-                    </div>
-                    :
-                    <></>
-                } */}
-                {/* <div className = 'message-body-wrap'>
-                    <label className = 'message-body-subject'>Who</label>
-                    <select className = 'message-body-input' id = {props.id + '-owner'} onChange = {evt => change_owner(evt)} defaultValue = {props.data.owner}>
-                        <option value = ''>Not selected</option>
-                        <option value = 'me'>Me</option>
-                        <option value = 'partner'>MinSeok Yoo(Partner)</option>
-                    </select>
-                </div> */}
-                {/* {
-                    (owner === 'partner' || (props.data.owner === 'me' && props.id === '5DVoYqXozfGAvTF2ezw2'))
-                    ?
-                    <>
-                    <div className = 'message-body-wrap-textarea'>
-                        <label className = 'message-body-subject message-body-stretch'>Message</label>
-                        <textarea 
-                            className = 'message-body-textarea'
-                            type = 'text'
-                            id = {props.id + '-messageContext'}
-                            placeholder = {props.data.message}></textarea>
-                    </div>
-                    </>
-                    :
-                    <>
-                    </>
-                } */}
+
                 <div className = 'message-body-wrap'> 
                     <label className = 'message-body-subject'>Category</label>
                     <select className = 'message-body-input' id = {props.id + '-category'} defaultValue = {props.data.category}>

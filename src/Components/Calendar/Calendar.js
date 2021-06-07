@@ -210,6 +210,25 @@ function Calendar(props){
 
     }
 
+    const enter_add = () => {
+        document.getElementById('calendar-add-button').style.boxShadow = '5px 5px 2px lightgray'
+    }
+    const leave_add = () => {
+        document.getElementById('calendar-add-button').style.boxShadow = 'none'
+    }
+    const enter_next = () => {
+        document.getElementById('calendar-nextmonth').style.boxShadow = '5px 5px 2px lightgray'
+    }
+    const leave_next = () => {
+        document.getElementById('calendar-nextmonth').style.boxShadow = 'none'
+    }
+    const enter_prev = () => {
+        document.getElementById('calendar-prevmonth').style.boxShadow = '5px 5px 2px lightgray'
+    }
+    const leave_prev = () => {
+        document.getElementById('calendar-prevmonth').style.boxShadow = 'none'
+    }
+
     // console.log('current month: ', month)
 
     // console.log('(Calendar) Current active element: ', document.activeElement.id)
@@ -219,7 +238,8 @@ function Calendar(props){
             <div id = 'header-wrap'>
                 
                 <div id = 'calendar-add-wrap'>
-                    <button id = 'calendar-add-button' onClick = {evt => {add_schedule(evt)}}>Add +</button>
+                    <button id = 'calendar-add-button' 
+                        onClick = {evt => {add_schedule(evt)}} onMouseEnter = {_ => enter_add()} onMouseLeave = {_ => leave_add()}>Add +</button>
                     <div id = 'calendar-add-text'>
                         <p>MouseOver each schedule to see detail</p>
                         <p>DoubleClick each schedule to add feeback</p>
@@ -230,8 +250,8 @@ function Calendar(props){
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
 
                 <div id = 'calendar-changemonth'>
-                    <button id = 'calendar-nextmonth' onClick = {evt => {see_prev_month(month)}}>&#60;</button>
-                    <button id = 'calendar-prevmonth' onClick = {evt => {see_next_month(month)}}>&#62;</button>
+                    <button id = 'calendar-prevmonth' onClick = {_ => {see_prev_month(month)}} onMouseEnter = {_ => enter_prev()} onMouseLeave = {_ => leave_prev()}>&#60;</button>
+                    <button id = 'calendar-nextmonth' onClick = {_ => {see_next_month(month)}} onMouseEnter = {_ => enter_next()} onMouseLeave = {_ => leave_next()}>&#62;</button>
                 </div>
                 
             </div>

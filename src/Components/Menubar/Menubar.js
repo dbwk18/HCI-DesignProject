@@ -42,29 +42,33 @@ function Menubar(props){
 
     const history = useHistory();
     const category_hover_in = (evt) => {
-        var elem_id = evt.target.id.slice(9)
-        if (elem_id.startsWith('all')) {
-            evt.target.style.backgroundColor = '#D2FFD1'
-        } else if (elem_id.startsWith('work')){
-            evt.target.style.backgroundColor = '#fffdc6'
-        } else if (elem_id.startsWith('family')) {
-            evt.target.style.backgroundColor = '#c8f7f4'
-        } else if (elem_id.startsWith('private')) {
-            evt.target.style.backgroundColor = '#ffdcfb'
-        }
+        console.log('category-hover-in')
+        // var elem_id = evt.target.id.slice(9)
+        evt.target.style.boxShadow = '10px 5px 5px gray';
+        // if (elem_id.startsWith('all')) {
+        //     evt.target.style.backgroundColor = '#D2FFD1'
+        // } else if (elem_id.startsWith('work')){
+        //     evt.target.style.backgroundColor = '#fffdc6'
+        // } else if (elem_id.startsWith('family')) {
+        //     evt.target.style.backgroundColor = '#c8f7f4'
+        // } else if (elem_id.startsWith('private')) {
+        //     evt.target.style.backgroundColor = '#ffdcfb'
+        // }
     }
 
     const category_hover_out = (evt) => {
-        var elem_id = evt.target.id.slice(9)
-        if (elem_id.startsWith('all') && !props.mode[0]) {
-            evt.target.style.backgroundColor = 'transparent'
-        } else if (elem_id.startsWith('work') && !props.mode[1]){
-            evt.target.style.backgroundColor = 'transparent'
-        } else if (elem_id.startsWith('family') && !props.mode[2]) {
-            evt.target.style.backgroundColor = 'transparent'
-        } else if (elem_id.startsWith('private') && !props.mode[3]) {
-            evt.target.style.backgroundColor = 'transparent'
-        }
+        console.log('category-hover-out')
+        // var elem_id = evt.target.id.slice(9)
+        evt.target.style.boxShadow = 'none';
+        // if (elem_id.startsWith('all') && !props.mode[0]) {
+        //     evt.target.style.backgroundColor = 'transparent'
+        // } else if (elem_id.startsWith('work') && !props.mode[1]){
+        //     evt.target.style.backgroundColor = 'transparent'
+        // } else if (elem_id.startsWith('family') && !props.mode[2]) {
+        //     evt.target.style.backgroundColor = 'transparent'
+        // } else if (elem_id.startsWith('private') && !props.mode[3]) {
+        //     evt.target.style.backgroundColor = 'transparent'
+        // }
     }
 
     const click_category = (evt) => {
@@ -137,6 +141,12 @@ function Menubar(props){
         }
     }
 
+    const enter_manager = () => {
+        document.getElementById('category-project').style.boxShadow = '5px 5px 2px lightyellow'
+    }
+    const leave_manager = () => {
+        document.getElementById('category-project').style.boxShadow = ''
+    }
 
     console.log('menubar:', props.mode)
 
@@ -181,8 +191,8 @@ function Menubar(props){
                 <img className = 'sidemenu-category-img' src={img_private} width = "28"/>
             </div>
             <p className = 'sidemenu-left-border'></p>
-            <button id = 'category-project'>
-                <Link to='/Projects'>View Project Manager</Link>
+            <button id = 'category-project' onMouseEnter = {_ => enter_manager()} onMouseLeave = {_ => leave_manager()}>
+                <Link to='/Projects'>View Priority Manager</Link>
             </button>
             <p className = 'sidemenu-left-border'></p>
             <p className = 'mainbox-sidemenu-left-text'>Notifications:</p>
@@ -196,7 +206,6 @@ function Menubar(props){
                     })
                 }
             </div>
-            
         </div>
     )
 }

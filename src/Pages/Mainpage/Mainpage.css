@@ -23,3 +23,21 @@
   background-color: #ffffb0;
   
 }
+
+#send {
+  position: fixed;
+  background-color: lightblue;
+  border-radius: 15px;
+  top: 700px;
+  left: 1350px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  margin-left: 70px;
+  border: 1px solid black;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
