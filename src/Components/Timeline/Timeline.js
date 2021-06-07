@@ -1,6 +1,7 @@
 import React, {useState, useCallback, update, useRef, state, setState} from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import * as classNames from 'classnames';
 import ReactDOM from 'react';
 import styled from 'styled-components';
 import './Timeline.css'
@@ -22,7 +23,7 @@ const reorder = (list, startIndex, endIndex) => {
   
   // using some little inline style helpers to make the app look okay
 //   const grid = 8;
-const getItemStyle = (draggableStyle, isDragging) => ({
+const getItemStyle = (draggableStyle, isDragging, itemclass) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
     // padding: grid * 2,
@@ -30,25 +31,28 @@ const getItemStyle = (draggableStyle, isDragging) => ({
     textAlign: 'center',
     height: '90px',
     lineHeight: '90px',
-    fontSize: '20px',
+    fontSize: '18px',
     position: 'relative',
     marginBottom: '5px',
     borderRadius: '20px',
     border: '2px solid grey',
-    margin: '10px',
+    margin: '15px',
+    width: '335px',
 
     // change background colour if dragging
-    background: isDragging ?  '#ABFFA9' : '#EBFFEB',
+    background: itemclass==='workschedule' ? '#fffdc6' : itemclass==='familyschedule' ? '#c8f7f4': '#ffdcfb',
+    opacity: isDragging ? 0.5 : 1,
   
     // styles we need to apply on draggables
-    ...draggableStyle,
+    ...draggableStyle
   });
+
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? 'white' : 'white',
     // padding: grid,
-    width: 310,
+    width: '370px',
+    height: '700px'
   });
-  
 
 
 function Timeline(){
@@ -76,33 +80,26 @@ function Timeline(){
     [cards]
   );
 
-    const Wrapper = styled.div`
-        opacity: ${props => (props.isDragging ? 0 : 1)};
-    `;
 
     function addPriority(event) {
         console.log(event.target.innerText);
-        setprname(event.target.innerText);
+        // setprname(event.target.innerText);
 
-        var inputbox = document.createElement("div");
-        inputbox.innerText= event.target.innerText;
-        var position = document.getElementById('priorityMenu');
-        // position.appendChild(inputbox);
+        // var inputbox = document.createElement("div");
+        // inputbox.innerText= event.target.innerText;
+        // var position = document.getElementById('priorityMenu');
+        // // position.appendChild(inputbox);
 
-        var priorityClass = event.target.getAttribute('class');
-        inputbox.style.fontSize = 24+"px"
-        inputbox.style.textAlign = "center"
-        inputbox.style.height = 90+"px"
-        inputbox.style.lineHeight = 90+"px"
-        inputbox.style.borderRadius = 10+"px"
-        inputbox.style.margin= 5+"px"
-        
-        if (priorityClass === 'workschedule') inputbox.style.backgroundColor = "#fffdc6"
-        else if (priorityClass === 'familyschedule') inputbox.style.backgroundColor = "#c8f7f4"
-        else inputbox.style.backgroundColor = "#ffdcfb"
+        // var priorityClass = event.target.getAttribute('class');
+        // inputbox.style.fontSize = 24+"px"
+        // inputbox.style.textAlign = "center"
+        // inputbox.style.height = 90+"px"
+        // inputbox.style.lineHeight = 90+"px"
+        // inputbox.style.borderRadius = 10+"px"
+        // inputbox.style.margin= 5+"px"
 
         setCards([...cards,
-            {id: String(cards.length+1), title: event.target.innerText, index: cards.length},])
+            {id: String(cards.length+1), title: event.target.innerText, class: event.target.getAttribute('class'), date: event.target.getAttribute('name'), index: cards.length},])
 
         // setItemlist({items:[
         //     ...cards,
@@ -127,12 +124,10 @@ function Timeline(){
         // setItemlist({item: cards})
 
     }
+
     console.log(cards)
     
     // const [itemlist, setItemlist] = useState({item: cards});
-
-    
-    
 
     var itemlist = {items: cards};
     console.log(itemlist)
@@ -145,7 +140,7 @@ function Timeline(){
         if (!result.destination) {
           return;
         }
-    
+
         const items = reorder(
           itemlist.items,
           result.source.index,
@@ -155,6 +150,27 @@ function Timeline(){
         itemlist.items = items;
         
       }
+    
+    function showDetail(event){
+        var id = "popup" + event.target.getAttribute('id');
+        
+        // var detail = event.target.getAttribute('detail');
+        console.log(id)
+        document.getElementById(id).style.display = "block"
+        document.getElementById(id).style.width = "310px"
+        document.getElementById(id).style.height = "80px"
+        document.getElementById(id).style.lineHeight = "80px"
+        document.getElementById(id).style.textAlign = "center"
+        document.getElementById(id).style.backgroundColor = "#F1F1F1"
+        document.getElementById(id).style.borderRadius = "5px"
+        document.getElementById(id).style.fontWeight = "9px"
+    }
+    
+    function hideDetail(event){
+        var id = "popup" + event.target.getAttribute('id');
+        console.log(id)
+        document.getElementById(id).style.display = "none"
+    }
 
 
     return(
@@ -171,6 +187,7 @@ function Timeline(){
                             <div
                             ref={provided.innerRef}
                             {...provided.droppableProps}
+                            // className={classNames('list', snapshot.isDraggingOver && 'draggingOver')}
                             style={getListStyle(snapshot.isDraggingOver)}
                             >
                             {itemlist.items.map(item => (
@@ -178,16 +195,17 @@ function Timeline(){
                                 {(provided, snapshot) => (
                                     
                                     <div
+                                        // className={classNames('item', snapshot.isDragging && 'dragging')}
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                         style={getItemStyle(
-                                        provided.draggableStyle,
-                                        snapshot.isDragging
+                                        provided.draggableProps.style,
+                                        snapshot.isDragging,
+                                        item.class
                                         )}
-                                        {...provided.dragHandleProps}
                                     >
-                                        {item.title}
+                                        {item.date + '\t' + item.title}
                                         
                                     </div>
                                 
@@ -204,13 +222,13 @@ function Timeline(){
                 </div>
             
 
-        </div>
+            </div>
 
             <div className="timelineContainer">
                 <ul class="days">
                     <li class="day">
-                        <div class="dayweek">Sun</div>
-                        <div class="date">5/2</div>   
+                        <div class="dayweek" id="holiday">Sun</div>
+                        <div class="date" id="holiday">5/2</div>   
                     </li>
                     <li class="day">
                         <div class="dayweek">Mon</div>
@@ -222,8 +240,8 @@ function Timeline(){
                         <div class="today"></div>    
                     </li>
                     <li class="day">
-                        <div class="dayweek">Wed</div>
-                        <div class="date">5/5</div>             
+                        <div class="dayweek" id="holiday">Wed</div>
+                        <div class="date" id="holiday">5/5</div>             
                     </li>
                     <li class="day">
                         <div class="dayweek">Thur</div>
@@ -238,8 +256,8 @@ function Timeline(){
                         <div class="date">5/8</div>  
                     </li>
                     <li class="day">
-                        <div class="dayweek">Sun</div>
-                        <div class="date">5/9</div>  
+                        <div class="dayweek" id="holiday">Sun</div>
+                        <div class="date" id="holiday">5/9</div>  
                     </li>
                     <li class="day">
                         <div class="dayweek">Mon</div>
@@ -267,26 +285,83 @@ function Timeline(){
                     </li>
                 </ul>
 
-                <div class="privateschedule" id="sch1" onDoubleClick={evt => addPriority(evt)}>Dinner with friend</div> 
-                <div class="workschedule" id="sch2" onDoubleClick={evt => addPriority(evt)}>Meeting A</div>  
-                <div class="workschedule" id="sch3" onDoubleClick={evt => addPriority(evt)}>Weekly Meeting</div>
-                <div class="privateschedule" id="sch4" onDoubleClick={evt => addPriority(evt)}>Fitness</div> 
-                <div class="familyschedule" id="sch5" onDoubleClick={evt => addPriority(evt)}>Going out for dinner</div> 
-                <div class="familyschedule" id="sch6" onDoubleClick={evt => addPriority(evt)}>Going to museum</div>  
-                <div class="privateschedule" id="sch7" onDoubleClick={evt => addPriority(evt)}>Golf</div> 
-                <div class="workschedule" id="sch8" onDoubleClick={evt => addPriority(evt)}>Weekly Meeting</div>
-                <div class="workschedule" id="sch9" onDoubleClick={evt => addPriority(evt)}>Client Meeting</div>
-                <div class="familyschedule" id="sch10" onDoubleClick={evt => addPriority(evt)}>Bring son academy</div> 
-                <div class="workschedule" id="sch11" onDoubleClick={evt => addPriority(evt)}>Presentation</div>  
-                <div class="familyschedule" id="sch12" onDoubleClick={evt => addPriority(evt)}>School Sports Day</div>  
-                <div class="privateschedule" id="sch13" onDoubleClick={evt => addPriority(evt)}>Appointment w/ YJ</div>
-                <div class="familyschedule" id="sch14" onDoubleClick={evt => addPriority(evt)}>Spring-Clean</div> 
-                <div class="workschedule" id="sch15" onDoubleClick={evt => addPriority(evt)}>Meeting B</div>  
-                <div class="familyschedule" id="sch16" onDoubleClick={evt => addPriority(evt)}>Parent Participating Class</div>
-                <div class="workschedule" id="sch17" onDoubleClick={evt => addPriority(evt)}>User-Testing</div>  
-                <div class="workschedule" id="sch18" onDoubleClick={evt => addPriority(evt)}>Presen. Rehearsal</div>
-                <div class="workschedule" id="sch19" onDoubleClick={evt => addPriority(evt)}>Client Meeting</div>
-
+                <div class="privateschedule" id="sch1" name="5/2" detail="Dinner at Gangnam 6:00 PM" onDoubleClick={evt => addPriority(evt)} onMouseOver={evt => showDetail(evt)} onMouseOut={evt => hideDetail(evt)}>
+                    Dinner with friend
+                </div> 
+                <div class="detailPopup" id="popupsch1" >Dinner at Gangnam 6:00PM</div>
+                <div class="workschedule" id="sch2" name="5/3" onDoubleClick={evt => addPriority(evt)} >
+                    Meeting A
+                    {/* <div class="detailPopup" id="popupsch2">Meeting at 2:00PM with developers</div> */}
+                </div>  
+                <div class="workschedule" id="sch3" name="5/3" onDoubleClick={evt => addPriority(evt)}>
+                    Weekly Meeting
+                    {/* <div class="detailPopup" id="popupsch3">Weekly Scrum Meeting at 11:00AM</div> */}
+                </div>
+                <div class="privateschedule" id="sch4" name="5/4" onDoubleClick={evt => addPriority(evt)}  onMouseOver={evt => showDetail(evt)} onMouseOut={evt => hideDetail(evt)}>
+                    Fitness
+                </div> 
+                <div class="detailPopup" id="popupsch4">Personal Training at 7:00PM</div>
+                <div class="familyschedule" id="sch5" name="5/7" onDoubleClick={evt => addPriority(evt)} >
+                    Bring son academy
+                    <div class="detailPopup" id="popupsch5">Bring son from ABC Academy at 6:00PM</div>
+                </div> 
+                <div class="familyschedule" id="sch6" name="5/8" onDoubleClick={evt => addPriority(evt)} >
+                    Going to museum
+                    <div class="detailPopup" id="popupsch6">Family Trip to museum in Gyengju</div>
+                </div>  
+                <div class="privateschedule" id="sch7" name="5/6" onDoubleClick={evt => addPriority(evt)} >
+                    Golf
+                    {/* <div class="detailPopup" id="popupsch7">Golf Lesson at 6:30PM</div> */}
+                </div> 
+                <div class="workschedule" id="sch8" name="5/10" onDoubleClick={evt => addPriority(evt)}>
+                    Weekly Meeting
+                    <div class="detailPopup" id="popupsch8">Weekly Scrum Meeting at 11:00 AM</div>
+                </div>
+                <div class="workschedule" id="sch9" name="5/7" onDoubleClick={evt => addPriority(evt)} >
+                    Client Meeting
+                    <div class="detailPopup" id="popupsch9">Client Meeting at 02:30PM in Cafe A</div>
+                </div>
+                <div class="familyschedule" id="sch10" name="5/5" onDoubleClick={evt => addPriority(evt)} onMouseOver={evt => showDetail(evt)} onMouseOut={evt => hideDetail(evt)}>
+                    Going out for dinner
+                </div> 
+                <div class="detailPopup" id="popupsch10">Going out for dinner with family to VIPS</div>
+                <div class="workschedule" id="sch11" name="5/6" onDoubleClick={evt => addPriority(evt)}>
+                    Presentation
+                    <div class="detailPopup" id="popupsch11">Design Feedback Presentation at 11:00AM</div>
+                </div>  
+                <div class="familyschedule" id="sch12" name="5/7" onDoubleClick={evt => addPriority(evt)}>
+                    School Sports Day
+                    {/* <div class="detailPopup" id="popupsch12">Son's School Sports Day at 11:00AM</div> */}
+                </div>  
+                <div class="privateschedule" id="sch13" name="5/12" onDoubleClick={evt => addPriority(evt)}>
+                    Appointment w/ YJ
+                </div>
+                <div class="familyschedule" id="sch14" name="5/15" onDoubleClick={evt => addPriority(evt)} >
+                    Spring-Clean
+                </div> 
+                <div class="workschedule" id="sch15" name="5/12" onDoubleClick={evt => addPriority(evt)}>
+                    Meeting B
+                </div>  
+                <div class="familyschedule" id="sch16" name="5/13" onDoubleClick={evt => addPriority(evt)}>
+                    Participating Class
+                </div>
+                <div class="workschedule" id="sch17" name="5/4" onDoubleClick={evt => addPriority(evt)} >
+                    User-Testing
+                </div>  
+                {/* <div class="detailPopup" id="popupsch17">User Testing starting at 3:00PM in RoomA</div> */}
+                <div class="workschedule" id="sch18" name="5/4" onDoubleClick={evt => addPriority(evt)} >
+                    Presen. Rehearsal
+                    {/* <div class="detailPopup" id="popupsch18">Presentation Rehearsal at 1:30PM for 5/6 PT</div> */}
+                </div>
+                <div class="workschedule" id="sch19" name="5/3" onDoubleClick={evt => addPriority(evt)} >
+                    Client Meeting
+                    <div class="detailPopup" id="popupsch19">Client Meeting at 11:00AM</div>
+                </div>
+                <div class="privateschedule" id="sch20" name="5/6" onDoubleClick={evt => addPriority(evt)} >
+                    Appointment w/ SW
+                    <div class="detailPopup" id="popupsch20">Dinner at Gangnam at 7:00PM </div>
+                </div>
+                
 
             </div>
         </div>

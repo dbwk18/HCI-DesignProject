@@ -22,6 +22,7 @@ function Mainpage_calendar(props) {
         <div className='Container'>
             <div className = 'headerContainer'>
                 <Header mode = {p.mode}/>
+                <div id="banner"><i><b>Mouseover</b> each schedule to see detail, <b>DoubleClick</b> each schedule to add feedback </i></div>
             </div>
             <div className = 'mainContainer'>
                 <div className='menubarContainer'>

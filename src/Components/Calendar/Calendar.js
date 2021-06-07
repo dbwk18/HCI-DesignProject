@@ -193,7 +193,7 @@ function Calendar(props){
 
         let new_schedules = [...schedules]
         new_schedules.push(new_schedule)
-        db.collection('schedules').doc().set(new_schedule)
+        db.collection('schedules').doc().set(new_schedule)       
         setSchedules(new_schedules)
 
     }

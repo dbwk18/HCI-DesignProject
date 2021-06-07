@@ -35,16 +35,6 @@
   width: 140px;
 }
 
-#closeBtn {
-  font-size: 25px;
-  position: relative;
-  top: -80px;
-  float: right;
-  width: 100px;
-  border-width: 0px;
-  background-color: white;
-}
-
 #project5 {
   position: relative;
   background-color: #dbfed6;

@@ -1,6 +1,8 @@
 .projectmenuContainer {
   float: left;
-  width: 23%;
+  width: 21%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   /* border-bottom: 1px solid lightgray; */
 }
 
@@ -13,6 +15,7 @@
   overflow-y: hidden;
   height: 740px;
   white-space: nowrap;
+  font-family: abel;
 }
 
 .dayweek {
@@ -72,6 +75,7 @@
   line-height: 40px;
   left: 5px;
   text-align: center;
+  box-shadow: 1px 1px 5px 1px #dadce0;
 }
 
 .workschedule {
@@ -84,6 +88,7 @@
   left: 5px;
   top: 30px;
   text-align: center;
+  box-shadow: 1px 1px 5px 1px #dadce0;
 }
 
 .privateschedule {
@@ -95,6 +100,19 @@
   line-height: 40px;
   left: 5px;
   text-align: center;
+  box-shadow: 1px 1px 5px 1px #dadce0;
+}
+
+.workschedule:hover {
+  opacity: 0.8;
+}
+
+.familyschedule:hover {
+  opacity: 0.8;
+}
+
+.privateschedule:hover {
+  opacity: 0.8;
 }
 
 #sch1 {
@@ -153,7 +171,7 @@
 
 #sch10 {
   position: relative;
-  left: 335px;
+  left: 495px;
   top: -820px;
 }
 
@@ -207,8 +225,62 @@
 
 #sch19 {
   position: relative;
-  left: 335px;
+  left: 170px;
   top: -1270px;
+}
+
+#sch20 {
+  position: relative;
+  left: 655px;
+  top: -1040px;
+}
+
+#holiday {
+  color: red;
+}
+
+#popupsch1 {
+  display: none;
+  position: absolute;
+  top: 460px;
+  left: 10px;
+}
+
+#popupsch4 {
+  display: none;
+  position: absolute;
+  top: 460px;
+  left: 335px;
+}
+
+#popupsch10 {
+  display: none;
+  position: absolute;
+  top: 335px;
+  left: 495px;
+}
+
+#popupsch2,
+#popupsch3,
+#popupsch4,
+#popupsch5,
+#popupsch6,
+#popupsch7,
+#popupsch8,
+#popupsch9,
+#popupsch10,
+#popupsch11,
+#popupsch12,
+#popupsch13,
+#popupsch14,
+#popupsch15,
+#popupsch16,
+#popupsch17,
+#popupsch18,
+#popupsch19,
+#popupsch20 {
+  /* display: none; */
+  display: none;
 }
 
 /* #project1_1 {
