@@ -4,6 +4,7 @@
   border-radius: 20px;
   margin-bottom: 10px;
   position: relative;
+  font-family: abel;
 }
 
 .request {
@@ -22,19 +23,15 @@
 
 .request-view {
   border: none;
-  background-color: rgb(255, 255, 255);
-  width: 60px;
-  border-radius: 15px;
-  padding: 5px 5px 5px 5px;
   font-size: 15px;
-  font-weight: bold;
   align-self: flex-end;
   cursor: pointer;
 }
 
 .request-message-wrap {
   position: absolute;
-  background-color: lightgray;
+  background-color: white;
+  box-shadow: rgb(173, 173, 173) 1px 3px 3px ;
   padding-left: 5%;
   left: 300px;
   top:  0px;
@@ -63,6 +60,19 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.request-body-header-wrap {
+  flex-basis: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.request-message-header {
+  font-size: 30px;
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
 .request-body-message-wrap {
   flex-basis: 30px;
 
@@ -95,28 +105,13 @@
 
 .request-message-close {
   background-color: transparent;
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: bold;
   border: none;
 }
 
 .request-message-button-accept {
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  margin-right: 10px;
-}
-.request-message-button-deny {
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 15px;
-}
-.request-message-button-send {
-  background-color: #f0f0f0;
-  font-size: 15px;
-  border-radius: 15px;
-  border: none;
+  margin-right : 10px;
 }
 
 .request-message-deny {

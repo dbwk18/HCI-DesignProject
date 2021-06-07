@@ -6,6 +6,8 @@ import img_hmm from '../../Icons/hmm.png';
 import img_bad from '../../Icons/bad.png';
 import img_feedback from '../../Icons/feedback.png';
 
+import {Button} from "react-bootstrap";
+
 function Feedback (props) {
     // 0 : None, 1 : good, 2 : hmm, 3 : bad
 
@@ -36,6 +38,10 @@ function Feedback (props) {
         }
     }
 
+    const close_memo = () => {
+        document.getElementById(props.id + '-feedback').setAttribute('style', 'display: none')
+    }
+
     const submit_memo = (evt) => {
 
         var previous_icon = document.getElementById(props.id + 'feedback-memo')
@@ -54,9 +60,20 @@ function Feedback (props) {
 
         document.getElementById(props.id + '-feedback').setAttribute('style', 'display: none')
     }
+
+    const enter_close = () => {
+        document.getElementById(props.id + '-feedback-close').style.boxShadow = '5px 5px 2px lightgray'
+    }
+    const leave_close = () => {
+        document.getElementById(props.id + '-feedback-close').style.boxShadow = ''
+    }
+
+
     return (
         <div className = {'feedback feedback-row' + props.row + '-' + props.data.loc + ' feedback-col' + props.col} id = {props.id + '-feedback'}>
+            
             <div className = 'feedback-header-wrap'>
+                <button className = "feedback-close-button" id = {props.id + '-feedback-close'}onClick = {_ => {close_memo()}} onMouseEnter = {_ => enter_close()} onMouseLeave = {_ => leave_close()}>&times;</button>
                 <img className = 'feedback-icon icon-feedback' src = {img_feedback} width = '16' height = '16' alt = 'feedback'/>
                 <p className = 'feedback-text'>How did it go?</p>
             </div>
@@ -106,7 +123,7 @@ function Feedback (props) {
             </div>
             <textarea className = 'feedback-memo' id = {props.id + '-feedback-memo'} placeholder = 'Leave memo here!'></textarea>
             <div className = 'feedback-done-wrap'>
-                <button className = 'feedback-done' onClick = {evt => submit_memo(evt)}>Done</button>
+                <Button className = "btn btn-outline-warning feedback-done" id = 'calendar-prevmonth' onClick = {evt=> {submit_memo(evt)}}>Done</Button>
             </div>
         </div>
     )

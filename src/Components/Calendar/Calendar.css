@@ -76,6 +76,10 @@ header {
   text-align: center;
 }
 
+#calendar {
+  font-family: abel;
+}
+
 #calendar ul {
   list-style: none;
   padding: 0;
@@ -154,6 +158,7 @@ header {
   width: 320px;
   height: 570px;
   background-color: white;
+  font-family: abel;
   border: none;
   box-shadow: rgb(173, 173, 173) 0px 3px 8px;
   border-radius: 8px;
@@ -213,18 +218,14 @@ header {
 }
 
 #popup-button-close{
-  font-size: 30px;
-  color:rgb(95, 95, 95);
+  font-size: 25px;
+
   float: right;
   left: 270px;
   top: 10px;
-  width: 25px;
-  height: 25px;
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
   border-radius: 5px;
-  margin-top: -2px;
-  margin-bottom: 0px;
-  align-self: right;
+  border: none;
 }
 
 #popup-button-work {
@@ -261,9 +262,28 @@ header {
 
 #popup-date-wrap {
   width: 270px;
-  margin: auto;
   margin-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
 }
+#popup-date-start-wrap {
+  flex-basis: 30px;
+  margin-left: 5%;
+  display: flex;
+}
+#popup-date-end-wrap {
+  flex-basis: 30px;
+  margin-left: 5%;
+  display: flex;
+}
+#start-label {
+  flex-basis: 80px;
+}
+#end-label {
+  flex-basis: 80px;
+}
+
 
 #popup-time-wrap {
   margin-left: 10px
@@ -283,17 +303,13 @@ header {
   font-size: 15px;
   border: none;
   background-color:rgb(248, 248, 248);
-  margin-bottom: 30px;
   box-shadow: rgb(173, 173, 173) 1px 1px 3px;
 }
 
 
 #popup-button-submit {
-  position: absolute;
-  left: 240px;
-  top: 520px;
-  color: white;
-  background-color: rgb(163, 163, 163);
+  position: relative;
+  left: 75%;
 }
 
 #schedules-wrap {

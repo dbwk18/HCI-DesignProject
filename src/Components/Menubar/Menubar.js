@@ -301,15 +301,16 @@ function Menubar(props){
 
             <div className = 'category-project' id = 'category-priority'>
                 <Link to='/Projects' className = 'default-link'>
-                    <Button class="btn btn-outline-warning">View Priority Manager</Button>
+                    <Button class="btn btn-outline-warning" size = 'lg'>View Priority Manager</Button>
                 </Link>
             </div>
             <p className = 'sidemenu-left-border'></p>
             <div className = 'category-project' id = 'category-send' onClick = {_ => change_send()}>
-                <Button className="btn btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;Send Message&nbsp;&nbsp;&nbsp;&nbsp;</Button>
+                <Button className="btn btn-primary" size = 'lg' >&nbsp;&nbsp;&nbsp;&nbsp;Send Message&nbsp;&nbsp;&nbsp;&nbsp;</Button>
             </div>
             <div id = 'send-wrap' style = {{display: 'none'}}>
-                <div className = 'send-body-button-wrap'>
+                <div className = 'send-body-header-wrap'>
+                    <div className = 'send-header-text'>Send New message</div>
                     <button id = 'send-button-close' onClick = {_ => change_send()} onMouseEnter = {_ => enter_close()} onMouseLeave = {_ => leave_close()}>&times;</button>
                 </div>
                 <div className = 'send-body-schedule-wrap'>
@@ -339,7 +340,8 @@ function Menubar(props){
 
                 </div>
                 <div className = 'send-body-button-wrap'>
-                    <button id = 'send-button-send' onClick = {_ => send_new_message()} onMouseEnter = {_ => enter_send_button()} onMouseLeave = {_ => leave_send_button()}>Send</button>
+                    <Button className="btn btn-primary" id = 'send-button-send' onClick = {_ => send_new_message()}>Submit</Button>
+                    {/* <button id = 'send-button-send' onClick = {_ => send_new_message()} onMouseEnter = {_ => enter_send_button()} onMouseLeave = {_ => leave_send_button()}>Send</button> */}
                 </div>
             </div>
             <p className = 'sidemenu-left-border'></p>

@@ -44,12 +44,18 @@ function Message (props) {
         document.getElementById(props.id + '-message').style.display = 'none'
     }
 
+    const enter_close = () => {
+        document.getElementById(props.id + '-message-header-close').style.boxShadow = '5px 5px 2px lightgray'
+    }
+    const leave_close = () => {
+        document.getElementById(props.id + '-message-header-close').style.boxShadow = ''
+    }
 
     return(
         <div className = {'message message-row' + props.row + '-' + props.data.loc + ' message-col' + props.col} id = {props.id + '-message'}>
             <div className = 'message-header'>
                 <div className = 'message-header-text'>Edit Schedule</div>
-                <div className = 'message-header-close' onClick = {evt => close_messagebox()}>&times;</div>
+                <button className = 'message-header-close' id = {props.id + '-message-header-close'} onClick = {evt => close_messagebox()} onMouseEnter = {_ => enter_close()} onMouseLeave = {_ => leave_close()}>&times;</button>
             </div>
             <div className = 'message-body'>
                 <div className = 'message-body-wrap' id = {props.id + '-message-body-title'}>
@@ -102,7 +108,7 @@ function Message (props) {
                 </div>
             </div>
             <div className = 'message-submit-wrap'>
-                <Button className="btn btn-outline-warning message-submit" id = {props.id + '-message-submit'} onClick = {evt => update_schedule()}>Submit</Button>
+                <Button className="btn btn-primary message-submit" id = {props.id + '-message-submit'} onClick = {evt => update_schedule()}>Submit</Button>
                 {/* <button className = 'message-submit' id = {props.id + '-message-submit'} onClick = {evt => update_schedule()}>Submit</button> */}
             </div>
         </div>

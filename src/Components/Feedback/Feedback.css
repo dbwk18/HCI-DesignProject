@@ -1,7 +1,7 @@
 .feedback {
   position: absolute;
   width: 300px;
-  height: 200px;
+  height: 220px;
   background-color: white;
   border-radius: 10px;
   border: 1px solid black;
@@ -14,6 +14,14 @@
   width: 80%;
   margin: auto;
   margin-bottom: 5%;
+}
+
+.feedback-close-button {
+  font-size: 25px;
+  float: right;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
 }
 
 .feedback-text {
@@ -61,7 +69,6 @@
 
 .feedback-done-wrap {
   width: 80%;
-  height: 10%;
   margin: auto;
 }
 
@@ -70,27 +77,26 @@
   text-align: center;
   display: block;
   float: right;
-  width: 25%;
   border-radius: 10px;
 }
 
 .feedback-row0 {
-  top: -202px;
+  top: -222px;
 }
 .feedback-row1 {
-  top: -21px;
+  top: -41px;
 }
 .feedback-row2 {
-  top: 157px;
+  top: 177px;
 }
 .feedback-row3 {
-  top: 335px;
+  top: 355px;
 }
 .feedback-row4 {
-  top: 515px;
+  top: 535px;
 }
 .feedback-row5 {
-  top: 695px;
+  top: 715px;
 }
 
 .feedback-row0-1 {

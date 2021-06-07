@@ -197,7 +197,12 @@ function Calendar(props){
         setSchedules(new_schedules)
 
     }
-
+    const enter_close = () => {
+        document.getElementById('popup-button-close').style.boxShadow = '5px 5px 2px lightgray'
+    }
+    const leave_close = () => {
+        document.getElementById('popup-button-close').style.boxShadow = ''
+    }
     const enter_add = () => {
         document.getElementById('calendar-add-button').style.boxShadow = '5px 5px 2px lightgray'
     }
@@ -229,8 +234,8 @@ function Calendar(props){
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
 
                 <div id = 'calendar-changemonth'>
-                    <Button className = "btn btn-outline-secondary" id = 'calendar-prevmonth' onClick = {_ => {see_prev_month(month)}} onMouseEnter = {_ => enter_prev()} onMouseLeave = {_ => leave_prev()}>&#60;</Button>
-                    <Button className = "btn btn-outline-secondary" id = 'calendar-nextmonth' onClick = {_ => {see_next_month(month)}} onMouseEnter = {_ => enter_next()} onMouseLeave = {_ => leave_next()}>&#62;</Button>
+                    <Button className = "btn btn-primary" id = 'calendar-prevmonth' onClick = {_ => {see_prev_month(month)}} onMouseEnter = {_ => enter_prev()} onMouseLeave = {_ => leave_prev()}>&#60;</Button>
+                    <Button className = "btn btn-primary" id = 'calendar-nextmonth' onClick = {_ => {see_next_month(month)}} onMouseEnter = {_ => enter_next()} onMouseLeave = {_ => leave_next()}>&#62;</Button>
                 </div>
                 
             </div>
@@ -437,7 +442,8 @@ function Calendar(props){
             <div id = "calendar-add-popup">
                 <div id = 'popup-component'>
                     <div id = 'popup-header-wrap'>
-                        <span id = 'popup-header-text'>New schedule</span><button className = 'popup-button' id = 'popup-button-close' onClick = {evt => add_schedule()}>x</button>
+                        <span id = 'popup-header-text'>New schedule</span><button id = 'popup-button-close' onClick = {evt => add_schedule()}
+                            onMouseEnter = {_ => enter_close()} onMouseLeave = {_ => leave_close()}>&times;</button>
                     </div>
                     <input type = 'text' id = 'popup-title' placeholder = 'Title (Up to 40 characters)' wrap = 'hard'></input>
                     <div id = 'popup-button-wrap'>
@@ -447,16 +453,20 @@ function Calendar(props){
                         <button className = 'popup-button' id = 'popup-button-other' onClick = {evt => select_category(evt)}>Other</button>
                     </div>
                     <div id = 'popup-date-wrap'>
-                    <label htmlFor="popup-date-start">Start date :&nbsp;</label><input type="date" id="popup-date-start" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
-                    <br/>
-                    <label htmlFor="popup-date-end">End date&nbsp;&nbsp;:&nbsp;</label><input type="date" id="popup-date-end" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
+                        <div id = 'popup-date-start-wrap'>
+                            <label htmlFor="popup-date-start" id = "start-label">Start date :</label><input type="date" id="popup-date-start" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
+                        </div>
+                        <div id = 'popup-date-end-wrap'>
+                            <label htmlFor="popup-date-end" id = "end-label">End date :&nbsp;</label><input type="date" id="popup-date-end" name="trip-start" min="2021-01-01" max="2021-12-31"></input>
+                        </div>
                     </div>
                     <div id = 'popup-time-wrap'>
                         <input type="time" className = 'popup-time' id="popup-time-start" min="00:00" max="24:00" required></input> ~ <input type="time" className = 'popup-time' id="popup-time-end" min="00:00" max="24:00" required></input>
                     </div>
                     <textarea id = 'popup-description' placeholder = 'Description'></textarea>
 
-                    <button className = 'popup-button' id = 'popup-button-submit' onClick = {evt => create_new_schedule()}>Submit</button>
+                    <Button className = "btn btn-primary" id = 'popup-button-submit' size = 'sm'onClick = {evt => create_new_schedule()}>Submit</Button>
+                    {/* <button className = 'popup-button' id = 'popup-button-submit' onClick = {evt => create_new_schedule()}>Submit</button> */}
                 </div>
             </div>
         </div>
