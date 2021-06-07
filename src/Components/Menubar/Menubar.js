@@ -158,7 +158,7 @@ function Menubar(props){
             </div>
             <p className = 'sidemenu-left-border'></p>
             <button id = 'category-project'>
-                <Link to='/Projects'>View Project Manager</Link>
+                <Link to='/Projects'>View Prioirty Manager</Link>
             </button>
             <div className = 'category-help'>
                 <div className = 'category-help-1'>

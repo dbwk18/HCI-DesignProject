@@ -150,8 +150,29 @@ function Timeline(){
         itemlist.items = items;
         
       }
-
     
+    function showDetail(event){
+        var id = "popup" + event.target.getAttribute('id');
+        
+        // var detail = event.target.getAttribute('detail');
+        console.log(id)
+        document.getElementById(id).style.display = "block"
+        document.getElementById(id).style.width = "310px"
+        document.getElementById(id).style.height = "80px"
+        document.getElementById(id).style.lineHeight = "80px"
+        document.getElementById(id).style.textAlign = "center"
+        document.getElementById(id).style.backgroundColor = "#F1F1F1"
+        document.getElementById(id).style.borderRadius = "5px"
+        document.getElementById(id).style.fontWeight = "9px"
+    }
+    
+    function hideDetail(event){
+        var id = "popup" + event.target.getAttribute('id');
+        console.log(id)
+        document.getElementById(id).style.display = "none"
+    }
+
+
     return(
         <div>
             <div className='projectmenuContainer'>
@@ -206,8 +227,8 @@ function Timeline(){
             <div className="timelineContainer">
                 <ul class="days">
                     <li class="day">
-                        <div class="dayweek">Sun</div>
-                        <div class="date">5/2</div>   
+                        <div class="dayweek" id="holiday">Sun</div>
+                        <div class="date" id="holiday">5/2</div>   
                     </li>
                     <li class="day">
                         <div class="dayweek">Mon</div>
@@ -219,8 +240,8 @@ function Timeline(){
                         <div class="today"></div>    
                     </li>
                     <li class="day">
-                        <div class="dayweek">Wed</div>
-                        <div class="date">5/5</div>             
+                        <div class="dayweek" id="holiday">Wed</div>
+                        <div class="date" id="holiday">5/5</div>             
                     </li>
                     <li class="day">
                         <div class="dayweek">Thur</div>
@@ -235,8 +256,8 @@ function Timeline(){
                         <div class="date">5/8</div>  
                     </li>
                     <li class="day">
-                        <div class="dayweek">Sun</div>
-                        <div class="date">5/9</div>  
+                        <div class="dayweek" id="holiday">Sun</div>
+                        <div class="date" id="holiday">5/9</div>  
                     </li>
                     <li class="day">
                         <div class="dayweek">Mon</div>
@@ -264,26 +285,83 @@ function Timeline(){
                     </li>
                 </ul>
 
-                <div class="privateschedule" id="sch1" name="5/2" onDoubleClick={evt => addPriority(evt)}>Dinner with friend</div> 
-                <div class="workschedule" id="sch2" name="5/3" onDoubleClick={evt => addPriority(evt)}>Meeting A</div>  
-                <div class="workschedule" id="sch3" name="5/3" onDoubleClick={evt => addPriority(evt)}>Weekly Meeting</div>
-                <div class="privateschedule" id="sch4" name="5/4" onDoubleClick={evt => addPriority(evt)}>Fitness</div> 
-                <div class="familyschedule" id="sch5" name="5/7" onDoubleClick={evt => addPriority(evt)}>Going out for dinner</div> 
-                <div class="familyschedule" id="sch6" name="5/8" onDoubleClick={evt => addPriority(evt)}>Going to museum</div>  
-                <div class="privateschedule" id="sch7" name="5/6" onDoubleClick={evt => addPriority(evt)}>Golf</div> 
-                <div class="workschedule" id="sch8" name="5/10" onDoubleClick={evt => addPriority(evt)}>Weekly Meeting</div>
-                <div class="workschedule" id="sch9" name="5/7" onDoubleClick={evt => addPriority(evt)}>Client Meeting</div>
-                <div class="familyschedule" id="sch10" name="5/4" onDoubleClick={evt => addPriority(evt)}>Bring son academy</div> 
-                <div class="workschedule" id="sch11" name="5/6" onDoubleClick={evt => addPriority(evt)}>Presentation</div>  
-                <div class="familyschedule" id="sch12" name="5/7" onDoubleClick={evt => addPriority(evt)}>School Sports Day</div>  
-                <div class="privateschedule" id="sch13" name="5/12" onDoubleClick={evt => addPriority(evt)}>Appointment w/ YJ</div>
-                <div class="familyschedule" id="sch14" name="5/15" onDoubleClick={evt => addPriority(evt)}>Spring-Clean</div> 
-                <div class="workschedule" id="sch15" name="5/12" onDoubleClick={evt => addPriority(evt)}>Meeting B</div>  
-                <div class="familyschedule" id="sch16" name="5/13" onDoubleClick={evt => addPriority(evt)}>Participating Class</div>
-                <div class="workschedule" id="sch17" name="5/4" onDoubleClick={evt => addPriority(evt)}>User-Testing</div>  
-                <div class="workschedule" id="sch18" name="5/4" onDoubleClick={evt => addPriority(evt)}>Presen. Rehearsal</div>
-                <div class="workschedule" id="sch19" name="5/4" nDoubleClick={evt => addPriority(evt)}>Client Meeting</div>
-
+                <div class="privateschedule" id="sch1" name="5/2" detail="Dinner at Gangnam 6:00 PM" onDoubleClick={evt => addPriority(evt)} onMouseOver={evt => showDetail(evt)} onMouseOut={evt => hideDetail(evt)}>
+                    Dinner with friend
+                </div> 
+                <div class="detailPopup" id="popupsch1" >Dinner at Gangnam 6:00PM</div>
+                <div class="workschedule" id="sch2" name="5/3" onDoubleClick={evt => addPriority(evt)} >
+                    Meeting A
+                    {/* <div class="detailPopup" id="popupsch2">Meeting at 2:00PM with developers</div> */}
+                </div>  
+                <div class="workschedule" id="sch3" name="5/3" onDoubleClick={evt => addPriority(evt)}>
+                    Weekly Meeting
+                    {/* <div class="detailPopup" id="popupsch3">Weekly Scrum Meeting at 11:00AM</div> */}
+                </div>
+                <div class="privateschedule" id="sch4" name="5/4" onDoubleClick={evt => addPriority(evt)}  onMouseOver={evt => showDetail(evt)} onMouseOut={evt => hideDetail(evt)}>
+                    Fitness
+                </div> 
+                <div class="detailPopup" id="popupsch4">Personal Training at 7:00PM</div>
+                <div class="familyschedule" id="sch5" name="5/7" onDoubleClick={evt => addPriority(evt)} >
+                    Bring son academy
+                    <div class="detailPopup" id="popupsch5">Bring son from ABC Academy at 6:00PM</div>
+                </div> 
+                <div class="familyschedule" id="sch6" name="5/8" onDoubleClick={evt => addPriority(evt)} >
+                    Going to museum
+                    <div class="detailPopup" id="popupsch6">Family Trip to museum in Gyengju</div>
+                </div>  
+                <div class="privateschedule" id="sch7" name="5/6" onDoubleClick={evt => addPriority(evt)} >
+                    Golf
+                    {/* <div class="detailPopup" id="popupsch7">Golf Lesson at 6:30PM</div> */}
+                </div> 
+                <div class="workschedule" id="sch8" name="5/10" onDoubleClick={evt => addPriority(evt)}>
+                    Weekly Meeting
+                    <div class="detailPopup" id="popupsch8">Weekly Scrum Meeting at 11:00 AM</div>
+                </div>
+                <div class="workschedule" id="sch9" name="5/7" onDoubleClick={evt => addPriority(evt)} >
+                    Client Meeting
+                    <div class="detailPopup" id="popupsch9">Client Meeting at 02:30PM in Cafe A</div>
+                </div>
+                <div class="familyschedule" id="sch10" name="5/5" onDoubleClick={evt => addPriority(evt)} onMouseOver={evt => showDetail(evt)} onMouseOut={evt => hideDetail(evt)}>
+                    Going out for dinner
+                </div> 
+                <div class="detailPopup" id="popupsch10">Going out for dinner with family to VIPS</div>
+                <div class="workschedule" id="sch11" name="5/6" onDoubleClick={evt => addPriority(evt)}>
+                    Presentation
+                    <div class="detailPopup" id="popupsch11">Design Feedback Presentation at 11:00AM</div>
+                </div>  
+                <div class="familyschedule" id="sch12" name="5/7" onDoubleClick={evt => addPriority(evt)}>
+                    School Sports Day
+                    {/* <div class="detailPopup" id="popupsch12">Son's School Sports Day at 11:00AM</div> */}
+                </div>  
+                <div class="privateschedule" id="sch13" name="5/12" onDoubleClick={evt => addPriority(evt)}>
+                    Appointment w/ YJ
+                </div>
+                <div class="familyschedule" id="sch14" name="5/15" onDoubleClick={evt => addPriority(evt)} >
+                    Spring-Clean
+                </div> 
+                <div class="workschedule" id="sch15" name="5/12" onDoubleClick={evt => addPriority(evt)}>
+                    Meeting B
+                </div>  
+                <div class="familyschedule" id="sch16" name="5/13" onDoubleClick={evt => addPriority(evt)}>
+                    Participating Class
+                </div>
+                <div class="workschedule" id="sch17" name="5/4" onDoubleClick={evt => addPriority(evt)} >
+                    User-Testing
+                </div>  
+                {/* <div class="detailPopup" id="popupsch17">User Testing starting at 3:00PM in RoomA</div> */}
+                <div class="workschedule" id="sch18" name="5/4" onDoubleClick={evt => addPriority(evt)} >
+                    Presen. Rehearsal
+                    {/* <div class="detailPopup" id="popupsch18">Presentation Rehearsal at 1:30PM for 5/6 PT</div> */}
+                </div>
+                <div class="workschedule" id="sch19" name="5/3" onDoubleClick={evt => addPriority(evt)} >
+                    Client Meeting
+                    <div class="detailPopup" id="popupsch19">Client Meeting at 11:00AM</div>
+                </div>
+                <div class="privateschedule" id="sch20" name="5/6" onDoubleClick={evt => addPriority(evt)} >
+                    Appointment w/ SW
+                    <div class="detailPopup" id="popupsch20">Dinner at Gangnam at 7:00PM </div>
+                </div>
+                
 
             </div>
         </div>
