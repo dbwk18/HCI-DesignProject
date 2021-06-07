@@ -6,6 +6,7 @@
   box-shadow: rgb(173, 173, 173) 1px 3px 3px;
   display: none;
   z-index: 1000;
+  height: 350px;
 }
 
 .message-header {
@@ -78,7 +79,7 @@
 }
 
 .message-body-input-time {
-  width: 60%;
+  width: 75%;
   align-self: center;
 }
 
@@ -107,10 +108,13 @@
   margin: auto;
 }
 
+.message-input {
+  font-size: 12px;
+}
+
 .message-submit {
   float: right;
   border: none;
-  height: 100%;
 
 }
 

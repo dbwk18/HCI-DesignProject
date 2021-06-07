@@ -3,6 +3,8 @@ import {db, firebaseApp} from '../../firebase'
 import * as calendar_info from '../Calendar/calendar_infomation'
 import './Messenger.css'
 
+import {Button} from "react-bootstrap";
+
 function Message (props) {
 
     //props.data : 일정에 관한 데이터 전부
@@ -53,7 +55,7 @@ function Message (props) {
                 <div className = 'message-body-wrap' id = {props.id + '-message-body-title'}>
                     <div className = 'message-body-subject'>Title</div>
                     <input
-                        className = 'message-body-input'
+                        className = 'message-body-input message-input'
                         id = {props.id + '-title'}
                         type = 'text'
                         defaultValue = {props.data.title}></input>
@@ -64,7 +66,7 @@ function Message (props) {
                         <div className = 'message-body-time-wrap-wrap'>
                             <span className = 'message-body-time-wrap-text'>(Start)</span>
                             <input 
-                                className = 'message-body-input message-body-input-time'
+                                className = 'message-body-input message-body-input-time message-input'
                                 type = 'text'
                                 id = {props.id + '-start'}
                                 defaultValue = {props.data.start}></input>
@@ -72,7 +74,7 @@ function Message (props) {
                         <div className = 'message-body-time-wrap-wrap'>
                             <span className = 'message-body-time-wrap-text'>(End)</span>
                             <input
-                                className = 'message-body-input message-body-input-time'
+                                className = 'message-body-input message-body-input-time message-input'
                                 id = {props.id + '-end'}
                                 type = 'text'
                                 defaultValue = {props.data.end}></input>
@@ -83,7 +85,7 @@ function Message (props) {
 
                 <div className = 'message-body-wrap'> 
                     <label className = 'message-body-subject'>Category</label>
-                    <select className = 'message-body-input' id = {props.id + '-category'} defaultValue = {props.data.category}>
+                    <select className = 'message-body-input message-input' id = {props.id + '-category'} defaultValue = {props.data.category}>
                         <option value = '1'>Work</option>
                         <option value = '2'>Family</option>
                         <option value = '3'>Private</option>
@@ -93,14 +95,15 @@ function Message (props) {
                 <div className = 'message-body-wrap-textarea'>
                     <label className = 'message-body-subject message-body-stretch'>Desc.</label>
                     <textarea
-                        className = 'message-body-textarea'
+                        className = 'message-body-textarea message-input'
                         type = 'text'
                         id = {props.id + '-desc'}
                         defaultValue = {props.data.desc}></textarea>
                 </div>
             </div>
             <div className = 'message-submit-wrap'>
-                <button className = 'message-submit' id = {props.id + '-message-submit'} onClick = {evt => update_schedule()}>Submit</button>
+                <Button className="btn btn-outline-warning message-submit" id = {props.id + '-message-submit'} onClick = {evt => update_schedule()}>Submit</Button>
+                {/* <button className = 'message-submit' id = {props.id + '-message-submit'} onClick = {evt => update_schedule()}>Submit</button> */}
             </div>
         </div>
     )

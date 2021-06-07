@@ -71,7 +71,8 @@ function Schedule(props) {
     
     var calendar_row = parseInt(calendar_location_start / 7)
     var calendar_col = calendar_location_start % 7
-    var title_len_limit = 15 + 20 * (schedule_days.length - 1)
+    var title_len_limit = 12 + 20 * (schedule_days.length - 1)
+
     return(
         <>
         <div

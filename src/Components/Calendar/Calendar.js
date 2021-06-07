@@ -3,6 +3,7 @@ import './Calendar.css'
 import * as calendar_info from './calendar_infomation'
 import {db, firebaseApp} from '../../firebase.js'
 import Schedule from '../Schedule/Schedule.js'
+import {Button} from "react-bootstrap";
 
 
 function Calendar(props){
@@ -221,16 +222,15 @@ function Calendar(props){
             <div id = 'header-wrap'>
                 
                 <div id = 'calendar-add-wrap'>
-                    <button id = 'calendar-add-button' 
-                        onClick = {evt => {add_schedule(evt)}} onMouseEnter = {_ => enter_add()} onMouseLeave = {_ => leave_add()}>Add +</button>
+                    <Button id = 'calendar-add-button' className = 'btn'
+                        onClick = {evt => {add_schedule(evt)}} onMouseEnter = {_ => enter_add()} onMouseLeave = {_ => leave_add()}>Add +</Button>
                 </div>
-                
 
                 <div id = 'calendar-monthyear'>{month_info[month]}, 2021</div>
 
                 <div id = 'calendar-changemonth'>
-                    <button id = 'calendar-prevmonth' onClick = {_ => {see_prev_month(month)}} onMouseEnter = {_ => enter_prev()} onMouseLeave = {_ => leave_prev()}>&#60;</button>
-                    <button id = 'calendar-nextmonth' onClick = {_ => {see_next_month(month)}} onMouseEnter = {_ => enter_next()} onMouseLeave = {_ => leave_next()}>&#62;</button>
+                    <Button className = "btn btn-outline-secondary" id = 'calendar-prevmonth' onClick = {_ => {see_prev_month(month)}} onMouseEnter = {_ => enter_prev()} onMouseLeave = {_ => leave_prev()}>&#60;</Button>
+                    <Button className = "btn btn-outline-secondary" id = 'calendar-nextmonth' onClick = {_ => {see_next_month(month)}} onMouseEnter = {_ => enter_next()} onMouseLeave = {_ => leave_next()}>&#62;</Button>
                 </div>
                 
             </div>

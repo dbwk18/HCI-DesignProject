@@ -1,8 +1,21 @@
 import React, {useState, useEffect}  from 'react';
+
 import {db, firebaseApp} from '../../firebase'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from "react-bootstrap";
+import { withStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import cyan from '@material-ui/core/colors/cyan';
+import amber from '@material-ui/core/colors/amber';
+import pink from '@material-ui/core/colors/pink';
+import teal from '@material-ui/core/colors/teal';
+
+
 import {useHistory} from "react-router";
 import './Menubar.css'
 import { Link } from 'react-router-dom';
+
 
 import Request from '../Request/Request'
 
@@ -12,6 +25,51 @@ import img_private from '../../Icons/private.png';
 
 
 function Menubar(props){
+
+    const color_all = teal[100];
+    const color_work = amber[200];
+    const color_priv = pink[100];
+    const color_fam = cyan[100];    
+
+    const AmberCheckbox = withStyles({
+        root: {
+          color: color_work,
+          '&$checked': {
+            color: amber[400],
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
+
+    const PinkCheckbox = withStyles({
+    root: {
+        color: color_priv,
+        '&$checked': {
+        color: pink[300],
+        },
+    },
+    checked: {},
+    })((props) => <Checkbox color="default" {...props} />);
+
+    const CyanCheckbox = withStyles({
+        root: {
+          color: color_fam,
+          '&$checked': {
+            color: cyan[300],
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
+
+      const TealCheckbox = withStyles({
+        root: {
+          color: color_all,
+          '&$checked': {
+            color: teal[200],
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
 
     // props.mode : boolean으로 이루어진 길이 4짜리 리스트. all, work, family, private중 선택된 것을 보여줌
     // props.view_as : 0 또는 1, 0이면 기본형식인 캘린더로 보는 것이고, 1이면 카테고리박스로 보는 것.
@@ -158,10 +216,10 @@ function Menubar(props){
     }
 
     const enter_manager = () => {
-        document.getElementById('category-project').style.boxShadow = '5px 5px 2px #efefa0'
+        document.getElementById('category-priority').style.boxShadow = '5px 5px 2px #efefa0'
     }
     const leave_manager = () => {
-        document.getElementById('category-project').style.boxShadow = ''
+        document.getElementById('category-priority').style.boxShadow = ''
     }
     const enter_send = () => {
         document.getElementById('category-send').style.boxShadow = '5px 5px 2px #b8e7e4'
@@ -182,54 +240,73 @@ function Menubar(props){
         document.getElementById('send-button-send').style.boxShadow = ''
     }
 
-
+    
     return(
         <div className = 'mainbox-sidemenu'>
-            <p className = 'mainbox-sidemenu-left-text'>View by Category:</p>
+            <p className = 'mainbox-sidemenu-left-text'>View Options:</p>
+
             <div
                 className = 'sidemenu-category'
-                id = {'category-all-' + props.mode[0]}
                 style = {{backgroundColor: (props.mode[0] ? '#d2ffd1' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
-                onMouseEnter = {evt => category_hover_in(evt)}
-                onMouseLeave = {evt => category_hover_out(evt)}>View all  </div>
-            <div 
-                className = 'sidemenu-category'
-                id = {'category-work-' + props.mode[1]}
-                style = {{backgroundColor: (props.mode[1] ? '#fffdc6' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
                 onMouseEnter = {evt => category_hover_in(evt)}
                 onMouseLeave = {evt => category_hover_out(evt)}>
+                <TealCheckbox
+                id = {'category-all-' + props.mode[0]}
+                checked = {props.mode[0]}
+                onClick = {evt => click_category(evt)}/>  
+                <div className = 'sidemenu-category-text'>All</div>
+            </div>
+            
+
+            <div
+                className = 'sidemenu-category'
+                style = {{backgroundColor: (props.mode[1] ? '#fffdc6' : 'transparent')}}
+                onMouseEnter = {evt => category_hover_in(evt)}
+                onMouseLeave = {evt => category_hover_out(evt)}>
+                <AmberCheckbox
+                id = {'category-work-' + props.mode[1]}
+                checked = {props.mode[1]}
+                onClick = {evt => click_category(evt)}/>  
                 <div className = 'sidemenu-category-text'>Work</div>
                 <img className= 'sidemenu-category-img' src={img_work} width = "30" />
             </div>
+
             <div
                 className = 'sidemenu-category'
-                id = {'category-family-' + props.mode[2]}
                 style = {{backgroundColor: (props.mode[2] ? '#c8f7f4' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
                 onMouseEnter = {evt => category_hover_in(evt)}
                 onMouseLeave = {evt => category_hover_out(evt)}>
+                <CyanCheckbox
+                id = {'category-family-' + props.mode[2]}
+                checked = {props.mode[2]}
+                onClick = {evt => click_category(evt)}/>  
                 <div className = 'sidemenu-category-text'>Family</div>
-                <img className = 'sidemenu-category-img' src={img_family} width = "35" />
+                <img className= 'sidemenu-category-img' src={img_family} width = "35" />
             </div>
+
             <div
                 className = 'sidemenu-category'
-                id = {'category-private-' + props.mode[3]}
                 style = {{backgroundColor: (props.mode[3] ? '#ffdcfb' : 'transparent')}}
-                onClick = {evt => click_category(evt)}
                 onMouseEnter = {evt => category_hover_in(evt)}
                 onMouseLeave = {evt => category_hover_out(evt)}>
+                <PinkCheckbox
+                id = {'category-private-' + props.mode[3]}
+                checked = {props.mode[3]}
+                onClick = {evt => click_category(evt)}/>  
                 <div className = 'sidemenu-category-text'>Private</div>
                 <img className = 'sidemenu-category-img' src={img_private} width = "28"/>
             </div>
+
             <p className = 'sidemenu-left-border'></p>
-            <button className = 'category-project' id = 'category-project' onMouseEnter = {_ => enter_manager()} onMouseLeave = {_ => leave_manager()}>
-                <Link to='/Projects'>View Priority Manager</Link>
-            </button>
+
+            <div className = 'category-project' id = 'category-priority'>
+                <Link to='/Projects' className = 'default-link'>
+                    <Button class="btn btn-outline-warning">View Priority Manager</Button>
+                </Link>
+            </div>
             <p className = 'sidemenu-left-border'></p>
-            <div className = 'category-project' id = 'category-send' onClick = {_ => change_send()} onMouseEnter = {_ => enter_send()} onMouseLeave = {_ => leave_send()}>
-                Send message
+            <div className = 'category-project' id = 'category-send' onClick = {_ => change_send()}>
+                <Button className="btn btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;Send Message&nbsp;&nbsp;&nbsp;&nbsp;</Button>
             </div>
             <div id = 'send-wrap' style = {{display: 'none'}}>
                 <div className = 'send-body-button-wrap'>
@@ -259,6 +336,7 @@ function Menubar(props){
                         type = 'text'
                         id = 'sendContext'
                         placeholder = 'Type here'></textarea>
+
                 </div>
                 <div className = 'send-body-button-wrap'>
                     <button id = 'send-button-send' onClick = {_ => send_new_message()} onMouseEnter = {_ => enter_send_button()} onMouseLeave = {_ => leave_send_button()}>Send</button>
@@ -278,6 +356,7 @@ function Menubar(props){
                     })
                 }
             </div>
+
         </div>
     )
 }
