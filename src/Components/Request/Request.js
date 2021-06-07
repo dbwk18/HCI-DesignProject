@@ -13,19 +13,15 @@ function Request (props) {
     const [deny, setDeny] = useState(false)
 
 
-    console.log('-----------Request------------',props)
 
     const change_view = () => {
         
-        console.log('change_view')
-        console.log('current view', view)
         if (view === true) {
             document.getElementById(props.id + '-request-message-wrap').style.display = 'flex'
         } else {
             document.getElementById(props.id + '-request-message-wrap').style.display = 'none'
         }
         setView(view => !view)
-        console.log('after view', view)
     }
 
     const click_send = () => {
@@ -42,7 +38,7 @@ function Request (props) {
     const click_accept = () => {
         db.collection('schedules').doc(props.id).update({
             message: '',
-            status: 3
+            status: 4
         })
     }   
 

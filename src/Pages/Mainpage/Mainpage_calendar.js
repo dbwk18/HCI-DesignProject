@@ -11,7 +11,6 @@ function Mainpage_calendar(props) {
 
     var p = undefined
 
-    console.log('Get props in Mainpage', props.location.props)
     if (props.location.props === undefined) { 
         p = {mode: [true, false, false, false]}   
     }
@@ -19,7 +18,6 @@ function Mainpage_calendar(props) {
         p = props.location.props
     }
 
-    console.log('Mainpage', p)
     return(
         <div className='Container'>
             <div className = 'headerContainer'>
@@ -33,10 +31,6 @@ function Mainpage_calendar(props) {
                     <Calendar mode = {p.mode}/>
                 </div>
             </div>
-            <div id = 'send'>
-                Send Message
-            </div>
-
         </div>
     )
 

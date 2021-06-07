@@ -7,9 +7,6 @@ import Menubar from '../../Components/Menubar/Menubar'
 
 function Mainpage_categorybox() {
 
-    console.log('mainpage-categorybox')
-
-    console.log('Mainpage')
     return(
         <div className='Container'>
             <div className = 'headerContainer'>

@@ -20,7 +20,6 @@ function Schedule(props) {
     // props.start(string) : 일정의 시작 시기
     // props.end(string) : 일정이 끝나는 시기
     // props.category(string) : work, family, private중 어느 일정인지를 나타냄. 
-    // console.log(props)
     const day_info = calendar_info.day_info
     const category_map = calendar_info.category_map
     const start_month = parseInt(props.data.start.split('/')[1])
@@ -73,7 +72,6 @@ function Schedule(props) {
     var calendar_row = parseInt(calendar_location_start / 7)
     var calendar_col = calendar_location_start % 7
     var title_len_limit = 15 + 20 * (schedule_days.length - 1)
-    console.log('schedule.js', props.data)
     return(
         <>
         <div
@@ -91,7 +89,6 @@ function Schedule(props) {
                     var isFirst = (i === 0)
                     var isLast = (schedule_days.indexOf(i) === schedule_days.length - 1)
                     var isFirstLast = isFirst && isLast
-                    console.log(props.id + '-' + i)
                     return(
                         <>
                         <div
@@ -120,7 +117,7 @@ function Schedule(props) {
                                         :
                                         <img
                                             width = '25' height = '25'
-                                            src = {props.data.status === 1 ? img_sending : (props.data.status === 2 ? img_notification : (props.data.status === 3 ? img_you : (props.data.status === 4 ? img_partner : '')))}
+                                            src = {props.data.status === 1 ? img_sending : (props.data.status === 2  || props.data.status === 3? img_notification : (props.data.status === 4 ? img_you : (props.data.status === 5 ? img_partner : '')))}
                                             alt = {props.data.owner === 'me' ? 'you' : 'sending'}
                                             />
                                     }

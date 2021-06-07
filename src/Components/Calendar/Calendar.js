@@ -20,7 +20,6 @@ function Calendar(props){
     const [schedules, setSchedules] = useState([])
 
     useEffect(() => {
-        // console.log('in useEffect~~~~~~~~~~~~~~~~~~~~')
         var day_schedule_occupied = {}
         var temp_start = ''
         var temp_end = ''
@@ -30,18 +29,15 @@ function Calendar(props){
         var empty = true
         const schedules_ref = db.collection('schedules');
         schedules_ref.onSnapshot((snapshot) => {
-            // console.log('onSnapshot********************', snapshot.docs)
             day_schedule_occupied = {}
             var data = snapshot.docs.map((doc) => {
                 temp_start = doc.data().start.split('/')
                 temp_end = doc.data().end.split('/')
                 
-                // console.log('asdlkjadsflkjasdfjasdflkjsdaflkjsdafkjasdflkjsfdalk;j', doc.data().duration, temp_start, temp_end)
                 for(i = 1; i < 10; i++) {
                     empty = true
                     for (j = 0; j < doc.data().duration; j++){
                         temp_date = temp_start[1] + (parseInt(temp_start[2]) + j < 10 ? '0' + (parseInt(temp_start[2]) + j) : parseInt(temp_start[2]) + j) + i
-                        console.log(temp_date, day_schedule_occupied[temp_date])
                         if (day_schedule_occupied[temp_date] !== undefined) {
                             empty = false
                             break
@@ -57,20 +53,6 @@ function Calendar(props){
                         break
                     }
                 }
-
-                // for(i = 0; i <= doc.date.duration; i++) {
-                //     temp_date = temp_start[1] + (parseInt(temp_start[2]) + i < 10 ? '0' + (parseInt(temp_start[2]) + i) : parseInt(temp_start[2]) + i)
-                //     if (day_schedule_occupied[temp_date] === undefined) {
-                //         day_schedule_occupied[temp_date] = 1
-                //     }
-                //     else {
-                //         day_schedule_occupied[temp_date] += 1
-                //     }
-                //     console.log('check : ', temp_date, day_schedule_occupied[temp_date], max_cnt)
-                //     if (max_cnt < day_schedule_occupied[temp_date]) {
-                //         max_cnt = day_schedule_occupied[temp_date]
-                //     }
-                // }
                 return {
                     id : doc.id,
                     loc: i,
@@ -79,7 +61,6 @@ function Calendar(props){
             });
             setSchedules(data);
         })
-        // console.log('end of useEffect~~~~~~~~~~~~~~~~~')
     }, [])
 
     useEffect(() => {
@@ -161,7 +142,6 @@ function Calendar(props){
     }
 
     const create_new_schedule = () => {
-        // console.log('~~~~~~~~~~create_new_schedule~~~~~~~~~~~~~~~~~')
         var title = document.getElementById('popup-title').value
         var desc = document.getElementById('popup-description').value
         var start_time = document.getElementById('popup-time-start').value
@@ -171,7 +151,6 @@ function Calendar(props){
 
         setCategory(0)
 
-        // 추가했으니 Add popup의 내용물을 비움
         document.getElementById('popup-title').value = ''
         document.getElementById('popup-description').value = ''
         document.getElementById('popup-time-start').value = ''
@@ -179,7 +158,6 @@ function Calendar(props){
         document.getElementById('popup-time-end').value = ''
         document.getElementById('popup-date-end').value = ''
 
-        // 팝업 없앰
         setPopup(popup => !popup)
 
         start_date = start_date.split('-')
@@ -198,9 +176,10 @@ function Calendar(props){
             desc: desc,
             memo: '',
             sat: 0,
-            owner: '',
             pinned: false,
-            duration: (no_end_date ? 1 : parseInt(end_date[2]) - parseInt(start_date[2])) 
+            duration: (no_end_date ? 1 : parseInt(end_date[2]) - parseInt(start_date[2]) + 1) ,
+            status: (category === 2 ? 0 : -1),
+            message: '',
         }
 
         let new_schedules = [...schedules]
@@ -229,10 +208,6 @@ function Calendar(props){
         document.getElementById('calendar-prevmonth').style.boxShadow = 'none'
     }
 
-    // console.log('current month: ', month)
-
-    // console.log('(Calendar) Current active element: ', document.activeElement.id)
-    // console.log('!!!!!!!!!!!!!!!!!!! reload !!!!!!!!!!!!!!!!!!!!!')
     return(
         <div className = 'calendar-box'>
             <div id = 'header-wrap'>
@@ -434,7 +409,6 @@ function Calendar(props){
                 <div id = 'schedules-wrap'>
                     {
                         schedules.map(s => {
-                            console.log('===', s)
                             var start = s.start.split('/')
                             var start_month = parseInt(start[1])
 

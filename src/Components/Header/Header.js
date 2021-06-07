@@ -11,7 +11,6 @@ function Header() {
         if (pathname.endsWith('/HCI-DesignProject')) {
             return
         }
-        console.log('move_to_homepage')
         history.push({
           pathname: '/HCI-DesignProject',
           props: {

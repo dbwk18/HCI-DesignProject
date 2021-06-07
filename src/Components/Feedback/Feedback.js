@@ -8,8 +8,6 @@ import img_feedback from '../../Icons/feedback.png';
 
 function Feedback (props) {
     // 0 : None, 1 : good, 2 : hmm, 3 : bad
-    // console.log(props)
-    console.log('----------feedback--------------')
 
     const [icon, setIcon] = useState(0);
     const [memo, setMemo] = useState('');
@@ -17,7 +15,6 @@ function Feedback (props) {
 
     const select_icon = (evt) => {
         var target = evt.target
-        // console.log('in select_icon', target.id)
         document.getElementById(props.id + '-feedback-icon-wrap-good').style.border = 'none'
         document.getElementById(props.id + '-feedback-icon-wrap-hmm').style.border = 'none'
         document.getElementById(props.id + '-feedback-icon-wrap-bad').style.border = 'none'
@@ -57,8 +54,6 @@ function Feedback (props) {
 
         document.getElementById(props.id + '-feedback').setAttribute('style', 'display: none')
     }
-    // console.log('changed')
-    // console.log('(Feedback) Current active element: ', document.activeElement.id)
     return (
         <div className = {'feedback feedback-row' + props.row + '-' + props.data.loc + ' feedback-col' + props.col} id = {props.id + '-feedback'}>
             <div className = 'feedback-header-wrap'>

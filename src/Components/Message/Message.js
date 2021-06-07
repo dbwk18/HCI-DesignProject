@@ -11,10 +11,6 @@ function Message (props) {
     // props.col: 일정이 속한 열
     // props.type: 나에게 온 메세지인지, 내가 보내는 메세지인지
 
-    console.log('-----------message------------')
-
-    // console.log(props.id, 'message', props.data)
-
     const category_map = calendar_info.category_map
     const [owner, setOwner] = useState('');
 
@@ -30,22 +26,22 @@ function Message (props) {
         var start= document.getElementById(props.id + '-start').value
         var end = document.getElementById(props.id + '-end').value
         var duration = end === '' ? 1 : parseInt(end.split('/')[2]) - parseInt(start.split('/')[2]) + 1
+        var new_category = parseInt(document.getElementById(props.id + '-category').value)
+
 
         db.collection('schedules').doc(props.id).update({
-            "title": document.getElementById(props.id + '-title').value,
-            "category": parseInt(document.getElementById(props.id + '-category').value),
-            "start": document.getElementById(props.id + '-start').value,
-            "end": document.getElementById(props.id + '-end').value,
-            "desc": document.getElementById(props.id + '-desc').value,
-            "owner": (props.data.category === 2 ? document.getElementById(props.id + '-owner').value : ''),
-            "message": (owner === 'partner' ? document.getElementById(props.id + '-messageContext').value : ''),
-            "duration": duration
+            title : document.getElementById(props.id + '-title').value,
+            category : new_category,
+            start : document.getElementById(props.id + '-start').value,
+            end : document.getElementById(props.id + '-end').value,
+            desc : document.getElementById(props.id + '-desc').value,
+            duration : duration,
+            status : new_category === 2 ? 0 : -1
             
         })
         document.getElementById(props.id + '-message').style.display = 'none'
     }
 
-    console.log(props.id, props.data)
 
     return(
         <div className = {'message message-row' + props.row + '-' + props.data.loc + ' message-col' + props.col} id = {props.id + '-message'}>

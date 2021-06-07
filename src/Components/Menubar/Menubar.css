@@ -28,7 +28,7 @@
   flex-basis: 30%;
 }
 
-#category-project {
+.category-project {
   text-align: center;
   margin-left: 40px; 
   flex-basis: 50px;
@@ -77,4 +77,107 @@
 #notifications {
   font-size: 18px;
   margin-left: 20px;
+}
+
+#category-send {
+  height: 40px;
+  font-size: 25px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  background-color: #c8f7f4;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#send-wrap {
+  position: absolute;
+  left: 320px;
+  top: 540px;
+  width: 420px;
+  background-color: #c8f7f4;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  z-index: 100;
+  
+}
+
+.send-body-wrap {
+  flex-basis: 30px;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.send-body-schedule-wrap {
+  margin-left: 5%;
+  flex-basis: 30px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.send-body-message-wrap {
+  flex-basis: 30px;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.send-body-button-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#sendContext {
+  width: 95%;
+  height: 60px;
+  resize: none;
+  border-radius: 15px;
+
+}
+
+.send-body-subject {
+  font-weight: bold;
+  flex-basis: 100px;
+}
+
+.send-body-message-text {
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+
+#send-button-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-right: 5%;
+  margin-top: 20px;
+  border: none;
+  cursor:pointer;
+}
+
+#send-button-send {
+  font-size: 15px;
+  margin-right: 5%;
+  border: none;
+  width : 60px;
+  height: 30px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.send-body-pass-subject {
+  font-weight: bold;
+  flex-basis: 100px;
 }
