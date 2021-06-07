@@ -27,16 +27,25 @@ function Calendar(props){
         var i = 0
         var j = 0
         var empty = true
+        var temp_array = []
         const schedules_ref = db.collection('schedules');
         schedules_ref.onSnapshot((snapshot) => {
+            temp_array = []
             day_schedule_occupied = {}
-            var data = snapshot.docs.map((doc) => {
-                temp_start = doc.data().start.split('/')
-                temp_end = doc.data().end.split('/')
+            snapshot.docs.forEach(doc => {
+                temp_array.push({
+                    id : doc.id,
+                    ...doc.data()
+                })
+            })
+            temp_array.sort((x, y) => y.duration - x.duration)
+            var data = temp_array.map((doc) => {
+                temp_start = doc.start.split('/')
+                temp_end = doc.end.split('/')
                 
                 for(i = 1; i < 10; i++) {
                     empty = true
-                    for (j = 0; j < doc.data().duration; j++){
+                    for (j = 0; j < doc.duration; j++){
                         temp_date = temp_start[1] + (parseInt(temp_start[2]) + j < 10 ? '0' + (parseInt(temp_start[2]) + j) : parseInt(temp_start[2]) + j) + i
                         if (day_schedule_occupied[temp_date] !== undefined) {
                             empty = false
@@ -46,7 +55,7 @@ function Calendar(props){
                         }
                     }
                     if (empty) {
-                        for (j = 0; j < doc.data().duration; j++){
+                        for (j = 0; j < doc.duration; j++){
                             temp_date = temp_start[1] + (parseInt(temp_start[2]) + j < 10 ? '0' + (parseInt(temp_start[2]) + j) : parseInt(temp_start[2]) + j) + i
                             day_schedule_occupied[temp_date] = true
                         }
@@ -54,9 +63,8 @@ function Calendar(props){
                     }
                 }
                 return {
-                    id : doc.id,
                     loc: i,
-                    ...doc.data()
+                    ...doc
                 }
             });
             setSchedules(data);
