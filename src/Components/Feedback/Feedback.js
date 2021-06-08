@@ -123,7 +123,7 @@ function Feedback (props) {
             </div>
             <textarea className = 'feedback-memo' id = {props.id + '-feedback-memo'} placeholder = 'Leave memo here!'></textarea>
             <div className = 'feedback-done-wrap'>
-                <Button className = "btn btn-outline-warning feedback-done" id = 'calendar-prevmonth' onClick = {evt=> {submit_memo(evt)}}>Done</Button>
+                <Button className = "btn btn-primary feedback-done" id = 'calendar-prevmonth' onClick = {evt=> {submit_memo(evt)}}>Done</Button>
             </div>
         </div>
     )
