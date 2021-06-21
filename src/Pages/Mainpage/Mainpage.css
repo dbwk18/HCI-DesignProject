@@ -8,6 +8,35 @@
   width: 20%;
 }
 
+.calendar-help {
+  position : fixed;
+  background-color: brown;
+  left: 93%;
+  top: 90%;
+  font-size: 30px;
+  color: white;
+  width: 100px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px 15px 15px 15px;
+  box-shadow: 5px 5px 5px brown;
+}
+
+.calendar-help-message {
+  position: fixed;
+  background-color: white;
+  left: 66%;
+  top: 80%;
+  width: 33%;
+  height: 10%;
+  font-size: 25px;
+  border: 3px solid black;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: lightskyblue;
+}
+
 .calendarContainer {
   float: left;
   width: 75%;

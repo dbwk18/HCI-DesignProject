@@ -22,10 +22,11 @@
 }
 
 #closeBtn {
-  position: relative;
-  float: right;
-  top: -80px;
-  left: 280px;
+  position: absolute;
+  /* float: right; */
+  /* top: -80px; */
+  left: 95%;
+  top: 30px;
 }
 
 .doneprojectBtn {
@@ -35,4 +36,36 @@
   margin-top: 140px;
   /* align-items: flex-end; */
   justify-content: center;
+}
+
+.timeline-help {
+  position : fixed;
+  background-color: brown;
+  left: 93%;
+  top: 90%;
+  font-size: 30px;
+  color: white;
+  width: 100px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px 15px 15px 15px;
+  box-shadow: 5px 5px 5px brown;
+}
+
+.timeline-help-message {
+  position: fixed;
+  background-color: white;
+  left: 65%;
+  top: 82%;
+  width: 35%;
+  height: 8%;
+  font-size: 25px;
+  border: 3px solid black;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: lightskyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
