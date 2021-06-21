@@ -11,6 +11,8 @@ import img_you from '../../Icons/img_you.png';
 import img_partner from '../../Icons/partner.png';
 import img_notification from '../../Icons/notification.png';
 import img_sending from '../../Icons/img_sending.png'
+import img_fix from '../../Icons/img_fix.png'
+import { StayPrimaryPortraitSharp } from '@material-ui/icons';
 
 function Schedule(props) {
     // props.data: 일정의 모든 정보를 담은 오브젝트
@@ -43,7 +45,7 @@ function Schedule(props) {
     }
 
     const hide_button = (evt) => {
-        if (props.data.status <= 0){
+        if (props.data.status <= 0 || props.data.status == 5){
             document.getElementById(props.id + '-button').style.display = 'none'
         }
         var target = document.getElementById(props.id + '-feedback-icon-oncalendar')
@@ -112,13 +114,18 @@ function Schedule(props) {
                             {
                                 isLast
                                 ?
-                                <div key = {props.id + '-button'} className = {(props.data.status >= 1)  ? 'schedule-icon' : 'schedule-button' } id = {props.id + '-button'} onClick = {evt => show_message()} style = {{display: (props.data.status >= 1 ? 'inline' : 'none')}}>
+                                <div key = {props.id + '-button'} className = {(props.data.status >= 1 && props.data.status < 5)  ? 'schedule-icon' : 'schedule-button' } id = {props.id + '-button'} onClick = {evt => show_message()} style = {{display: (props.data.status >= 1 && props.data.status < 5 ? 'inline' : 'none')}}>
                                     {
-                                        props.data.status <= 0 ? '+'
+                                        props.data.status <= 0  || props.data.status == 5 ?
+                                        <img
+                                          width = '25' height = '25'
+                                          src = {img_fix}
+                                          alt = {props.id + '-fix'}
+                                        />
                                         :
                                         <img
                                             width = '25' height = '25'
-                                            src = {props.data.status === 1 ? img_sending : (props.data.status === 2  || props.data.status === 3? img_notification : (props.data.status === 4 ? img_you : (props.data.status === 5 ? img_partner : '')))}
+                                            src = {props.data.status === 1 ? img_sending : (props.data.status === 2  || props.data.status === 3? img_notification : (props.data.status === 4 ? img_you : ''))}
                                             alt = {props.data.owner === 'me' ? 'you' : 'sending'}
                                             />
                                     }
